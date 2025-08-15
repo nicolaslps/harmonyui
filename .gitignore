@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+public/build/
+var/
+!var/docs-index.json
+
+# Environment
+.env.local
+.env.local.php
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Cache
+.cache/
+.symfony.lock
+
+# Testing
+coverage/
+.phpunit.result.cache
