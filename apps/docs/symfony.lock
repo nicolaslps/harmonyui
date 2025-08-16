@@ -35,6 +35,9 @@
             "migrations/.gitignore"
         ]
     },
+    "harmonyui/ui-bundle": {
+        "version": "dev-main"
+    },
     "phpunit/phpunit": {
         "version": "12.3",
         "recipe": {

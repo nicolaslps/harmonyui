@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a19e17d0757aae70386d8d2426b99cb9",
+    "content-hash": "278971bb04f8fb16315a21d00a78af76",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -1198,6 +1198,43 @@
                 }
             ],
             "time": "2025-03-06T22:45:56+00:00"
+        },
+        {
+            "name": "harmonyui/ui-bundle",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../../packages/ui-bundle",
+                "reference": "03adf143f87fd6f89629e0d1994aaa24c3fb4f7b"
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/framework-bundle": "^7.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "HarmonyUi\\Bundle\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Lopes",
+                    "email": "lopesn.pro@gmail.com"
+                }
+            ],
+            "description": "HarmonyUI Bundle - UI components for Symfony",
+            "keywords": [
+                "bundle",
+                "symfony",
+                "ui"
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "monolog/monolog",
@@ -9700,7 +9737,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "harmonyui/ui-bundle": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

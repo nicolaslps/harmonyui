@@ -1,6 +1,12 @@
 {
     "name": "harmonyui/docs",
     "type": "project",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../packages/ui-bundle"
+        }
+    ],
     "license": "MIT",
     "description": "HarmonyUI - A modern component library for Symfony",
     "authors": [
@@ -29,6 +35,7 @@
         "symfony/flex": "^2",
         "symfony/form": "7.3.*",
         "symfony/framework-bundle": "7.3.*",
+        "harmonyui/ui-bundle": "@dev",
         "symfony/http-client": "7.3.*",
         "symfony/intl": "7.3.*",
         "symfony/mailer": "7.3.*",
