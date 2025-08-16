@@ -1,0 +1,19 @@
+{
+  "name": "harmonyui-monorepo",
+  "version": "0.0.1",
+  "description": "HarmonyUI - A modern component library for Symfony",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --filter=@harmonyui/* run build",
+    "dev": "pnpm --filter=@harmonyui/* run dev",
+    "test": "pnpm --filter=@harmonyui/* run test",
+    "lint": "pnpm --filter=@harmonyui/* run lint",
+    "format": "pnpm --filter=@harmonyui/* run format"
+  },
+  "author": "Nicolas Lopes",
+  "license": "MIT",
+  "devDependencies": {},
+  "workspaces": [
+    "packages/*"
+  ]
+}

@@ -1,4 +1,7 @@
 {
+    "dependencies": {
+        "@harmonyui/primitives": "workspace:*"
+    },
     "devDependencies": {
         "@babel/core": "^7.17.0",
         "@babel/preset-env": "^7.16.0",

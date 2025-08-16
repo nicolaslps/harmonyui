@@ -23,10 +23,7 @@ Encore
     .addEntry('app', './assets/app.js')
 
     // Add alias for stimulus controllers
-    .addAliases({
-        '@symfony/stimulus-bridge/controllers.json': './assets/controllers.json',
-    })
-
+    .enableStimulusBridge("./assets/controllers.json")
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 

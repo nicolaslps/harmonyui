@@ -1,7 +1,7 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 
-const components = ['tabs'];
+const components = [];
 
 export default [
   // Bundle all components

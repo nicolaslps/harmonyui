@@ -1,0 +1,35 @@
+{
+  "name": "@harmonyui/ui-bundle",
+  "version": "0.0.1",
+  "description": "HarmonyUI Bundle",
+  "main": "assets/index.js",
+  "module": "assets/index.js",
+  "types": "assets/index.d.ts",
+  "files": [
+    "assets/**/*",
+    "src/**/*",
+    "composer.json"
+  ],
+  "scripts": {
+    "build": "echo 'No build step needed - consuming primitives directly'",
+    "dev": "echo 'Development mode - primitives updates will be reflected automatically'",
+    "test": "echo 'No tests configured yet'",
+    "lint": "echo 'No linting configured yet'",
+    "format": "echo 'No formatting configured yet'"
+  },
+  "keywords": [
+    "symfony",
+    "bundle",
+    "ui",
+    "components",
+    "harmonyui"
+  ],
+  "author": "Nicolas Lopes",
+  "license": "MIT",
+  "dependencies": {
+    "@harmonyui/primitives": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
