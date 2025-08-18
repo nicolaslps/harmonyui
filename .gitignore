@@ -28,6 +28,7 @@ Thumbs.db
 # Cache
 .cache/
 .symfony.lock
+.php-cs-fixer.cache
 
 # Testing
 coverage/

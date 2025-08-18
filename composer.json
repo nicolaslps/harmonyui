@@ -1,4 +1,8 @@
 {
     "type": "project",
-    "license": "MIT"
+    "license": "MIT",
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "php-cs-fixer/shim": "^3.86"
+    }
 }
