@@ -2,7 +2,17 @@
     "type": "project",
     "license": "MIT",
     "require-dev": {
-        "phpstan/phpstan": "^2.1",
-        "php-cs-fixer/shim": "^3.86"
+        "phpstan/phpstan": "^1.12",
+        "php-cs-fixer/shim": "^3.86",
+        "rector/rector": "^1.0",
+        "phpunit/phpunit": "^12.3"
+    },
+    "scripts": {
+        "cs:check": "php-cs-fixer fix --config=.php-cs-fixer.php --dry-run --diff",
+        "cs": "php-cs-fixer fix --config=.php-cs-fixer.php",
+        "stan": "phpstan analyse --configuration=phpstan.neon",
+        "test": "vendor/bin/phpunit --configuration apps/docs/phpunit.dist.xml",
+        "rector:dry": "rector process --dry-run",
+        "rector:apply": "rector process"
     }
 }

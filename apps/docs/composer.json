@@ -11,7 +11,7 @@
     "description": "HarmonyUI - A modern component library for Symfony",
     "authors": [
         {
-            "name": "Nicolas Lopes",
+            "name": "Nicolas Lopes"
         }
     ],
     "minimum-stability": "stable",
