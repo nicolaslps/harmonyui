@@ -32,7 +32,7 @@ cs:
 
 # Run PHPUnit tests
 test:
-	composer run test
+	cd apps/docs && ../../vendor/bin/phpunit --configuration phpunit.dist.xml
 
 # Preview Rector changes
 rector-dry:

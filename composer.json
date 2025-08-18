@@ -11,7 +11,7 @@
         "cs:check": "php-cs-fixer fix --config=.php-cs-fixer.php --dry-run --diff",
         "cs": "php-cs-fixer fix --config=.php-cs-fixer.php",
         "stan": "phpstan analyse --configuration=phpstan.neon",
-        "test": "vendor/bin/phpunit --configuration apps/docs/phpunit.dist.xml",
+        "test": "vendor/bin/phpunit --bootstrap apps/docs/vendor/autoload.php apps/docs/tests/",
         "rector:dry": "rector process --dry-run",
         "rector:apply": "rector process"
     }
