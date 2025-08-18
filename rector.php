@@ -16,7 +16,7 @@ return RectorConfig::configure()
         '*/var/*',
         '*/node_modules/*',
     ])
-    ->withPhpSets(php82: true)
+    ->withPhpSets(php84: true)
     ->withPreparedSets(
         deadCode: true,
         codeQuality: true,

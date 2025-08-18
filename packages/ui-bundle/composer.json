@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.4",
         "symfony/framework-bundle": "^7.0"
     },
     "autoload": {
