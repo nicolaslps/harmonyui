@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HarmonyUI - Component Library{% endblock %}
+
+{% block body %}
+<twig:Layout:Navbar/>
+<div class="max-w-4xl mx-auto px-6 py-8">
+    <header class="text-center">
+        <h1 class="text-5xl font-bold mb-6 text-gray-900">HarmonyUI</h1>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+            A modern component library for Symfony applications
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="{{ path('app_docs', {section: 'getting-started', page: 'installation'}) }}"
+               class="bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors font-medium">
+                Get Started
+            </a>
+            <a href="{{ path('app_components') }}"
+               class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-colors font-medium">
+                View Components
+            </a>
+        </div>
+    </header>
+</div>
+{% endblock %}

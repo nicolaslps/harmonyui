@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HarmonyUI{% endblock %}
+
+{% block body %}
+<twig:Layout:Navbar/>
+<div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <twig:Layout:DocSidebar :sidebar="sidebar"/>
+        <main class="lg:col-span-3">
+            {{ dump(page) }}
+        </main>
+    </div>
+</div>
+{% endblock %}
