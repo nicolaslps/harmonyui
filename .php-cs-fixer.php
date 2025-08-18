@@ -15,19 +15,16 @@ use PhpCsFixer\Finder;
 
 return (new Config())
     ->setRules([
-        '@PHP82Migration' => true,
+        '@PHP84Migration' => true,
         '@PHPUnit100Migration:risky' => true,
         '@Symfony' => true,
         '@Symfony:risky' => true,
         'protected_to_private' => false,
+        'declare_strict_types' => true,
+        'strict_param' => true,
         'header_comment' => [
             'header' => "This file is part of the HarmonyUI project.\n\n(c) Nicolas Lopes\n\nFor the full copyright and license information, please view the LICENSE\nfile that was distributed with this source code.",
         ],
-        '@PSR12' => true,
-        'declare_strict_types' => true,
-        'strict_param' => true,
-        'no_unused_imports' => true,
-        'ordered_imports' => ['sort_algorithm' => 'alpha'],
     ])
     ->setRiskyAllowed(true)
     ->setCacheFile(__DIR__.'/.php-cs-fixer.cache')
@@ -41,7 +38,13 @@ return (new Config())
                 __DIR__.'/packages/*/src',
                 __DIR__.'/packages/*/tests',
             ])
-//            ->exclude(['var', 'vendor', 'node_modules', 'public/build', 'migrations'])
+            ->notPath('#/var/#')
+            ->notPath('#/vendor/#')
+            ->notPath('#/node_modules/#')
+            ->notPath('#/public/build/#')
+            ->notPath('#/migrations/#')
+            ->notName('Kernel.php')
+            ->notName('bootstrap.php')
             ->notName('rector.php')
             ->notName('phpstan*')
     );
