@@ -19,6 +19,8 @@ make check
 make stan       # PHPStan static analysis  
 make cs-check   # PHP-CS-Fixer code style check
 make cs         # PHP-CS-Fixer code style fix
+make twig-check # Twig-CS-Fixer template check
+make twig       # Twig-CS-Fixer template fix
 make rector-dry # Rector preview changes
 make rector     # Rector apply changes  
 make test       # PHPUnit tests
