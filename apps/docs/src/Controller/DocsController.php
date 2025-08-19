@@ -51,6 +51,10 @@ final class DocsController extends AbstractController
         $sidebar = $this->docService->getSidebar();
         $page = $this->docService->getPage($section, $page);
 
+        if (!$page->isPublished()){
+            throw $this->createNotFoundException('Page not found');
+        }
+
         return $this->render('docs/docs.html.twig', [
             'sidebar' => $sidebar,
             'page' => $page,

@@ -108,6 +108,7 @@ class DocService
         $docPage->setType($this->determinePageType($metadata));
         $docPage->setIsPublished((bool) ($metadata['published'] ?? true));
         $docPage->setSection($docSection);
+        $docPage->setTemplate($this->getTemplatePathFromFile($filePath));
 
         return $docPage;
     }
@@ -142,6 +143,17 @@ class DocService
     private function determinePageType(array $metadata): PageType
     {
         return ($metadata['isComponent'] ?? false) ? PageType::COMPONENT : PageType::PAGE;
+    }
+
+    private function getTemplatePathFromFile(string $filePath): string
+    {
+        $templateBasePath = \dirname(__DIR__, 2).'/templates/';
+        
+        if (str_starts_with($filePath, $templateBasePath)) {
+            return str_replace($templateBasePath, '', $filePath);
+        }
+        
+        return $filePath;
     }
 
     /**

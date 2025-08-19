@@ -31,6 +31,8 @@ class DocPage
 
     private ?DocSection $docSection = null;
 
+    private ?string $template = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,7 +92,7 @@ class DocPage
 
         $parts = explode('/', $this->slug);
 
-        return \count($parts) >= 2 ? $parts[1] : null;
+        return \count($parts) == 3 ? $parts[1] : null;
     }
 
     /**
@@ -104,7 +106,7 @@ class DocPage
 
         $parts = explode('/', $this->slug);
 
-        return \count($parts) >= 2 ? $parts[1] : null;
+        return \count($parts) == 3 ? $parts[2] : null;
     }
 
     public function getType(): PageType
@@ -139,6 +141,18 @@ class DocPage
     public function setSection(?DocSection $docSection): static
     {
         $this->docSection = $docSection;
+
+        return $this;
+    }
+
+    public function getTemplate(): ?string
+    {
+        return $this->template;
+    }
+
+    public function setTemplate(?string $template): static
+    {
+        $this->template = $template;
 
         return $this;
     }
