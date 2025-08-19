@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\DocPage;
 use App\Service\DocService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,7 +52,7 @@ final class DocsController extends AbstractController
         $sidebar = $this->docService->getSidebar();
         $page = $this->docService->getPage($section, $page);
 
-        if (!$page->isPublished()){
+        if (!$page instanceof DocPage || !$page->isPublished()) {
             throw $this->createNotFoundException('Page not found');
         }
 

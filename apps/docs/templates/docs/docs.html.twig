@@ -12,7 +12,7 @@
                 :title="page.title"
                 :description="page.description"
             />
-                {% include page.template %}
+                {{ include(page.template) }}
             </twig:Layout:DocPageContent>
         </main>
     </div>

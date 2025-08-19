@@ -148,11 +148,11 @@ class DocService
     private function getTemplatePathFromFile(string $filePath): string
     {
         $templateBasePath = \dirname(__DIR__, 2).'/templates/';
-        
+
         if (str_starts_with($filePath, $templateBasePath)) {
             return str_replace($templateBasePath, '', $filePath);
         }
-        
+
         return $filePath;
     }
 

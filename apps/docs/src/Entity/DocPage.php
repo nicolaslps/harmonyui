@@ -92,7 +92,7 @@ class DocPage
 
         $parts = explode('/', $this->slug);
 
-        return \count($parts) == 3 ? $parts[1] : null;
+        return 3 == \count($parts) ? $parts[1] : null;
     }
 
     /**
@@ -106,7 +106,7 @@ class DocPage
 
         $parts = explode('/', $this->slug);
 
-        return \count($parts) == 3 ? $parts[2] : null;
+        return 3 == \count($parts) ? $parts[2] : null;
     }
 
     public function getType(): PageType
