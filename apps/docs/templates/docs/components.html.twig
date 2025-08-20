@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Components - HarmonyUI{% endblock %}
+{%- block seo_title -%}
+    {{- 'seo.components.title'|trans -}} {{- parent() -}}
+{%- endblock -%}
+{%- block seo_description -%}
+    {{- 'seo.components.description'|trans -}}
+{%- endblock -%}
+
 
 {% block body %}
 <twig:Layout:Navbar/>

@@ -1,6 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HarmonyUI{% endblock %}
+{%- block seo_title -%}
+    {{- page.title|trans|capitalize -}} {{ ' |' }} {{- parent() -}}
+{% endblock %}
+{%- block seo_description -%}
+    {{- page.description|trans|capitalize -}} {{ ' |' }} {{- parent() -}}
+{%- endblock -%}
+
+{% block seo_robots %}
+    {% if page.isPublished %}
+        {{ parent() }}
+    {% else %}
+        noindex, nofollow
+    {% endif %}
+{% endblock %}
+
+{% block seo_canonical %}{{ url('app_docs', {section: page.sectionSlug, page: page.pageSlug}) }}{% endblock %}
+
 
 {% block body %}
 <twig:Layout:Navbar/>
