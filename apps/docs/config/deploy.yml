@@ -1,0 +1,39 @@
+service: harmonyui-docs
+image: nicolaslps/harmonyui-docs
+
+registry:
+    server: ghcr.io
+    username: KAMAL_REGISTRY_USERNAME
+    password:
+        - KAMAL_REGISTRY_PASSWORD
+
+builder:
+    dockerfile: Dockerfile
+    target: frankenphp_prod
+    context: ../..
+    arch: amd64
+
+servers:
+    - deploy.harmonyui.org
+
+ssh:
+    user: ubuntu
+
+env:
+    clear:
+        APP_ENV: staging
+        APP_DEBUG: "false"
+        SERVER_NAME: staging.harmonyui.org
+    secret:
+        - APP_SECRET
+
+proxy:
+    host: staging.harmonyui.org
+    ssl: false
+    app_port: 80
+    healthcheck:
+        path: /
+        interval: 2
+        timeout: 2
+
+deploy_timeout: 120

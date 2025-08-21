@@ -3,7 +3,7 @@
 # Production image
 FROM dunglas/frankenphp:1-php8.4 AS frankenphp_upstream
 
-# Development image  
+# Development image
 FROM frankenphp_upstream AS frankenphp_dev
 RUN install-php-extensions intl xdebug
 COPY --link frankenphp/Caddyfile /etc/caddy/Caddyfile
@@ -35,10 +35,8 @@ RUN rm -Rf frankenphp/
 RUN set -eux; \
     mkdir -p var/cache var/log; \
     composer dump-autoload --classmap-authoritative --no-dev; \
-    composer dump-env prod; \
-    composer run-script --no-dev post-install-cmd; \
-    chmod +x bin/console; sync;
+    chmod +x apps/docs/bin/console; sync;
 
-COPY --link frankenphp/Caddyfile /etc/caddy/Caddyfile
+COPY --link apps/docs/frankenphp/Caddyfile /etc/caddy/Caddyfile
 
 HEALTHCHECK --start-period=60s CMD curl -f http://localhost:2019/metrics || exit 1
