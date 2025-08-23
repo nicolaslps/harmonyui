@@ -1,0 +1,49 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  deploy:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    
+    steps:
+      - name: Wait for CI to complete
+        uses: lewagon/wait-on-check-action@v1.3.4
+        with:
+          ref: ${{ github.ref }}
+          check-name: |
+            PHPStan Analysis
+            PHP CS Fixer
+            Rector
+            Twig CS Fixer
+            PHPUnit Tests
+            Security Audit
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+          
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          
+      - name: Install Kamal
+        run: gem install kamal
+        
+      - name: Deploy to staging
+        env:
+          KAMAL_PROD_HOST: ${{ secrets.KAMAL_PROD_HOST }}
+          KAMAL_STAGING_HOST: ${{ secrets.KAMAL_STAGING_HOST }}
+          KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          KAMAL_SSH_DEPLOY_KEY: ${{ secrets.KAMAL_SSH_DEPLOY_KEY }}
+          KAMAL_SSH_DEPLOY_USER: ${{ secrets.KAMAL_SSH_DEPLOY_USER }}
+          APP_SECRET: ${{ secrets.APP_SECRET }}
+        run: |
+          kamal deploy -d staging
