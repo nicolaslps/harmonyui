@@ -55,6 +55,18 @@ HEALTHCHECK --interval=10s --timeout=2s --retries=3 \
   CMD wget -qO- http://127.0.0.1/health || exit 1
 
 # ---------------------------------------
+# Node.js build stage
+# ---------------------------------------
+FROM node:18-alpine AS node_build
+WORKDIR /app
+COPY apps/docs/package.json apps/docs/pnpm-lock.yaml apps/docs/
+COPY packages ./packages
+WORKDIR /app/apps/docs
+RUN npm install -g pnpm && \
+    pnpm install --frozen-lockfile && \
+    pnpm run build
+
+# ---------------------------------------
 # Runtime PROD
 # ---------------------------------------
 FROM dunglas/frankenphp:latest AS frankenphp_prod
@@ -70,6 +82,7 @@ ENV FRANKENPHP_CONFIG="worker ./public/index.php 4"
 
 COPY apps/docs /app/
 COPY --from=composer_prod /app/apps/docs/vendor /app/vendor
+COPY --from=node_build /app/apps/docs/public/build /app/public/build
 
 RUN php bin/console cache:clear --env=prod --no-interaction || true \
  && php -v > /dev/null
