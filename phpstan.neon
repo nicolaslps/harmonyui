@@ -1,0 +1,17 @@
+parameters:
+    level: max
+    paths:
+        - apps/docs/src
+        - packages/ui-bundle/src
+    bootstrapFiles:
+        - apps/docs/vendor/autoload.php
+    excludePaths:
+        - */vendor/*
+        - */var/*
+        - */node_modules/*
+        - apps/docs/config/bundles.php
+        - apps/docs/public/index.php
+        - apps/docs/tests/bootstrap.php
+    ignoreErrors:
+        # Add any specific ignores here if needed
+    tmpDir: var/phpstan

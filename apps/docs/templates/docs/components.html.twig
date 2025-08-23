@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{%- block seo_title -%}
+    {{- 'seo.components.title'|trans -}} {{- parent() -}}
+{%- endblock -%}
+{%- block seo_description -%}
+    {{- 'seo.components.description'|trans -}}
+{%- endblock -%}
+
+{% block body %}
+<twig:Layout:Navbar/>
+<div class="max-w-6xl mx-auto px-6 py-8">
+
+    <header class="mb-12">
+        <h1 class="text-4xl font-bold mb-4 text-gray-900">
+            {{ 'components.title'|trans|capitalize }}
+        </h1>
+        <p class="text-lg text-gray-600">
+            {{ 'components.description'|trans|capitalize }}
+        </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for component in components %}
+            <a href="{{ path('app_docs', {section: component.sectionSlug, page: component.pageSlug}) }}"
+               class="block border border-gray-200 rounded-lg p-6 hover:border-gray-300 hover:shadow-md transition-all group">
+
+                <div class="mb-4">
+                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
+                        {{ component.title|trans|capitalize }}
+                    </h3>
+                </div>
+{# <p class="text-gray-600 leading-relaxed"> #}
+{# {{ component.description|trans }} #}
+{# </p> #}
+            </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

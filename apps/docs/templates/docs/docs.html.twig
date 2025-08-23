@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{%- block seo_title -%}
+    {{- page.title|trans|capitalize -}} {{ ' |' }} {{- parent() -}}
+{% endblock %}
+{%- block seo_description -%}
+    {{- page.description|trans|capitalize -}} {{ ' |' }} {{- parent() -}}
+{%- endblock -%}
+
+{% block seo_robots %}
+    {% if page.isPublished %}
+        {{ parent() }}
+    {% else %}
+        noindex, nofollow
+    {% endif %}
+{% endblock %}
+
+{% block seo_canonical %}{{ url('app_docs', {section: page.sectionSlug, page: page.pageSlug}) }}{% endblock %}
+
+{% block body %}
+<twig:Layout:Navbar/>
+<div class="max-w-7xl mx-auto px-6 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <twig:Layout:DocSidebar :sidebar="sidebar"/>
+        <main class="lg:col-span-3">
+            <twig:Layout:DocPageContent
+                :title="page.title"
+                :description="page.description"
+            />
+                {{ include(page.template) }}
+            </twig:Layout:DocPageContent>
+        </main>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file
+# Put files here that you don't want copied into your Docker image.
+# See https://docs.docker.com/build/building/context/#dockerignore-files for more info.
+
+Dockerfile*
+compose*.yaml
+.dockerignore
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Symfony
+/var/
+/vendor/
+
+# Front
+node_modules/
+/public/build/
+
+# Tests
+/tests/

@@ -1,0 +1,16 @@
+service: harmonyui-docs-staging
+image: nicolaslps/harmonyui-docs-staging
+
+servers:
+  web:
+      - <%= ENV.fetch("KAMAL_STAGING_HOST") %>
+
+proxy:
+  hosts:
+      - staging.harmonyui.org
+
+env:
+    clear:
+        APP_ENV: staging
+        APP_DEBUG: "true"
+        SERVER_NAME: "staging.harmonyui.org, staging.harmonyui.org, :80, :443"

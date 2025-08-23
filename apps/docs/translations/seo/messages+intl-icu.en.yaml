@@ -1,0 +1,8 @@
+seo:
+    default:
+        title: "HarmonyUI - Modern UI Component Library for Symfony"
+        description: "Build stunning Symfony applications with HarmonyUI. Modern component library featuring beautiful Twig components, TailwindCSS styling, and Stimulus controllers. Free, open-source, and developer-friendly."
+        keywords: "symfony component library, twig components, tailwindcss, stimulus, php ui library, symfony ui kit, web components, modern ui design"
+    components:
+        title: "Components - "
+        description: "Here you can find all the components available in the library. We are working on adding more components."

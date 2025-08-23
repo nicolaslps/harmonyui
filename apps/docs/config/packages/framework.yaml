@@ -2,8 +2,18 @@
 framework:
     secret: '%env(APP_SECRET)%'
 
+    # Configure localization
+    default_locale: en
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallbacks:
+            - en
+
     # Note that the session will be started ONLY if you read or write from it.
     session: true
+
+    # Enable HTTP caching for production
+    http_cache: true
 
     #esi: true
     #fragments: true

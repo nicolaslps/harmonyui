@@ -1,0 +1,17 @@
+{
+  admin 0.0.0.0:2019
+  frankenphp {
+    php_ini opcache.validate_timestamps 1
+    php_ini opcache.revalidate_freq 0
+    php_ini opcache.max_accelerated_files 20000
+    worker {
+      file ./public/index.php
+      watch
+    }
+  }
+}
+:80 {
+  root * /app/public
+  php_server
+  encode zstd br gzip
+}

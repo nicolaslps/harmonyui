@@ -1,0 +1,25 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frankenphp_dev
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "2019:2019"
+    environment:
+      SERVER_NAME: :80
+      APP_ENV: dev
+      APP_DEBUG: "1"
+      MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
+      MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+      TRUSTED_HOSTS: ^${SERVER_NAME:-example\.com|localhost}$$
+    volumes:
+      - ./apps/docs:/app
+      - app_vendor:/app/vendor
+      - ./apps/docs/frankenphp/Caddyfile:/etc/caddy/Caddyfile:ro
+
+volumes:
+  app_vendor:
