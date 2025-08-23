@@ -15,15 +15,9 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.3.4
         with:
           ref: ${{ github.ref }}
-          check-name: |
-            PHPStan Analysis
-            PHP CS Fixer
-            Rector
-            Twig CS Fixer
-            PHPUnit Tests
-            Security Audit
+          check-regexp: '^(PHPStan Analysis|PHP CS Fixer|Rector|Twig CS Fixer|PHPUnit Tests|Security Audit)$'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10
+          wait-interval: 30
           
       - name: Checkout code
         uses: actions/checkout@v4
