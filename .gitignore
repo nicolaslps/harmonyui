@@ -34,3 +34,5 @@ Thumbs.db
 # Testing
 coverage/
 .phpunit.result.cache
+
+.env.kamal

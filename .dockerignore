@@ -1,0 +1,4 @@
+apps/docs/vendor
+node_modules
+.git
+var

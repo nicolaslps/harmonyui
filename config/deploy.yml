@@ -1,0 +1,40 @@
+service: harmonyui-docs
+image: nicolaslps/harmonyui-docs
+
+servers:
+    web:
+        - <%= ENV.fetch("KAMAL_PROD_HOST") %>
+
+ssh:
+    user: <%= ENV.fetch("KAMAL_SSH_DEPLOY_USER") %>
+    key_data: [
+      "<%= ENV.fetch('KAMAL_SSH_DEPLOY_KEY').gsub('\\n', "\n") %>"
+    ]
+proxy:
+    ssl: true
+    hosts:
+        - harmonyui.org
+        - www.harmonyui.org
+    healthcheck:
+        path: /health
+        interval: 3
+        timeout: 5
+
+registry:
+    server: ghcr.io
+    username: <%= ENV.fetch("KAMAL_REGISTRY_USERNAME") %>
+    password: <%= ENV.fetch("KAMAL_REGISTRY_PASSWORD") %>
+
+builder:
+    arch: amd64
+    target: frankenphp_prod
+    context: .
+
+env:
+    clear:
+        APP_ENV: prod
+        APP_DEBUG: "false"
+        SERVER_NAME: "www.harmonyui.org, harmonyui.org, :80, :443"
+        FRANKENPHP_CONFIG: "worker ./public/index.php"
+    secret:
+        - APP_SECRET
