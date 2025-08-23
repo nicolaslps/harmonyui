@@ -1,15 +1,15 @@
-name: Deploy to Staging
+name: Deploy to Production
 
 on:
   push:
-    branches: [dev]
+    branches: [main]
   pull_request:
     branches: [dev]
     types: [closed]
 
 jobs:
   deploy:
-    name: Deploy to Staging
+    name: Deploy to Production
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     
@@ -21,18 +21,18 @@ jobs:
           check-regexp: '^(PHPStan Analysis|PHP CS Fixer|Rector|Twig CS Fixer|PHPUnit Tests|Security Audit)$'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 30
-          
+
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
-          
+
       - name: Install Kamal
         run: gem install kamal
-        
+
       - name: Deploy to staging
         env:
           KAMAL_PROD_HOST: ${{ secrets.KAMAL_PROD_HOST }}
@@ -43,4 +43,4 @@ jobs:
           KAMAL_SSH_DEPLOY_USER: ${{ secrets.KAMAL_SSH_DEPLOY_USER }}
           APP_SECRET: ${{ secrets.APP_SECRET }}
         run: |
-          kamal deploy -d staging
+          kamal deploy
