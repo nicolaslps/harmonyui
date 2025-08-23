@@ -59,11 +59,12 @@ HEALTHCHECK --interval=10s --timeout=2s --retries=3 \
 # ---------------------------------------
 FROM node:18-alpine AS node_build
 WORKDIR /app
-COPY apps/docs/package.json apps/docs/pnpm-lock.yaml apps/docs/
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY packages ./packages
-WORKDIR /app/apps/docs
+COPY apps/docs ./apps/docs
 RUN npm install -g pnpm && \
     pnpm install --frozen-lockfile && \
+    cd apps/docs && \
     pnpm run build
 
 # ---------------------------------------
