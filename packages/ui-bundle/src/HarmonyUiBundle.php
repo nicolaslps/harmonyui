@@ -14,10 +14,12 @@ declare(strict_types=1);
 namespace HarmonyUi\Bundle;
 
 use HarmonyUi\Bundle\DependencyInjection\HarmonyUiExtension;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class HarmonyUiBundle extends Bundle
+class HarmonyUiBundle extends AbstractBundle
 {
+    protected string $name = 'ui';
+
     public function getContainerExtension(): HarmonyUiExtension
     {
         return new HarmonyUiExtension();

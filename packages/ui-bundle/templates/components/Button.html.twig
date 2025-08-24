@@ -1,0 +1,11 @@
+{%- props
+    as = 'button',
+    href = null
+-%}
+
+{%- if href -%}
+    {% set as = 'a' %}
+{% endif %}
+<{{ as }} {{ attributes }} href="{{ href }}">
+{%- block content -%}{%- endblock -%}
+</{{ as }}>

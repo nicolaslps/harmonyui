@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=8.4",
-        "symfony/framework-bundle": "^7.0"
+        "symfony/framework-bundle": "^7.0",
+        "symfony/ux-twig-component": "^2.0"
     },
     "autoload": {
         "psr-4": {

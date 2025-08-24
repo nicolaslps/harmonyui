@@ -1280,11 +1280,12 @@
             "dist": {
                 "type": "path",
                 "url": "../../packages/ui-bundle",
-                "reference": "dcb291756f7b6ddd8458a1b130b36ac77bd297c1"
+                "reference": "e701ea32d9006f4c83573965245aedaf5e4f814a"
             },
             "require": {
                 "php": ">=8.4",
-                "symfony/framework-bundle": "^7.0"
+                "symfony/framework-bundle": "^7.0",
+                "symfony/ux-twig-component": "^2.0"
             },
             "type": "symfony-bundle",
             "autoload": {
