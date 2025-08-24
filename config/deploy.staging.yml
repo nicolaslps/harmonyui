@@ -14,3 +14,4 @@ env:
         APP_ENV: staging
         APP_DEBUG: "true"
         SERVER_NAME: "staging.harmonyui.org, staging.harmonyui.org, :80, :443"
+        TRACKING_ENABLED: "false"

@@ -1,0 +1,12 @@
+{% if tracking.enabled and tracking.ga4_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ tracking.ga4_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ tracking.ga4_id }}', {
+            anonymize_ip: true,
+            send_page_view: true
+        });
+    </script>
+{% endif %}

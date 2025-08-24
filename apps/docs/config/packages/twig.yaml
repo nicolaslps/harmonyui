@@ -1,6 +1,10 @@
 twig:
     file_name_pattern: '*.twig'
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        tracking:
+            enabled: '%tracking.enabled%'
+            ga4_id: '%tracking.ga4_id%'
 
 when@test:
     twig:
