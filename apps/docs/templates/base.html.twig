@@ -31,6 +31,9 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
+        {{ include('./integrations/ga4.html.twig') }}
+        {{ include('./integrations/onedollarstats.html.twig') }}
     </head>
     <body>
         {% block body %}{% endblock %}

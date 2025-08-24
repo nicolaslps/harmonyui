@@ -42,5 +42,6 @@ jobs:
           KAMAL_SSH_DEPLOY_KEY: ${{ secrets.KAMAL_SSH_DEPLOY_KEY }}
           KAMAL_SSH_DEPLOY_USER: ${{ secrets.KAMAL_SSH_DEPLOY_USER }}
           APP_SECRET: ${{ secrets.APP_SECRET }}
+          GA4_ID: ${{ secrets.GA4_ID }}
         run: |
           kamal deploy -d staging
