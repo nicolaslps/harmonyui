@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @source not "../../public/*";
+@source "../../styles";
+@source "../../vendor/harmonyui/ui-bundle/src/Resources/config/styles/*";
 
-body {
-
-}

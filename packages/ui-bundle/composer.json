@@ -1,4 +1,5 @@
 {
+    "version": "0.1.0",
     "name": "harmonyui/ui-bundle",
     "type": "symfony-bundle",
     "description": "HarmonyUI Bundle - UI components for Symfony",
@@ -10,9 +11,15 @@
         }
     ],
     "require": {
-        "php": ">=8.4",
+        "php": ">=8.2",
         "symfony/framework-bundle": "^7.0",
-        "symfony/ux-twig-component": "^2.0"
+        "symfony/ux-twig-component": "^2.0",
+        "symfony/dependency-injection": "^6.4|^7.0",
+        "symfony/config": "^6.4|^7.0",
+        "symfony/yaml": "^6.4|^7.0",
+        "twig/twig": "^3.0",
+        "twig/html-extra": "^3.8",
+        "twig/extra-bundle": "^3.8"
     },
     "autoload": {
         "psr-4": {

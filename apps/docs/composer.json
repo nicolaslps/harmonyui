@@ -24,7 +24,7 @@
         "doctrine/doctrine-bundle": "^2.15.1",
         "doctrine/doctrine-migrations-bundle": "^3.4.2",
         "doctrine/orm": "^3.5.2",
-        "harmonyui/ui-bundle": "@dev",
+        "harmonyui/ui-bundle": "^0.1.0",
         "league/commonmark": "^2.7.1",
         "phpdocumentor/reflection-docblock": "^5.6.3",
         "phpstan/phpdoc-parser": "^2.2",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70e38b35f45d48f408b826e10ae9b79d",
+    "content-hash": "962b43326557069fd1d9d09a5d08bb56",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -1276,16 +1276,22 @@
         },
         {
             "name": "harmonyui/ui-bundle",
-            "version": "dev-dev",
+            "version": "0.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../packages/ui-bundle",
-                "reference": "e701ea32d9006f4c83573965245aedaf5e4f814a"
+                "reference": "8752aee8c0ba429318991cd0f9cf89f803909e58"
             },
             "require": {
-                "php": ">=8.4",
+                "php": ">=8.2",
+                "symfony/config": "^6.4|^7.0",
+                "symfony/dependency-injection": "^6.4|^7.0",
                 "symfony/framework-bundle": "^7.0",
-                "symfony/ux-twig-component": "^2.0"
+                "symfony/ux-twig-component": "^2.0",
+                "symfony/yaml": "^6.4|^7.0",
+                "twig/extra-bundle": "^3.8",
+                "twig/html-extra": "^3.8",
+                "twig/twig": "^3.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -7988,6 +7994,74 @@
             "time": "2025-02-19T14:29:33+00:00"
         },
         {
+            "name": "twig/html-extra",
+            "version": "v3.21.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/html-extra.git",
+                "reference": "5442dd707601c83b8cd4233e37bb10ab8489a90f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/html-extra/zipball/5442dd707601c83b8cd4233e37bb10ab8489a90f",
+                "reference": "5442dd707601c83b8cd4233e37bb10ab8489a90f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1.0",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/mime": "^5.4|^6.4|^7.0",
+                "twig/twig": "^3.13|^4.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Resources/functions.php"
+                ],
+                "psr-4": {
+                    "Twig\\Extra\\Html\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "A Twig extension for HTML",
+            "homepage": "https://twig.symfony.com",
+            "keywords": [
+                "html",
+                "twig"
+            ],
+            "support": {
+                "source": "https://github.com/twigphp/html-extra/tree/v3.21.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-02-19T14:29:33+00:00"
+        },
+        {
             "name": "twig/markdown-extra",
             "version": "v3.21.0",
             "source": {
@@ -10363,9 +10437,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "harmonyui/ui-bundle": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
