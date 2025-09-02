@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace HarmonyUi\Bundle\DependencyInjection;
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 class HarmonyUiExtension extends Extension
 {
@@ -23,5 +25,18 @@ class HarmonyUiExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $containerBuilder): void
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.yaml');
+
+        $directories = [
+            dirname(__DIR__) . '/Resources/config/styles',
+            ...$config['paths']
+        ];
+        
+        $containerBuilder->setParameter('ui.directories', $directories);
+        $containerBuilder->setParameter('ui.tailwind_merge_enabled', $config['tailwind_merge']);
     }
 }

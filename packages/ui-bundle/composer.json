@@ -19,7 +19,8 @@
         "symfony/yaml": "^6.4|^7.0",
         "twig/twig": "^3.0",
         "twig/html-extra": "^3.8",
-        "twig/extra-bundle": "^3.8"
+        "twig/extra-bundle": "^3.8",
+        "gehrisandro/tailwind-merge-php": "^1.0"
     },
     "autoload": {
         "psr-4": {

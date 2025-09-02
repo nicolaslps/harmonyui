@@ -20,8 +20,17 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
+/**
+ * StyleExtension provides Twig functions and filters for rendering component styles.
+ * It integrates with StyleRegistry to render CSS classes based on component configurations,
+ * themes, and user props. Supports both function and filter syntax in templates.
+ */
 final class StyleExtension extends AbstractExtension
 {
+    /**
+     * @param StyleRegistry $styleRegistry Registry containing component style definitions
+     * @param Environment $twig Twig environment
+     */
     public function __construct(
         private readonly StyleRegistry $styleRegistry,
         private readonly Environment $twig,
@@ -43,6 +52,15 @@ final class StyleExtension extends AbstractExtension
         ];
     }
 
+    /**
+     * Render CSS classes for a component using the style registry.
+     *
+     * @param array<string, mixed> $context Twig template context
+     * @param string $key Component identifier (e.g., 'button', 'card')
+     * @param array<string, mixed> $props Component props including variants and classes
+     * @param string|null $theme Optional theme override (defaults to context or global theme)
+     * @return string Rendered CSS classes
+     */
     public function style(array $context, string $key, array $props = [], ?string $theme = null): string
     {
         if ($theme === null) {
@@ -52,22 +70,30 @@ final class StyleExtension extends AbstractExtension
     }
 
     /**
-     * return component props with defaults applied
-     * @internal
+     * Get component props with default values applied from component configuration.
+     * Merges default variants with actual component attributes.
+     *
+     * @param array<string, mixed> $context Twig template context
+     * @param string $component Component identifier
+     * @param ComponentAttributes|null $attributes Component attributes from TwigComponent
+     * @return array<string, mixed> Final props with defaults applied
+     * @internal Used internally by the component system
      */
     public function getStyleProps(array $context, string $component, ?ComponentAttributes $attributes = null): array
     {
         $theme = $context['ui_theme'] ?? null;
-        $config = $this->styleRegistry->get($component, 'root', $theme);
+        $config = $this->styleRegistry->get($component, $theme);
 
         $defaults = $config['defaultVariants'];
         $props = $config['variants'];
 
+        /** @var array<string, mixed> $realAttributes */
         $realAttributes = [];
         if (!is_null($attributes)) {
             $realAttributes = $attributes->all();
         }
 
+        /** @var array<string, mixed> $finalProps */
         $finalProps = [];
         foreach ($props as $propName => $propValues) {
             if (!array_key_exists($propName, $realAttributes)) {
@@ -78,4 +104,5 @@ final class StyleExtension extends AbstractExtension
         }
         return $finalProps;
     }
+
 }

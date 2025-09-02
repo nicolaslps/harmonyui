@@ -1,0 +1,18 @@
+services:
+    ui.style_loader:
+        class: HarmonyUi\Bundle\Style\StyleLoader
+
+    ui.style_registry:
+        class: HarmonyUi\Bundle\Style\StyleRegistry
+        arguments:
+            - '%ui.map%'
+            - '@twig'
+            - '%ui.tailwind_merge_enabled%'
+
+    ui.twig_extension:
+        class: HarmonyUi\Bundle\Twig\StyleExtension
+        arguments:
+            - '@ui.style_registry'
+            - '@twig'
+        tags:
+            - twig.extension
