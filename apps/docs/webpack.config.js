@@ -60,7 +60,7 @@ Encore
 
     // enables Sass/SCSS support
     //.enableSassLoader()
-    
+
     // Enable PostCSS for Tailwind
     .enablePostCssLoader()
 
