@@ -1,4 +1,4 @@
-{% if tracking.enabled and tracking.ga4_id %}
+{% if tracking.enabled == 'true' and tracking.ga4_id %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ tracking.ga4_id }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

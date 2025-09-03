@@ -8,6 +8,161 @@
     section: 'components',
 } %}
 
-<div>
-    doc
+<div class="space-y-8">
+    <div class="flex flex-col gap-8">
+        <h3 class="text-xl font-bold mb-4">Harmony Theme</h3>
+        <div>
+            <h4 class="text-lg font-semibold mb-3">Variants</h4>
+            <div class="flex flex-wrap gap-4">
+                <twig:ui:Button>Default</twig:ui:Button>
+                <twig:ui:Button variant="primary">Primary</twig:ui:Button>
+                <twig:ui:Button variant="secondary">Secondary</twig:ui:Button>
+                <twig:ui:Button variant="outline">Outline</twig:ui:Button>
+                <twig:ui:Button variant="danger">Danger</twig:ui:Button>
+                <twig:ui:Button variant="ghost">Ghost</twig:ui:Button>
+            </div>
+        </div>
+        <div>
+            <h4 class="text-lg font-semibold mb-3">Size</h4>
+            <div class="flex flex-wrap gap-4">
+                <twig:ui:Button>Button</twig:ui:Button>
+                <twig:ui:Button size="sm">Button sm</twig:ui:Button>
+                <twig:ui:Button size="xs">Button xs</twig:ui:Button>
+            </div>
+        </div>
+        <div>
+            <h4 class="text-lg font-semibold mb-3">Primary colors</h4>
+            <div class="flex flex-wrap gap-4">
+                <twig:ui:Button variant="primary" color="neutral">neutral</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="red">red</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="orange">orange</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="amber">amber</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="yellow">yellow</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="lime">lime</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="green">green</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="emerald">emerald</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="teal">teal</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="cyan">cyan</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="sky">sky</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="blue">blue</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="indigo">indigo</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="violet">violet</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="purple">purple</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="fuchsia">fuchsia</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="pink">pink</twig:ui:Button>
+                <twig:ui:Button variant="primary" color="rose">rose</twig:ui:Button>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-8">
+        {% set ui_theme = 'daisyui' %}
+        <h3 class="text-xl font-bold mb-4">DaisyUI</h3>
+        <div class="space-y-6">
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Button</h4>
+                <div class="flex flex-wrap gap-4">
+                    <twig:ui:Button>Button</twig:ui:Button>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Button Variants</h4>
+                <div class="flex flex-wrap gap-4">
+                    <twig:ui:Button variant="filled">Filled</twig:ui:Button>
+                    <twig:ui:Button variant="outline">Outline</twig:ui:Button>
+                    <twig:ui:Button variant="soft">Soft</twig:ui:Button>
+                    <twig:ui:Button variant="ghost">Ghost</twig:ui:Button>
+                    <twig:ui:Button variant="dash">Dash</twig:ui:Button>
+                    <twig:ui:Button variant="link" href="/components">Link</twig:ui:Button>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Color Variants</h4>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-sm text-muted-foreground mb-2">Primary colors:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <twig:ui:Button color="primary">Primary</twig:ui:Button>
+                            <twig:ui:Button color="primary" variant="outline">Primary Outline</twig:ui:Button>
+                            <twig:ui:Button color="primary" variant="ghost">Primary Ghost</twig:ui:Button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-muted-foreground mb-2">Secondary colors:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <twig:ui:Button color="secondary">Secondary</twig:ui:Button>
+                            <twig:ui:Button color="accent">Accent</twig:ui:Button>
+                            <twig:ui:Button color="neutral">Neutral</twig:ui:Button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm text-muted-foreground mb-2">Semantic colors:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <twig:ui:Button color="info">Info</twig:ui:Button>
+                            <twig:ui:Button color="success">Success</twig:ui:Button>
+                            <twig:ui:Button color="warning">Warning</twig:ui:Button>
+                            <twig:ui:Button color="error">Error</twig:ui:Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Button Sizes</h3>
+            <div class="flex items-center gap-4">
+                <twig:ui:Button size="xs">Extra Small</twig:ui:Button>
+                <twig:ui:Button size="sm">Small</twig:ui:Button>
+                <twig:ui:Button size="md">Medium</twig:ui:Button>
+                <twig:ui:Button size="lg">Large</twig:ui:Button>
+                <twig:ui:Button size="xl">Extra Large</twig:ui:Button>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Button Shapes</h3>
+            <div class="flex items-center gap-4">
+                <twig:ui:Button>Default</twig:ui:Button>
+                <twig:ui:Button shape="square" ariaLabel="Square button">📱</twig:ui:Button>
+                <twig:ui:Button shape="circle" ariaLabel="Circle button">🎯</twig:ui:Button>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-xl font-bold mb-4">Color Combinations</h3>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-lg font-semibold mb-3">Outline Variants</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <twig:ui:Button variant="outline" color="primary">Primary Outline</twig:ui:Button>
+                        <twig:ui:Button variant="outline" color="secondary">Secondary Outline</twig:ui:Button>
+                        <twig:ui:Button variant="outline" color="success">Success Outline</twig:ui:Button>
+                        <twig:ui:Button variant="outline" color="error">Error Outline</twig:ui:Button>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-3">Soft Variants</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <twig:ui:Button variant="soft" color="primary">Primary Soft</twig:ui:Button>
+                        <twig:ui:Button variant="soft" color="secondary">Secondary Soft</twig:ui:Button>
+                        <twig:ui:Button variant="soft" color="success">Success Soft</twig:ui:Button>
+                        <twig:ui:Button variant="soft" color="warning">Warning Soft</twig:ui:Button>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-3">Ghost Variants</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <twig:ui:Button variant="ghost" color="primary">Primary Ghost</twig:ui:Button>
+                        <twig:ui:Button variant="ghost" color="secondary">Secondary Ghost</twig:ui:Button>
+                        <twig:ui:Button variant="ghost" color="success">Success Ghost</twig:ui:Button>
+                        <twig:ui:Button variant="ghost" color="warning">Warning Ghost</twig:ui:Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

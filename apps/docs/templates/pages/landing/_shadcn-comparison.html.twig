@@ -1,0 +1,130 @@
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 sm:text-5xl mb-6 text-balance">
+                Another shadcn/ui like ? No.
+            </h2>
+            <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed text-balance">
+                Copy-paste feels flexible but creates technical debt. <br> We keep components upstream, styling in config.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-10">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-12 h-12 bg-gray-400 text-white rounded-lg flex items-center justify-center">
+                        <twig:ux:icon name="lucide:copy" class="w-6 h-6" />
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">Copy-paste approach</h3>
+                        <p class="text-gray-600 italic mt-1">The shadcn/ui model</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <twig:ux:icon name="lucide:x" class="w-5 h-5 text-gray-400 mt-0.5" />
+                        <span class="text-gray-700 font-medium">Components become stale</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <twig:ux:icon name="lucide:x" class="w-5 h-5 text-gray-400 mt-0.5" />
+                        <span class="text-gray-700 font-medium">Manual security updates</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <twig:ux:icon name="lucide:x" class="w-5 h-5 text-gray-400 mt-0.5" />
+                        <span class="text-gray-700 font-medium">Feature duplication</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <twig:ux:icon name="lucide:x" class="w-5 h-5 text-gray-400 mt-0.5" />
+                        <span class="text-gray-700 font-medium">Update conflicts</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-gray-100 rounded-lg border border-gray-300">
+                    <div class="text-xs font-mono text-gray-600 mb-2">Your codebase after 6 months:</div>
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2 text-xs text-gray-600">
+                            <twig:ux:icon name="iconoir:folder-warning" class="size-4"/>
+                            components/ui/button.tsx <span class="text-gray-500">(outdated)</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-gray-600">
+                            <twig:ux:icon name="iconoir:folder-warning" class="size-4"/>
+                            components/ui/dialog.tsx <span class="text-gray-500">(accessibility issue)</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-gray-600">
+                            <twig:ux:icon name="iconoir:folder-warning" class="size-4"/>
+                            components/ui/form.tsx <span class="text-gray-500">(missing features)</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-gray-600">
+                            <twig:ux:icon name="iconoir:warning-triangle" class="size-4"/>
+                            Manual updates required
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-primary-50 border border-primary-200 rounded-xl p-10">
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="w-12 h-12 bg-primary-600 text-white rounded-lg flex items-center justify-center">
+                        <twig:ux:icon name="lucide:settings" class="w-6 h-6" />
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900">Headless + config approach</h3>
+                        <p class="text-primary-700 italic font-semibold mt-1">The HarmonyUI way</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <twig:ux:icon name="lucide:check" class="w-5 h-5 text-primary-600 mt-0.5" />
+                        <span class="text-gray-700 font-medium">Always up-to-date</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <twig:ux:icon name="lucide:check" class="w-5 h-5 text-primary-600 mt-0.5" />
+                        <span class="text-gray-700 font-medium">Automatic updates</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <twig:ux:icon name="lucide:check" class="w-5 h-5 text-primary-600 mt-0.5" />
+                        <span class="text-gray-700 font-medium">Config-driven styling</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <twig:ux:icon name="lucide:check" class="w-5 h-5 text-primary-600 mt-0.5" />
+                        <span class="text-gray-700 font-medium">Zero vendor lock-in</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-primary-100 rounded-lg border border-primary-200">
+                    <div class="text-xs font-mono text-primary-700 mb-2">Your codebase :</div>
+                    <div class="space-y-1">
+                        <div class="flex items-center gap-2 text-xs text-primary-800">
+                            <twig:ux:icon name="iconoir:folder" class="size-4"/>
+                            styles/button/button.[optionalTheme].yaml <span class="text-primary-600">(your styling)</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-primary-800">
+                            <twig:ux:icon name="iconoir:package" class="size-4"/>
+                            vendor/harmonyui/... <span class="text-primary-600">(auto-updated)</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-primary-800">
+                            <twig:ux:icon name="iconoir:shield-check" class="size-4"/>
+                            Security & features <span class="text-primary-600">(automatic)</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-primary-600">
+                            <twig:ux:icon name="iconoir:magic-wand" class="size-4"/>
+                            composer update = latest version
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 text-center">
+            <div class="inline-flex items-center justify-center space-x-4 bg-primary-600 text-white px-12 py-6 rounded-xl shadow-lg">
+                <twig:ux:icon name="iconoir:settings" class="w-8 h-8" />
+                <div class="text-left">
+                    <div class="text-xl font-bold">Configuration over duplication</div>
+                    <div class="text-primary-200">Maintain less, achieve more</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

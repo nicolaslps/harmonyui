@@ -18,7 +18,7 @@ services:
       TRUSTED_HOSTS: ^${SERVER_NAME:-example\.com|localhost}$$
     volumes:
       - ./apps/docs:/app
-      - app_vendor:/app/vendor
+      - ./packages/ui-bundle:/app/vendor/harmonyui/ui-bundle
       - ./apps/docs/frankenphp/Caddyfile:/etc/caddy/Caddyfile:ro
 
 volumes:

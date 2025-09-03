@@ -13,11 +13,20 @@ declare(strict_types=1);
 
 namespace HarmonyUi\Bundle;
 
+use HarmonyUi\Bundle\DependencyInjection\Compiler\HarmonyUiPass;
 use HarmonyUi\Bundle\DependencyInjection\HarmonyUiExtension;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class HarmonyUiBundle extends Bundle
+class HarmonyUiBundle extends AbstractBundle
 {
+    protected string $name = 'ui';
+
+    public function build(ContainerBuilder $containerBuilder): void
+    {
+        $containerBuilder->addCompilerPass(new HarmonyUiPass());
+    }
+
     public function getContainerExtension(): HarmonyUiExtension
     {
         return new HarmonyUiExtension();

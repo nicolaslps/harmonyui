@@ -1,5 +1,33 @@
-<nav class="mb-16 py-4 px-6 border-b border-gray-200">
-    <a href="{{ path('app_home') }}" class="font-semibold mr-8 text-gray-900 hover:text-gray-600 transition-colors">HarmonyUI</a>
-    <a href="{{ path('app_components') }}" class="mr-8 text-gray-600 hover:text-gray-900 transition-colors">Components</a>
-    <a href="{{ path('app_docs') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Documentation</a>
-</nav>
+<header
+    class="w-full py-4 sticky top-0 z-20 transition-all duration-500 h-16 md:h-full bg-white shadow">
+    <div class="max-w-7xl flex items-center justify-between mx-auto px-6">
+        <div class="w-full justify-between md:justify-normal flex items-center gap-8">
+            <a href="{{ path('front_landing_index') }}" class="flex items-center gap-2">
+                <twig:Logo/>
+                <span class="font-bold text-xl md:text-2xl">HarmonyUI</span></a>
+        </div>
+        <nav class="flex items-center">
+            {% set navItems = [
+                {
+                    href: path('app_docs', {section: 'overview', page: 'getting-started'}),
+                    label: 'Introduction',
+                },
+                {
+                    href: path('app_components'),
+                    label: 'Components',
+                },
+            ] %}
+            {% for item in navItems %}
+                <a href="{{ item.href }}"
+                   class="hidden lg:inline-flex py-2 mx-3 text-sm font-semibold text-muted-foreground hover:text-zinc-800 h-full items-center">
+                    {{ item.label }}
+                </a>
+            {% endfor %}
+            <div data-orientation="vertical" role="none" class="hidden lg:block bg-zinc-950 h-4 w-px mx-4"></div>
+            <a href="https://github.com/nicolaslps/HarmonyUI" aria-label="github" target="_blank"
+               class="w-9 h-9 bg-transparent text-muted-foreground hover:text-foreground hover:bg-muted flex items-center justify-center rounded-lg text-xl flex-shrink-0">
+                <twig:ux:icon name="flowbite:github-solid" class="size-6"/>
+            </a>
+        </nav>
+    </div>
+</header>

@@ -26,12 +26,6 @@ final class DocsController extends AbstractController
     ) {
     }
 
-    #[Route('/', name: 'app_home')]
-    public function home(): Response
-    {
-        return $this->render('docs/home.html.twig');
-    }
-
     #[Route('/components', name: 'app_components')]
     public function components(): Response
     {

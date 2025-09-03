@@ -1,0 +1,29 @@
+<footer
+    class="bg-gray-900 text-white select-none -translate-y-7 -z-11"
+>
+    <div class="relative pointer-events-none overflow-y-hidden overflow-x-clip pt-20">
+        <twig:GridBackground variant="dark"/>
+
+        <div class="absolute inset-0" style="
+            background: radial-gradient(ellipse 80% 60% at 50% 30%,
+                rgba(255,255,255,0.08) 0%,
+                rgba(255,255,255,0.04) 40%,
+                transparent 70%);
+        "></div>
+
+            <h2 class="text-[clamp(4rem,15vw,20rem)] font-black leading-none tracking-tighter select-none translate-y-1/6 mx-auto w-fit opacity-75">
+                HarmonyUI
+            </h2>
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-20 w-full ">
+        <div class="flex justify-between items-center pt-8 sm:pt-12 md:pt-16 lg:pt-20">
+            <p class="text-gray-500 text-sm">
+                © {{ 'now'|date('Y') }} HarmonyUI.
+            </p>
+            <a href="https://github.com/nicolaslps/HarmonyUI" class="text-gray-600 hover:text-white transition-colors" target="_blank">
+                <twig:ux:icon name="flowbite:github-solid" class="size-6"/>
+            </a>
+        </div>
+    </div>
+</footer>

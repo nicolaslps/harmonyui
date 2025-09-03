@@ -1,7 +1,23 @@
 @import "tailwindcss";
 
 @source not "../../public/*";
+@source "../../styles";
+@source "../../vendor/harmonyui/ui-bundle/src/Resources/config/styles/*";
 
-body {
+@custom-variant dark (&:is(.dark *));
 
+@theme inline {
+  --color-primary-50: theme(colors.emerald.50);
+  --color-primary-100: theme(colors.emerald.100);
+  --color-primary-200: theme(colors.emerald.200);
+  --color-primary-300: theme(colors.emerald.300);
+  --color-primary-400: theme(colors.emerald.400);
+  --color-primary-500: theme(colors.emerald.500);
+  --color-primary-600: theme(colors.emerald.600);
+  --color-primary-700: theme(colors.emerald.700);
+  --color-primary-800: theme(colors.emerald.800);
+  --color-primary-900: theme(colors.emerald.900);
+  --color-primary-950: theme(colors.emerald.950);
 }
+
+

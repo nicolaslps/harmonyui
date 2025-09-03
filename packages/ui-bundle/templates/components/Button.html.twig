@@ -1,0 +1,19 @@
+{%- props href = null -%}
+
+{%- set styleProps = getStyleProps(
+    'button',
+    attributes
+) -%}
+
+{%- set element = href ? 'a' : 'button' -%}
+
+<{{ element }} class="{{ style('button', styleProps) }}"
+    {%- if element == 'button' %}
+        type="button"
+    {%- else %}
+        href="{{ href }}"
+    {%- endif %}
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</{{ element }}>
