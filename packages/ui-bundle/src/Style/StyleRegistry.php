@@ -119,8 +119,8 @@ final readonly class StyleRegistry
             }
         }
 
-        $compoundVariants = $config['compoundVariants'];
-        $defaultVariants = $config['defaultVariants'];
+        $compoundVariants = $config['compoundVariants'] ?? [];
+        $defaultVariants = $config['defaultVariants'] ?? [];
 
         $cva = new Cva(
             $base,
