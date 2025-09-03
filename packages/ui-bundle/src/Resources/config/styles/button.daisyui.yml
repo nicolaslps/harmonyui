@@ -1,41 +1,40 @@
 button:
-  root:
-    base:
-      - "btn"
-    variants:
-      variant:
-        filled: []
-        outline: "btn-outline"
-        ghost: "btn-ghost"
-        link: "btn-link"
-        soft: "btn-soft"
-        dash: "btn-dash"
-      color:
-        primary: "btn-primary"
-        secondary: "btn-secondary"
-        accent: "btn-accent"
-        neutral: "btn-neutral"
-        info: "btn-info"
-        success: "btn-success"
-        warning: "btn-warning"
-        error: "btn-error"
-      size:
-        xs: "btn-xs"
-        sm: "btn-sm"
-        md: "btn-md"
-        lg: "btn-lg"
-        xl: "btn-xl"
-      shape:
-        square: "btn-square"
-        circle: "btn-circle"
-      width:
-        wide: "btn-wide"
-        block: "btn-block"
-      loading:
-        "true": "loading"
-      active:
-        "true": "btn-active"
-    defaultVariants:
-      variant: filled
-      color: neutral
-      size: md
+  base:
+    - "btn"
+  variants:
+    variant:
+      filled: [ ]
+      outline: "btn-outline"
+      ghost: "btn-ghost"
+      link: "btn-link"
+      soft: "btn-soft"
+      dash: "btn-dash"
+    color:
+      primary: "btn-primary"
+      secondary: "btn-secondary"
+      accent: "btn-accent"
+      neutral: "btn-neutral"
+      info: "btn-info"
+      success: "btn-success"
+      warning: "btn-warning"
+      error: "btn-error"
+    size:
+      xs: "btn-xs"
+      sm: "btn-sm"
+      md: "btn-md"
+      lg: "btn-lg"
+      xl: "btn-xl"
+    shape:
+      square: "btn-square"
+      circle: "btn-circle"
+    width:
+      wide: "btn-wide"
+      block: "btn-block"
+    loading:
+      "true": "loading"
+    active:
+      "true": "btn-active"
+  defaultVariants:
+    variant: filled
+    color: neutral
+    size: md
