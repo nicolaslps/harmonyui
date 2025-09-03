@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="{{ app.locale|default('en') }}">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {% set seo_title_content %}
-            {% block seo_title %}
-                {{ 'seo.default.title'|trans }}
-            {% endblock %}
-        {% endset %}
-        {% set seo_description_content %}
-            {% block seo_description %}
-                {{ 'seo.default.description'|trans }}
-            {% endblock %}
-        {% endset %}
-        {% set seo_keywords_content %}
-            {% block seo_keywords %}
-                {{ 'seo.default.keywords'|trans }}
-            {% endblock %}
-        {% endset %}
-
-        {{ include('./seo/_default.html.twig') }}
-        {{ include('./seo/_og.html.twig') }}
-        {{ include('./seo/_twitter.html.twig') }}
-
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+    {% set seo_title_content %}
+        {% block seo_title %}
+            {{ 'seo.default.title'|trans }}
         {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+    {% endset %}
+    {% set seo_description_content %}
+        {% block seo_description %}
+            {{ 'seo.default.description'|trans }}
         {% endblock %}
+    {% endset %}
+    {% set seo_keywords_content %}
+        {% block seo_keywords %}
+            {{ 'seo.default.keywords'|trans }}
+        {% endblock %}
+    {% endset %}
 
-        {{ include('./integrations/ga4.html.twig') }}
-        {{ include('./integrations/onedollarstats.html.twig') }}
-        {{ include('./integrations/clarity.html.twig') }}
-    </head>
-    <body>
+    {{ include('./seo/_default.html.twig') }}
+    {{ include('./seo/_og.html.twig') }}
+    {{ include('./seo/_twitter.html.twig') }}
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css"/>
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+    {{ include('./integrations/ga4.html.twig') }}
+    {{ include('./integrations/onedollarstats.html.twig') }}
+    {{ include('./integrations/clarity.html.twig') }}
+</head>
+<body class="bg-gray-900 dark:text-white">
+    <twig:Layout:Navbar/>
+    <div class="relative overflow-clip rounded-b-4xl min-h-screen w-screen bg-stone-50 dark:bg-stone-800 z-10">
         {% block body %}{% endblock %}
-    </body>
+    </div>
+    <twig:Layout:Footer/>
+</body>
 </html>

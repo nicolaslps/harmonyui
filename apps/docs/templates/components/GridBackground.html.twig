@@ -1,0 +1,36 @@
+{% props variant = 'light' %}
+<div class="absolute inset-0 pointer-events-none">
+    {% if variant == 'dark' %}
+        <div class="absolute inset-0" style="
+            background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot;><rect width=&quot;120&quot; height=&quot;120&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,0.08)&quot; stroke-width=&quot;1&quot;/></svg>');
+            background-size: 60px 60px;
+            background-position: 0 0;
+        "></div>
+        <div class="absolute inset-0 hidden sm:block md:hidden" style="
+            background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot;><rect width=&quot;120&quot; height=&quot;120&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,0.08)&quot; stroke-width=&quot;1&quot;/></svg>');
+            background-size: 80px 80px;
+            background-position: 0 0;
+        "></div>
+        <div class="absolute inset-0 hidden md:block" style="
+            background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot;><rect width=&quot;120&quot; height=&quot;120&quot; fill=&quot;none&quot; stroke=&quot;rgba(255,255,255,0.08)&quot; stroke-width=&quot;1&quot;/></svg>');
+            background-size: 120px 120px;
+            background-position: 0 0;
+        "></div>
+    {% else %}
+        <div class="absolute inset-0" style="
+            background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot;><rect width=&quot;120&quot; height=&quot;120&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.03)&quot; stroke-width=&quot;1&quot;/></svg>');
+            background-size: 60px 60px;
+            background-position: 0 0;
+        "></div>
+        <div class="absolute inset-0 hidden sm:block md:hidden" style="
+            background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot;><rect width=&quot;120&quot; height=&quot;120&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.03)&quot; stroke-width=&quot;1&quot;/></svg>');
+            background-size: 80px 80px;
+            background-position: 0 0;
+        "></div>
+        <div class="absolute inset-0 hidden md:block" style="
+            background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;120&quot; height=&quot;120&quot; viewBox=&quot;0 0 120 120&quot;><rect width=&quot;120&quot; height=&quot;120&quot; fill=&quot;none&quot; stroke=&quot;rgba(0,0,0,0.03)&quot; stroke-width=&quot;1&quot;/></svg>');
+            background-size: 120px 120px;
+            background-position: 0 0;
+        "></div>
+    {% endif %}
+</div>
