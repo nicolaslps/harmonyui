@@ -6,7 +6,6 @@ services:
         class: HarmonyUi\Bundle\Style\StyleRegistry
         arguments:
             - '%ui.map%'
-            - '@twig'
             - '%ui.tailwind_merge_enabled%'
 
     ui.twig_extension:

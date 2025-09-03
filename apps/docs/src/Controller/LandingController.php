@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\DocPage;
-use App\Service\DocService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -22,7 +20,6 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/', name: 'front_landing_')]
 final class LandingController extends AbstractController
 {
-
     #[Route('/', name: 'index')]
     public function home(): Response
     {

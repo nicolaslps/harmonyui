@@ -2,34 +2,45 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the HarmonyUI project.
+ *
+ * (c) Nicolas Lopes
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace HarmonyUi\Bundle\DependencyInjection\Compiler;
 
 use HarmonyUi\Bundle\Style\StyleLoader;
 use Symfony\Component\Config\Resource\DirectoryResource;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
 
 final class HarmonyUiPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container): void
+    public function process(ContainerBuilder $containerBuilder): void
     {
-        if (!$container->hasParameter('ui.directories')) {
+        if (!$containerBuilder->hasParameter('ui.directories')) {
             return;
         }
 
-        $directories = $container->getParameter('ui.directories');
+        $directories = $containerBuilder->getParameter('ui.directories');
+
+        if (!\is_array($directories)) {
+            return;
+        }
 
         foreach ($directories as $directory) {
-            if (is_dir($directory)) {
-                $container->addResource(new DirectoryResource($directory));
+            if (\is_string($directory) && is_dir($directory)) {
+                $containerBuilder->addResource(new DirectoryResource($directory));
             }
         }
 
-        $loader = new StyleLoader();
-        $map = $loader->loadFromDirectories($directories);
-        
-        $container->setParameter('ui.map', $map);
+        $styleLoader = new StyleLoader();
+        $map = $styleLoader->loadFromDirectories($directories);
 
+        $containerBuilder->setParameter('ui.map', $map);
     }
 }

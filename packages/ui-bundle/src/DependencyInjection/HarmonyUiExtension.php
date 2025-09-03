@@ -28,14 +28,14 @@ class HarmonyUiExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.yaml');
+        $yamlFileLoader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__.'/../Resources/config'));
+        $yamlFileLoader->load('services.yaml');
 
         $directories = [
-            dirname(__DIR__) . '/Resources/config/styles',
-            ...$config['paths']
+            \dirname(__DIR__).'/Resources/config/styles',
+            ...$config['paths'],
         ];
-        
+
         $containerBuilder->setParameter('ui.directories', $directories);
         $containerBuilder->setParameter('ui.tailwind_merge_enabled', $config['tailwind_merge']);
     }

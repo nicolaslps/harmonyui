@@ -21,13 +21,13 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('ui');
-        $root = $treeBuilder->getRootNode();
 
-        $root
+        // @phpstan-ignore-next-line TreeBuilder root node is always ArrayNodeDefinition for root nodes
+        $treeBuilder->getRootNode()
             ->children()
                 ->arrayNode('paths')
-                    ->scalarPrototype()->end()
                     ->defaultValue(['%kernel.project_dir%/styles'])
+                    ->scalarPrototype()->end()
                 ->end()
                 ->booleanNode('tailwind_merge')
                     ->defaultTrue()

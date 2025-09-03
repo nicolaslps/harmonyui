@@ -22,9 +22,9 @@ class HarmonyUiBundle extends AbstractBundle
 {
     protected string $name = 'ui';
 
-    public function build(ContainerBuilder $container): void
+    public function build(ContainerBuilder $containerBuilder): void
     {
-        $container->addCompilerPass(new HarmonyUiPass());
+        $containerBuilder->addCompilerPass(new HarmonyUiPass());
     }
 
     public function getContainerExtension(): HarmonyUiExtension
