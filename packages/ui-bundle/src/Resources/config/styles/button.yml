@@ -1,76 +1,64 @@
 button:
-  root:
-    base:
-      - "relative items-center font-medium justify-center gap-2 whitespace-nowrap h-10 text-sm rounded-lg ps-4 pe-4 inline-flex"
-      - "disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none"
+  base:
+    - "relative items-center font-medium justify-center gap-2 whitespace-nowrap text-sm rounded-lg inline-flex"
+    - "disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none"
+  variants:
+    variant:
+      default:
+        - "bg-slate-950 text-white"
+        - "hover:bg-slate-950/80"
+        - "dark:bg-white/10 dark:text-white"
+        - "dark:hover:bg-white/20"
+      primary:
+        - "bg-(--color-accent) text-(--color-accent-foreground) border border-black/10"
+        - "hover:bg-[color-mix(in_oklab,_var(--color-accent),_transparent_10%)]"
+        - "dark:border-0"
+      secondary:
+        - "bg-slate-800/5 text-slate-800"
+        - "hover:bg-slate-800/10"
+        - "dark:bg-white/10 dark:text-white"
+        - "dark:hover:bg-white/20"
+      outline:
+        - "bg-transparent border border-slate-300 text-slate-900"
+        - "hover:bg-slate-50"
+        - "focus-visible:ring-slate-500"
+        - "dark:border-slate-700 dark:text-slate-100"
+        - "dark:hover:bg-slate-900/50"
+      danger:
+        - "bg-red-500 text-white"
+        - "hover:bg-red-600"
+        - "dark:bg-red-600 dark:shadow-none"
+        - "dark:hover:bg-red-500"
+      ghost:
+        - "bg-transparent text-slate-800 "
+        - "hover:bg-slate-800/5"
+        - "dark:text-white"
+        - "dark:hover:bg-white/15"
+    color:
+      neutral: "[--color-accent:theme(colors.slate.500)] [--color-accent-foreground:theme(colors.white)]"
+      red: "[--color-accent:theme(colors.red.600)] [--color-accent-foreground:theme(colors.white)]"
+      orange: "[--color-accent:theme(colors.orange.500)] [--color-accent-foreground:theme(colors.orange.950)]"
+      amber: "[--color-accent:theme(colors.amber.500)] [--color-accent-foreground:theme(colors.amber.950)]"
+      yellow: "[--color-accent:theme(colors.yellow.500)] [--color-accent-foreground:theme(colors.yellow.950)]"
+      lime: "[--color-accent:theme(colors.lime.500)] [--color-accent-foreground:theme(colors.lime.950)]"
+      green: "[--color-accent:theme(colors.green.500)] [--color-accent-foreground:theme(colors.green.950)]"
+      emerald: "[--color-accent:theme(colors.emerald.500)] [--color-accent-foreground:theme(colors.emerald.950)]"
+      teal: "[--color-accent:theme(colors.teal.500)] [--color-accent-foreground:theme(colors.teal.950)]"
+      cyan: "[--color-accent:theme(colors.cyan.500)] [--color-accent-foreground:theme(colors.cyan.950)]"
+      sky: "[--color-accent:theme(colors.sky.500)] [--color-accent-foreground:theme(colors.sky.950)]"
+      blue: "[--color-accent:theme(colors.blue.600)] [--color-accent-foreground:theme(colors.white)]"
+      indigo: "[--color-accent:theme(colors.indigo.500)] [--color-accent-foreground:theme(colors.white)]"
+      violet: "[--color-accent:theme(colors.violet.600)] [--color-accent-foreground:theme(colors.white)]"
+      purple: "[--color-accent:theme(colors.purple.600)] [--color-accent-foreground:theme(colors.white)]"
+      fuchsia: "[--color-accent:theme(colors.fuchsia.600)] [--color-accent-foreground:theme(colors.white)]"
+      pink: "[--color-accent:theme(colors.pink.600)] [--color-accent-foreground:theme(colors.white)]"
+      rose: "[--color-accent:theme(colors.rose.600)] [--color-accent-foreground:theme(colors.white)]"
 
-#      - "bg-[var(--color-accent)] hover:bg-[color-mix(in_oklab,_var(--color-accent),_transparent_10%)] text-[var(--color-accent-foreground)] border border-black/10 dark:border-0 shadow-[inset_0px_1px_--theme(--color-white/.2)] "
-#      - "bg-white hover:bg-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-600/75 text-zinc-800 dark:text-white border border-zinc-200 hover:border-zinc-200 border-b-zinc-300/80 dark:border-zinc-600 dark:hover:border-zinc-600 shadow-xs"
-    variants:
-      variant:
-        default:
-          - "bg-zinc-950 text-white"
-          - "hover:bg-zinc-950/80"
-          - "dark:bg-white/10 dark:text-white"
-          - "dark:hover:bg-white/20"
-        primary:
-          - "bg-(--color-accent) text-(--color-accent-foreground) border border-black/10 shadow-[inset_0px_1px_--theme(--color-white/.2)]"
-          - "hover:bg-[color-mix(in_oklab,_var(--color-accent),_transparent_10%)]"
-          - "dark:border-0"
-        secondary:
-          - "bg-zinc-800/5 text-zinc-800"
-          - "hover:bg-zinc-800/10"
-          - "dark:bg-white/10 dark:text-white"
-          - "dark:hover:bg-white/20"
-        outline:
-          - "bg-transparent border border-zinc-300 text-zinc-900"
-          - "hover:bg-zinc-50"
-          - "focus-visible:ring-zinc-500"
-          - "dark:border-zinc-700 dark:text-zinc-100"
-          - "dark:hover:bg-zinc-900/50"
-        danger:
-          - "bg-red-500 text-white"
-          - "hover:bg-red-600"
-          - "dark:bg-red-600 dark:shadow-none"
-          - "dark:hover:bg-red-500"
-        ghost:
-          - "bg-transparent text-zinc-800 "
-          - "hover:bg-zinc-800/5"
-          - "dark:text-white"
-          - "dark:hover:bg-white/15"
-      color:
-        zinc: "[--color-accent:theme(colors.zinc.500)] [--color-accent-foreground:theme(colors.white)]"
-        red: "[--color-accent:theme(colors.red.600)] [--color-accent-foreground:theme(colors.white)]"
-        orange: "[--color-accent:theme(colors.orange.500)] [--color-accent-foreground:theme(colors.orange.950)]"
-        amber: "[--color-accent:theme(colors.amber.500)] [--color-accent-foreground:theme(colors.amber.950)]"
-        yellow: "[--color-accent:theme(colors.yellow.500)] [--color-accent-foreground:theme(colors.yellow.950)]"
-        lime: "[--color-accent:theme(colors.lime.500)] [--color-accent-foreground:theme(colors.lime.950)]"
-        green: "[--color-accent:theme(colors.green.500)] [--color-accent-foreground:theme(colors.green.950)]"
-        emerald: "[--color-accent:theme(colors.emerald.500)] [--color-accent-foreground:theme(colors.emerald.950)]"
-        teal: "[--color-accent:theme(colors.teal.500)] [--color-accent-foreground:theme(colors.teal.950)]"
-        cyan: "[--color-accent:theme(colors.cyan.500)] [--color-accent-foreground:theme(colors.cyan.950)]"
-        sky: "[--color-accent:theme(colors.sky.500)] [--color-accent-foreground:theme(colors.sky.950)]"
-        blue: "[--color-accent:theme(colors.blue.600)] [--color-accent-foreground:theme(colors.white)]"
-        indigo: "[--color-accent:theme(colors.indigo.500)] [--color-accent-foreground:theme(colors.white)]"
-        violet: "[--color-accent:theme(colors.violet.600)] [--color-accent-foreground:theme(colors.white)]"
-        purple: "[--color-accent:theme(colors.purple.600)] [--color-accent-foreground:theme(colors.white)]"
-        fuchsia: "[--color-accent:theme(colors.fuchsia.600)] [--color-accent-foreground:theme(colors.white)]"
-        pink: "[--color-accent:theme(colors.pink.600)] [--color-accent-foreground:theme(colors.white)]"
-        rose: "[--color-accent:theme(colors.rose.600)] [--color-accent-foreground:theme(colors.white)]"
-      size:
-        xs: "h-8 px-2.5 text-xs"
-        sm: "h-9 px-3 text-sm"
-        md: "h-10 px-4 text-sm"
-      square:
-        "true": "aspect-square p-0"
-      width:
-        wide: "min-w-36"
-        block: "w-full"
-      loading:
-        "true": "opacity-50 pointer-events-none"
-      active:
-        "true": "ring-2 ring-zinc-400 ring-offset-2 dark:ring-zinc-600"
-    defaultVariants:
-      variant: default
-      color: zinc
-      size: md
+    size:
+      xs: "h-8 px-2.5 text-xs"
+      sm: "h-9 px-3 text-sm"
+      md: "h-10 px-4 text-sm"
+  defaultVariants:
+    variant: default
+    color: neutral
+    size: md
