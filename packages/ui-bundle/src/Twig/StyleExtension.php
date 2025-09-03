@@ -28,8 +28,8 @@ use Twig\TwigFunction;
 final class StyleExtension extends AbstractExtension
 {
     /**
-     * @param StyleRegistry $styleRegistry Registry containing component style definitions
-     * @param Environment $twigEnvironment Twig environment
+     * @param StyleRegistry $styleRegistry   Registry containing component style definitions
+     * @param Environment   $twigEnvironment Twig environment
      */
     public function __construct(
         private readonly StyleRegistry $styleRegistry,
@@ -79,8 +79,8 @@ final class StyleExtension extends AbstractExtension
      * Get component props with default values applied from component configuration.
      * Merges default variants with actual component attributes.
      *
-     * @param array<string, mixed>     $context    Twig template context
-     * @param string                   $component  Component identifier
+     * @param array<string, mixed>     $context             Twig template context
+     * @param string                   $component           Component identifier
      * @param ComponentAttributes|null $componentAttributes Component attributes from TwigComponent
      *
      * @return array<string, mixed> Final props with defaults applied
@@ -101,7 +101,7 @@ final class StyleExtension extends AbstractExtension
 
         /** @var array<string, mixed> $realAttributes */
         $realAttributes = [];
-        if ($componentAttributes instanceof \Symfony\UX\TwigComponent\ComponentAttributes) {
+        if ($componentAttributes instanceof ComponentAttributes) {
             $realAttributes = $componentAttributes->all();
         }
 

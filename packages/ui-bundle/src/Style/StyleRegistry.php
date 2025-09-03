@@ -58,7 +58,7 @@ final readonly class StyleRegistry
 
         $classes = trim($classes);
 
-        if ($this->tailwindMerge instanceof \TailwindMerge\TailwindMerge) {
+        if ($this->tailwindMerge instanceof TailwindMerge) {
             return $this->tailwindMerge->merge($classes);
         }
 
@@ -89,7 +89,7 @@ final readonly class StyleRegistry
             return \is_array($config) || \is_string($config) ? $config : [];
         }
 
-        throw new \InvalidArgumentException(sprintf("Component '%s' not found", $component));
+        throw new \InvalidArgumentException(\sprintf("Component '%s' not found", $component));
     }
 
     /**
