@@ -1,0 +1,21 @@
+{% props title = 'Title', description = 'Description' %}
+
+<article class="max-w-none">
+    <header class="mb-10">
+        <div class="flex items-start justify-between">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">
+                    {{ title|trans|capitalize }}
+                </h1>
+                <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                    {{ description|trans|capitalize }}
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div class="space-y-12">
+        {% block content %}
+        {% endblock %}
+    </div>
+</article>

@@ -1,0 +1,31 @@
+{% props sidebar = [] %}
+<div class="space-y-8">
+    <nav class="space-y-6">
+        {% for section in sidebar %}
+            <div>
+                <h4 class="font-medium text-gray-900 mb-3 text-sm">
+                    {{ section.title|trans }}
+                </h4>
+                <ul class="space-y-1">
+                    {% for page in section.pages %}
+                        <li>
+                            <a href="{{ path('app_docs', {section: page.sectionSlug, page: page.pageSlug}) }}"
+                               class="group flex items-center px-3 py-2 text-sm rounded-lg transition-all
+                                              {%- if section == page.sectionSlug and page == page.pageSlug -%}
+                                                  bg-primary-50 text-primary-700 font-medium border border-primary-200
+                                              {%- else -%}
+                                                  text-gray-600 hover:text-gray-900 hover:bg-gray-50
+                                              {%- endif -%}">
+                                <span class="flex-1">{{ page.title|trans }}</span>
+                                {%- if section == page.sectionSlug and page == page.pageSlug -%}
+                                    <twig:ux:icon name="lucide:chevron-right" class="size-4 text-primary-500" />
+                                {%- endif -%}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </nav>
+
+</div>
