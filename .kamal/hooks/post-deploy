@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo "Running post-deploy hook: building assets..."
+
+pnpm run build
+
+if [ $? -eq 0 ]; then
+    echo "✅ Assets built successfully"
+else
+    echo "❌ Asset build failed"
+    exit 1
+fi
