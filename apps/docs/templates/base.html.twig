@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app.locale|default('en') }}">
+<html lang="{{ app.locale|default('en') }}" class="bg-gray-900">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,9 +40,9 @@
 </head>
 <body class="bg-gray-900 dark:text-white">
     <twig:Layout:Navbar/>
-    <div class="relative overflow-clip rounded-b-4xl min-h-screen w-screen bg-stone-50 dark:bg-stone-800 z-10">
+    <main class="isolate relative overflow-clip rounded-b-4xl flex flex-col bg-white dark:bg-gray-900 z-10">
         {% block body %}{% endblock %}
-    </div>
+    </main>
     <twig:Layout:Footer/>
 </body>
 </html>
