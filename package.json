@@ -7,12 +7,22 @@
     "build": "pnpm --filter=@harmonyui/* run build",
     "dev": "pnpm --filter=@harmonyui/* run dev",
     "test": "pnpm --filter=@harmonyui/* run test",
-    "lint": "pnpm --filter=@harmonyui/* run lint",
-    "format": "pnpm --filter=@harmonyui/* run format"
+    "lint": "pnpm --filter=@harmonyui/* run lint && biome lint .",
+    "format": "pnpm --filter=@harmonyui/* run format && biome format . --write",
+    "biome": "biome",
+    "biome:check": "biome check .",
+    "biome:check-apply": "biome check . --write",
+    "biome:lint": "biome lint .",
+    "biome:lint-apply": "biome lint . --write",
+    "biome:format": "biome format .",
+    "biome:format-write": "biome format . --write",
+    "biome:organize-imports": "biome check . --write --organize-imports-enabled=true --formatter-enabled=false --linter-enabled=false"
   },
   "author": "Nicolas Lopes",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0"
+  },
   "workspaces": [
     "packages/*"
   ]

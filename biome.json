@@ -1,0 +1,50 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"files": {
+		"includes": [
+			"apps/docs/assets/**",
+			"packages/primitives/**",
+			"packages/ui-bundle/**",
+			"!**/node_modules",
+			"!**/vendor",
+			"!**/var",
+			"!**/dist",
+			"!**/package.json",
+			"!**/composer.json",
+			"!**/package-lock.json",
+			"!**/composer.lock",
+			"!**/.git"
+		]
+	},
+	"linter": {
+		"rules": {
+			"suspicious": {
+				"noExplicitAny": "off",
+				"noEmptyBlockStatements": "off"
+			},
+			"complexity": {
+				"noStaticOnlyClass": "off",
+				"noForEach": "off"
+			},
+			"style": {
+				"noParameterAssign": "off"
+			},
+			"performance": {
+				"noDelete": "off"
+			}
+		}
+	},
+	"formatter": {
+		"lineWidth": 120,
+		"indentStyle": "tab",
+		"indentWidth": 4
+	},
+	"javascript": {
+		"formatter": {
+			"trailingCommas": "es5",
+			"bracketSameLine": true,
+			"quoteStyle": "single"
+		}
+	},
+	"overrides": []
+}
