@@ -13,14 +13,16 @@
 			"!**/composer.json",
 			"!**/package-lock.json",
 			"!**/composer.lock",
-			"!**/.git"
+			"!**/.git",
+			"!**/styles/app.css"
 		]
 	},
 	"linter": {
 		"rules": {
 			"suspicious": {
 				"noExplicitAny": "off",
-				"noEmptyBlockStatements": "off"
+				"noEmptyBlockStatements": "off",
+				"noUnknownAtRules": "off"
 			},
 			"complexity": {
 				"noStaticOnlyClass": "off",
@@ -44,7 +46,7 @@
 			"trailingCommas": "es5",
 			"bracketSameLine": true,
 			"quoteStyle": "single",
-            "semicolons": "always"
+			"semicolons": "always"
 		}
 	},
 	"overrides": []
