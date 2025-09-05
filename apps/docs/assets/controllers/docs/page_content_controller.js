@@ -1,8 +1,16 @@
 import { Controller } from '@hotwired/stimulus';
-import {getId} from "../../utils/id";
+import { getId } from '../../utils/id';
 
 export default class extends Controller {
-	static targets = ['nav', 'content', 'noHeadingsTemplate', 'tocContainerTemplate', 'h2LinkTemplate', 'h3LinkTemplate', 'h3ContainerTemplate'];
+	static targets = [
+		'nav',
+		'content',
+		'noHeadingsTemplate',
+		'tocContainerTemplate',
+		'h2LinkTemplate',
+		'h3LinkTemplate',
+		'h3ContainerTemplate',
+	];
 
 	connect() {
 		this.generateTableOfContents();
@@ -94,7 +102,6 @@ export default class extends Controller {
 		return template.content.firstElementChild.cloneNode(true);
 	}
 
-
 	addSmoothScrollListeners() {
 		if (!this.tocLinks) return;
 
@@ -122,33 +129,36 @@ export default class extends Controller {
 	setupScrollObserver() {
 		if (!this.headings || this.headings.length === 0) return;
 
-		this.observer = new IntersectionObserver((entries) => {
-			let visibleHeadings = entries.filter(entry => entry.isIntersecting);
+		this.observer = new IntersectionObserver(
+			(entries) => {
+				const visibleHeadings = entries.filter((entry) => entry.isIntersecting);
 
-			if (visibleHeadings.length > 0) {
-				this.clearActiveStates();
+				if (visibleHeadings.length > 0) {
+					this.clearActiveStates();
 
-				// Find the heading closest to the top of the viewport
-				let closestHeading = visibleHeadings.reduce((closest, current) => {
-					const currentTop = current.boundingClientRect.top;
-					const closestTop = closest.boundingClientRect.top;
-					
-					// Prefer the heading closest to the top that's still visible
-					return Math.abs(currentTop) < Math.abs(closestTop) ? current : closest;
-				});
+					// Find the heading closest to the top of the viewport
+					const closestHeading = visibleHeadings.reduce((closest, current) => {
+						const currentTop = current.boundingClientRect.top;
+						const closestTop = closest.boundingClientRect.top;
 
-				const headingId = closestHeading.target.id;
-				const tocLink = this.navTarget.querySelector(`a[data-heading-id="${headingId}"]`);
-				if (tocLink) {
-					tocLink.setAttribute('data-active', 'true');
+						// Prefer the heading closest to the top that's still visible
+						return Math.abs(currentTop) < Math.abs(closestTop) ? current : closest;
+					});
+
+					const headingId = closestHeading.target.id;
+					const tocLink = this.navTarget.querySelector(`a[data-heading-id="${headingId}"]`);
+					if (tocLink) {
+						tocLink.setAttribute('data-active', 'true');
+					}
 				}
+			},
+			{
+				threshold: 0.1,
+				rootMargin: '-10% 0px -70% 0px',
 			}
-		}, {
-			threshold: 0.1,
-			rootMargin: '-10% 0px -70% 0px'
-		});
+		);
 
-		this.headings.forEach(heading => {
+		this.headings.forEach((heading) => {
 			this.observer.observe(heading);
 		});
 	}
@@ -156,7 +166,7 @@ export default class extends Controller {
 	clearActiveStates() {
 		if (!this.tocLinks) return;
 
-		this.tocLinks.forEach(link => {
+		this.tocLinks.forEach((link) => {
 			link.removeAttribute('data-active');
 		});
 	}
