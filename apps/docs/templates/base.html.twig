@@ -20,6 +20,12 @@
         {% endblock %}
     {% endset %}
 
+    {%- set ogImage -%}
+        {%- block og -%}
+            {{- 'https://ogslug.dev/og/harmonyui.jpeg?url=https://'~ app.request.host ~ app.request.requestUri -}}
+        {%- endblock -%}
+    {%- endset -%}
+
     {{ include('./seo/_default.html.twig') }}
     {{ include('./seo/_og.html.twig') }}
     {{ include('./seo/_twitter.html.twig') }}
@@ -32,6 +38,63 @@
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+    {% block ogTemplate %}
+        <template data-og="">
+            <div class="w-full h-full bg-white relative overflow-hidden">
+                <div class="absolute inset-0 bg-emerald-50/40"></div>
+                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(5,150,105,0.08) 1px, transparent 0); background-size: 60px 60px;"></div>
+                <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;100&quot; height=&quot;100&quot; viewBox=&quot;0 0 100 100&quot;><circle cx=&quot;20&quot; cy=&quot;30&quot; r=&quot;0.5&quot; fill=&quot;rgba(5,150,105,0.2)&quot;/><circle cx=&quot;60&quot; cy=&quot;10&quot; r=&quot;0.3&quot; fill=&quot;rgba(5,150,105,0.3)&quot;/><circle cx=&quot;80&quot; cy=&quot;70&quot; r=&quot;0.4&quot; fill=&quot;rgba(5,150,105,0.1)&quot;/><circle cx=&quot;40&quot; cy=&quot;90&quot; r=&quot;0.6&quot; fill=&quot;rgba(5,150,105,0.15)&quot;/></svg>');"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-100/30 via-transparent to-emerald-200/20"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-transparent"></div>
+
+                <div class="absolute top-12 left-12">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" class="text-emerald-600">
+                                <path d="M7 9.5C7 10.8807 5.88071 12 4.5 12C3.11929 12 2 10.8807 2 9.5C2 8.11929 3.11929 7 4.5 7C5.88071 7 7 8.11929 7 9.5ZM7 9.5V2C7.33333 2.5 7.6 4.6 10 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="10.5" cy="19.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="20" cy="18" r="2" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M13 19.5L13 11C13 10.09 13 9.63502 13.2466 9.35248C13.4932 9.06993 13.9938 9.00163 14.9949 8.86504C18.0085 8.45385 20.2013 7.19797 21.3696 6.42937C21.6498 6.24509 21.7898 6.15295 21.8949 6.20961C22 6.26627 22 6.43179 22 6.76283V17.9259" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13 13C17.8 13 21 10.6667 22 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-bold text-gray-800">HarmonyUI</span>
+                    </div>
+                </div>
+
+                <div class="relative z-10 w-full h-full flex flex-col justify-center items-start px-12 max-w-4xl">
+                    <div class="space-y-6">
+                        <div class="inline-block">
+                            <span class="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium">
+                                Symfony • Twig • Tailwind CSS
+                            </span>
+                        </div>
+
+                        <h1 class="text-6xl font-bold text-gray-900 leading-tight tracking-tight">
+                            Headless Twig<br/>
+                            <span class="text-emerald-600">Components</span>
+                        </h1>
+
+                        <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
+                            Build modern Symfony UIs without forking components.
+                            Configure styles, keep upstream updates.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-12 right-12">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-emerald-200 rounded-full"></div>
+                        <div class="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                        <div class="w-3 h-3 bg-emerald-600 rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+            </div>
+        </template>
     {% endblock %}
 
     {{ include('./integrations/ga4.html.twig') }}
