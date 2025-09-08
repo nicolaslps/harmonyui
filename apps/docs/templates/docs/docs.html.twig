@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {%- block seo_title -%}
-    {{- page.title|trans|capitalize -}} {{ ' |' }} {{- parent() -}}
+    {{- page.title|capitalize -}} {{ ' |' }} {{- parent() -}}
 {% endblock %}
 {%- block seo_description -%}
-    {{- page.description|trans|capitalize -}} {{ ' |' }} {{- parent() -}}
+    {{- page.description|capitalize -}} {{ ' |' }} {{- parent() -}}
 {%- endblock -%}
 
 {% block seo_robots %}

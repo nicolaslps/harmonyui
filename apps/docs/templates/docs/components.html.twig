@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {%- block seo_title -%}
-    {{- 'seo.components.title'|trans -}} {{- parent() -}}
+    Components - {{ parent() }}
 {%- endblock -%}
 {%- block seo_description -%}
-    {{- 'seo.components.description'|trans -}}
+    Here you can find all the components available in the library. We are working on adding more components.
 {%- endblock -%}
 
 {% block body %}
@@ -12,10 +12,10 @@
     <div class="max-w-7xl mx-auto px-6 py-12">
         <div class="mb-12">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">
-                {{ 'components.title'|trans|capitalize }}
+                Components
             </h1>
             <p class="text-lg text-gray-600 max-w-2xl">
-                {{ 'components.description'|trans|capitalize }}
+                Components list
             </p>
         </div>
 
@@ -32,11 +32,11 @@
 
                     <div class="p-4">
                         <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
-                            {{ component.title|trans|capitalize }}
+                            {{ component.title|capitalize }}
                         </h3>
                         {% if component.description is defined %}
                             <p class="text-sm text-gray-500 mt-1 line-clamp-2">
-                                {{ component.description|trans }}
+                                {{ component.description }}
                             </p>
                         {% endif %}
                     </div>
