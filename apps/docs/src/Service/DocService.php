@@ -24,7 +24,7 @@ class DocService
     public function __construct(
         private readonly MetadataService $metadataService,
     ) {
-        $this->docPath = \dirname(__DIR__, 2).'/templates/documentation';
+        $this->docPath = dirname(__DIR__, 2).'/templates/documentation';
     }
 
     /**
@@ -109,6 +109,11 @@ class DocService
         $docPage->setIsPublished((bool) ($metadata['published'] ?? true));
         $docPage->setSection($docSection);
         $docPage->setTemplate($this->getTemplatePathFromFile($filePath));
+        $docPage->setImage(
+            isset($metadata['image']) && \is_string($metadata['image'])
+                ? $metadata['image']
+                : null
+        );
 
         return $docPage;
     }

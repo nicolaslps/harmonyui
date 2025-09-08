@@ -23,11 +23,14 @@
             {% for component in components %}
                 <a href="{{ path('app_docs', {section: component.sectionSlug, page: component.pageSlug}) }}"
                    class="group block border border-gray-200 rounded-xl overflow-hidden hover:shadow-md hover:border-gray-300 transition-all duration-100">
-
-                    <div class="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center">
-                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center">
-                            <twig:ux:icon name="lucide:component" class="size-6"/>
-                        </div>
+                    <div class="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 p-6 flex items-center justify-center text-white group-hover:text-primary-500">
+                        {% if component.image %}
+                            <div class="w-auto h-14">{{ inline_svg(component.image) }}</div>
+                        {% else %}
+                            <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center">
+                                <twig:ux:icon name="lucide:component" class="size-6"/>
+                            </div>
+                        {% endif %}
                     </div>
 
                     <div class="p-4">
