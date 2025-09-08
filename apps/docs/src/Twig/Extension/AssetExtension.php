@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use Symfony\Component\Asset\Packages;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Filesystem\Filesystem;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -21,6 +22,7 @@ use Twig\TwigFunction;
 class AssetExtension extends AbstractExtension
 {
     public function __construct(
+        #[Autowire('%kernel.project_dir%/public')]
         private readonly string $publicDir,
         private readonly Packages $packages,
         private readonly Filesystem $filesystem
