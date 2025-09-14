@@ -12,13 +12,13 @@
                             <a href="{{ path('app_docs', {section: page.sectionSlug, page: page.pageSlug}) }}"
                                class="group flex items-center px-3 py-2 text-sm rounded-lg transition-all
                                               {%- if section == page.sectionSlug and page == page.pageSlug -%}
-                                                  bg-primary-50 text-primary-700 font-medium border border-primary-200
+                                                  bg-primary text-primary font-medium border border-primary
                                               {%- else -%}
                                                   text-gray-600 hover:text-gray-900 hover:bg-gray-50
                                               {%- endif -%}">
                                 <span class="flex-1">{{ page.title }}</span>
                                 {%- if section == page.sectionSlug and page == page.pageSlug -%}
-                                    <twig:ux:icon name="lucide:chevron-right" class="size-4 text-primary-500" />
+                                    <twig:ux:icon name="lucide:chevron-right" class="size-4 text-primary" />
                                 {%- endif -%}
                             </a>
                         </li>

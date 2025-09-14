@@ -1,6 +1,6 @@
 <section class="relative overflow-hidden bg-white mt-" id="hero-section">
     <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-primary-50/50"></div>
+        <div class="absolute inset-0 bg-primary/50"></div>
         <div class="absolute inset-0 bg-grid-slate-100/50 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>
         <twig:GridBackground/>
     </div>
@@ -8,7 +8,7 @@
     <div class="relative z-30 max-w-7xl mx-auto px-6 py-24 sm:py-32 lg:py-40">
         <div class="text-center">
             <h1 class="text-5xl font-bold tracking-tight text-gray-900 text-balance sm:text-6xl lg:text-7xl">
-                Build modern <span class="text-primary-600">Symfony</span> UIs
+                Build modern <span class="text-primary">Symfony</span> UIs
             </h1>
             <div class="mt-4">
                 <span class="text-xl sm:text-3xl lg:text-4xl font-light text-gray-600 italic">
@@ -22,13 +22,13 @@
 
             <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
                 <a href="{{ path('app_docs', {section: 'overview', page: 'getting-started'}) }}"
-                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary-600 border border-transparent rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200">
+                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary border border-transparent rounded-lg hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200">
                     <span>Get Started</span>
                     <twig:ux:icon name="lucide:arrow-right" class="ml-2 w-5 h-5" />
                 </a>
 
                 <a href="{{ path('app_components') }}"
-                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:border-primary-300 hover:text-primary-700 transition-all duration-200">
+                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:border-primary hover:text-primary transition-all duration-200">
                     <span>Browse Components</span>
                     <twig:ux:icon name="lucide:eye" class="ml-2 w-5 h-5" />
                 </a>
