@@ -1,61 +1,42 @@
 button:
   base:
-    - "relative items-center font-medium justify-center gap-2 whitespace-nowrap text-sm inline-flex transition-[background-color,transform] cursor-pointer"
-    - "disabled:opacity-75 disabled:cursor-default disabled:pointer-events-none"
+    - "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all shrink-0 outline-none cursor-pointer select-none"
+    - "disabled:pointer-events-none disabled:opacity-50"
+    - "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
+    - "aria-invalid:ring-destructive/20 aria-invalid:border-destructive"
+    - "dark:aria-invalid:ring-destructive/40"
+    - "[&_svg]:pointer-events-none [&_svg]:shrink-0"
+    - "[&_svg:not([class*='size-'])]:size-4"
     - "active:scale-[0.97]"
   variants:
     variant:
-      solid:
-        - "bg-(--color-accent) text-(--color-accent-foreground)"
-        - "hover:bg-(--color-accent)/80"
-      soft:
-        - "bg-(--color-accent-soft)/50 text-(--color-accent-soft-foreground)"
-        - "hover:bg-(--color-accent-soft)"
+      primary:
+        - "bg-primary text-primary-foreground shadow-xs"
+        - "hover:bg-primary/90"
+      secondary:
+        - "bg-secondary text-secondary-foreground shadow-xs"
+        - "hover:bg-secondary/80"
       outline:
-        - "bg-transparent border border-(--color-accent) text-(--color-accent-soft-foreground)"
-        - "hover:bg-(--color-accent-soft)/50"
-        - "focus-visible:ring-slate-500"
+        - "border bg-background shadow-xs"
+        - "hover:bg-accent hover:text-accent-foreground"
+        - "dark:bg-input/30 dark:border-input"
+        - "dark:hover:bg-input/50"
       ghost:
-        - "bg-transparent text-(--color-accent)"
-        - "hover:bg-(--color-accent-soft)/50 "
+        - "hover:bg-accent hover:text-accent-foreground"
+        - "dark:hover:bg-accent/50"
       link:
-        - "bg-transparent text-(--color-accent-soft-foreground)"
-    color:
-      primary: "[--color-accent:var(--color-primary-500)] [--color-accent-foreground:var(--color-primary-950)] [--color-accent-soft:var(--color-primary-200)] [--color-accent-soft-foreground:var(--color-primary-950)]"
-      secondary: "[--color-accent:var(--color-secondary-500)] [--color-accent-foreground:var(--color-secondary-950)] [--color-accent-soft:var(--color-secondary-200)] [--color-accent-soft-foreground:var(--color-secondary-950)]"
-      accent: "[--color-accent:var(--color-accent-500)] [--color-accent-foreground:var(--color-accent-950)] [--color-accent-soft:var(--color-accent-200)] [--color-accent-soft-foreground:var(--color-accent-950)]"
-      info: "[--color-accent:var(--color-info-500)] [--color-accent-foreground:var(--color-info-950)] [--color-accent-soft:var(--color-info-200)] [--color-accent-soft-foreground:var(--color-info-950)]"
-      success: "[--color-accent:var(--color-success-500)] [--color-accent-foreground:var(--color-success-950)] [--color-accent-soft:var(--color-success-200)] [--color-accent-soft-foreground:var(--color-success-950)]"
-      warning: "[--color-accent:var(--color-warning-500)] [--color-accent-foreground:var(--color-warning-950)] [--color-accent-soft:var(--color-warning-200)] [--color-accent-soft-foreground:var(--color-warning-950)]"
-      danger: "[--color-accent:var(--color-danger-500)] [--color-accent-foreground:var(--color-danger-950)] [--color-accent-soft:var(--color-danger-200)] [--color-accent-soft-foreground:var(--color-danger-950)]"
-      neutral: "[--color-accent:theme(colors.zinc.950)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-zinc-200)] [--color-accent-soft-foreground:var(--color-zinc-950)]"
-      red: "[--color-accent:theme(colors.red.600)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-red-200)] [--color-accent-soft-foreground:var(--color-red-950)]"
-      orange: "[--color-accent:theme(colors.orange.500)] [--color-accent-foreground:theme(colors.orange.950)] [--color-accent-soft:var(--color-orange-200)] [--color-accent-soft-foreground:var(--color-orange-950)]"
-      amber: "[--color-accent:theme(colors.amber.500)] [--color-accent-foreground:theme(colors.amber.950)] [--color-accent-soft:var(--color-amber-200)] [--color-accent-soft-foreground:var(--color-amber-950)]"
-      yellow: "[--color-accent:theme(colors.yellow.500)] [--color-accent-foreground:theme(colors.yellow.950)] [--color-accent-soft:var(--color-yellow-200)] [--color-accent-soft-foreground:var(--color-yellow-950)]"
-      lime: "[--color-accent:theme(colors.lime.500)] [--color-accent-foreground:theme(colors.lime.950)] [--color-accent-soft:var(--color-lime-200)] [--color-accent-soft-foreground:var(--color-lime-950)]"
-      green: "[--color-accent:theme(colors.green.500)] [--color-accent-foreground:theme(colors.green.950)] [--color-accent-soft:var(--color-green-200)] [--color-accent-soft-foreground:var(--color-green-950)]"
-      emerald: "[--color-accent:theme(colors.emerald.500)] [--color-accent-foreground:theme(colors.emerald.950)] [--color-accent-soft:var(--color-emerald-200)] [--color-accent-soft-foreground:var(--color-emerald-950)]"
-      teal: "[--color-accent:theme(colors.teal.500)] [--color-accent-foreground:theme(colors.teal.950)] [--color-accent-soft:var(--color-teal-200)] [--color-accent-soft-foreground:var(--color-teal-950)]"
-      cyan: "[--color-accent:theme(colors.cyan.500)] [--color-accent-foreground:theme(colors.cyan.950)] [--color-accent-soft:var(--color-cyan-200)] [--color-accent-soft-foreground:var(--color-cyan-950)]"
-      sky: "[--color-accent:theme(colors.sky.500)] [--color-accent-foreground:theme(colors.sky.950)] [--color-accent-soft:var(--color-sky-200)] [--color-accent-soft-foreground:var(--color-sky-950)]"
-      blue: "[--color-accent:theme(colors.blue.600)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-blue-200)] [--color-accent-soft-foreground:var(--color-blue-950)]"
-      indigo: "[--color-accent:theme(colors.indigo.500)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-indigo-200)] [--color-accent-soft-foreground:var(--color-indigo-950)]"
-      violet: "[--color-accent:theme(colors.violet.600)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-violet-200)] [--color-accent-soft-foreground:var(--color-violet-950)]"
-      purple: "[--color-accent:theme(colors.purple.600)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-purple-200)] [--color-accent-soft-foreground:var(--color-purple-950)]"
-      fuchsia: "[--color-accent:theme(colors.fuchsia.600)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-fuchsia-200)] [--color-accent-soft-foreground:var(--color-fuchsia-950)]"
-      pink: "[--color-accent:theme(colors.pink.600)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-pink-200)] [--color-accent-soft-foreground:var(--color-pink-950)]"
-      rose: "[--color-accent:theme(colors.rose.600)] [--color-accent-foreground:theme(colors.white)] [--color-accent-soft:var(--color-rose-200)] [--color-accent-soft-foreground:var(--color-rose-950)]"
+        - "text-primary underline-offset-4"
+        - "hover:underline"
+      destructive:
+        - "bg-destructive text-white shadow-xs"
+        - "hover:bg-destructive/90"
+        - "focus-visible:ring-destructive/20"
+        - "dark:focus-visible:ring-destructive/40 dark:bg-destructive/60"
     size:
-      xs: "h-8 px-2.5 text-xs"
-      sm: "h-9 px-3 text-sm"
-      md: "h-10 px-4 text-sm"
-      lg: "h-11 px-5 text-base"
-    shape:
-      default: "rounded-lg "
-      pilled: "rounded-full"
+      sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5"
+      md: "h-9 px-4 py-2 has-[>svg]:px-3"
+      lg: "h-10 rounded-md px-6 has-[>svg]:px-4"
+      icon: "size-9"
   defaultVariants:
-    variant: solid
-    color: neutral
+    variant: primary
     size: md
-    shape: default

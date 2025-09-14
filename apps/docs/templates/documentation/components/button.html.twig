@@ -11,53 +11,58 @@
 
 <div class="space-y-16">
     <div class="flex items-center space-x-4 mb-8">
-        <div class="w-8 h-8 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center">
+        <div class="w-8 h-8 bg-primary text-primary-foreground rounded-lg flex items-center justify-center">
             <twig:ux:icon name="lucide:palette" class="size-4"/>
         </div>
         <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
     </div>
     <div class="space-y-8">
         <twig:Preview
-            title="Variants"
+            title="Primary"
             component="button"
-            previewFile="variants"
-            defaultTheme="default">
+            previewFile="primary"
+        >
+            {{ include('preview/button/primary.html.twig') }}
         </twig:Preview>
         <twig:Preview
-            title="Sizes"
+            title="Secondary"
             component="button"
-            previewFile="sizes"
-            defaultTheme="default">
-        </twig:Preview>
-        <twig:Preview
-            title="Shape"
-            component="button"
-            previewFile="shape"
-            defaultTheme="default">
-        </twig:Preview>
-        <twig:Preview
-            title="Solid"
-            component="button"
-            previewFile="solid"
-            defaultTheme="default">
-        </twig:Preview>
-        <twig:Preview
-            title="Soft"
-            component="button"
-            previewFile="soft"
-            defaultTheme="default">
+            previewFile="secondary"
+        >
+
+            {{ include('preview/button/secondary.html.twig') }}
         </twig:Preview>
         <twig:Preview
             title="Outline"
             component="button"
             previewFile="outline"
-            defaultTheme="default">
+        >
+
+            {{ include('preview/button/outline.html.twig') }}
         </twig:Preview>
         <twig:Preview
             title="Ghost"
             component="button"
             previewFile="ghost"
-            defaultTheme="default">
+        >
+
+            {{ include('preview/button/ghost.html.twig') }}
+        </twig:Preview>
+        <twig:Preview
+            title="Link"
+            component="button"
+            previewFile="link"
+        >
+
+            {{ include('preview/button/link.html.twig') }}
+        </twig:Preview>
+        <twig:Preview
+            title="Sizes"
+            component="button"
+            previewFile="sizes"
+        >
+
+            {{ include('preview/button/sizes.html.twig') }}
         </twig:Preview>
     </div>
 </div>
