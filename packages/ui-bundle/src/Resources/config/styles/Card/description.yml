@@ -1,0 +1,4 @@
+card-description:
+  base:
+    - "text-muted-foreground text-sm"
+  defaultVariants: {}

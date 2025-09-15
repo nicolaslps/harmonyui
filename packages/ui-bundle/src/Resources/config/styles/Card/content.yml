@@ -1,0 +1,4 @@
+card-content:
+  base:
+    - "px-6"
+  defaultVariants: {}

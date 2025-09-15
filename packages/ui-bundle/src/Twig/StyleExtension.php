@@ -116,6 +116,9 @@ final class StyleExtension extends AbstractExtension
             $finalProps[$propName] = $realAttributes[$propName];
         }
 
+        if (isset($realAttributes['class'])) {
+            $finalProps['class'] = $realAttributes['class'];
+        }
         return $finalProps;
     }
 }

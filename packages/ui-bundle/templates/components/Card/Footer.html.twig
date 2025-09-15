@@ -1,0 +1,11 @@
+{%- set styleProps = getStyleProps(
+    'card-footer',
+    attributes
+) -%}
+
+<footer class="{{ style('card-footer', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="card-footer"
+>
+    {%- block content %}{% endblock -%}
+</footer>

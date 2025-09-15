@@ -2,7 +2,7 @@
 
 @source not "../../public/*";
 @source "../../styles";
-@source "../../vendor/harmonyui/ui-bundle/src/Resources/config/styles/*";
+@source "../../vendor/harmonyui/ui-bundle/src/Resources/config/styles/**/*";
 
 @custom-variant dark (&:is(.dark *));
 

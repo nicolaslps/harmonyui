@@ -1,0 +1,4 @@
+card-footer:
+  base:
+    - "flex items-center px-6 [.border-t]:pt-6"
+  defaultVariants: {}

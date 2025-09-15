@@ -1,0 +1,11 @@
+{%- set styleProps = getStyleProps(
+    'card-action',
+    attributes
+) -%}
+
+<div class="{{ style('card-action', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="card-action"
+>
+    {%- block content %}{% endblock -%}
+</div>
