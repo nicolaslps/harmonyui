@@ -24,7 +24,10 @@ export default class extends Controller {
 	}
 
 	generateTableOfContents() {
-		const headings = this.contentTarget.querySelectorAll('h2, h3');
+		const allHeadings = this.contentTarget.querySelectorAll('h2, h3');
+		const headings = Array.from(allHeadings).filter(heading => {
+			return !heading.closest('[data-slot="preview"]');
+		});
 
 		if (headings.length === 0) {
 			const template = this.createElementFromTemplate('noHeadingsTemplate');
