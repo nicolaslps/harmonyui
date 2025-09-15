@@ -42,18 +42,25 @@
     --color-chart-3: var(--chart-3);
     --color-chart-4: var(--chart-4);
     --color-chart-5: var(--chart-5);
+
+    --font-display: var(--font-display);
+    --font-body: var(--font-body);
+    --font-code: var(--font-code);
 }
 
 :root {
+    --font-display: "Bricolage Grotesque", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --font-code: "JetBrains Mono", monospace;
     --radius: 0.625rem;
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.13 0.028 261.692);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.13 0.028 261.692);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.13 0.028 261.692);
-    --primary: oklch(0.21 0.034 264.665);
-    --primary-foreground: oklch(0.985 0.002 247.839);
+    --background: oklch(0.9911 0 0);
+    --foreground: oklch(0.2046 0 0);
+    --card: oklch(0.9911 0 0);
+    --card-foreground: oklch(0.2046 0 0);
+    --popover: oklch(0.9911 0 0);
+    --popover-foreground: oklch(0.4386 0 0);
+    --primary: oklch(0.8348 0.1302 160.9080);
+    --primary-foreground: oklch(0.2626 0.0147 166.4589);
     --secondary: oklch(0.967 0.003 264.542);
     --secondary-foreground: oklch(0.21 0.034 264.665);
     --muted: oklch(0.967 0.003 264.542);
@@ -61,9 +68,13 @@
     --accent: oklch(0.967 0.003 264.542);
     --accent-foreground: oklch(0.21 0.034 264.665);
     --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.9934 0.0032 17.2118);
     --info: oklch(0.654 0.135 237.1);
+    --info-foreground: oklch(0.9934 0.0032 17.2118);
     --success: oklch(0.710 0.160 159.5);
+    --success-foreground: oklch(0.9934 0.0032 17.2118);
     --warning: oklch(0.860 0.158 89.5);
+    --warning-foreground: oklch(0.9934 0.0032 17.2118);
     --border: oklch(0.928 0.006 264.531);
     --input: oklch(0.928 0.006 264.531);
     --ring: oklch(0.707 0.022 261.325);
