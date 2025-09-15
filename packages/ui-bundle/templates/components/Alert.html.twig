@@ -1,0 +1,11 @@
+{%- set styleProps = getStyleProps(
+    'alert',
+    attributes
+) -%}
+
+<div class="{{ style('alert', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="alert"
+>
+    {%- block content -%}{%- endblock -%}
+</div>
