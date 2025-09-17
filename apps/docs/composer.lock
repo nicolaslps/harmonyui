@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e586138c9cf7ce0fb7bd99b3f70a00e",
+    "content-hash": "78ff4226d9bb5e3fd8f81f8c4f1ded1d",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -1347,7 +1347,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../packages/ui-bundle",
-                "reference": "cc4fdbc7ccb0d79a08aff793fa8bc6493344478a"
+                "reference": "e350681b91aabc6130945c872f5a1fa8332a9918"
             },
             "require": {
                 "gehrisandro/tailwind-merge-php": "^1.0",
@@ -1362,6 +1362,16 @@
                 "twig/twig": "^3.0"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "symfony": {
+                    "allow-contrib": false,
+                    "require": "7.0.*",
+                    "id": "01JMWF2G8BXHC9YV0XRHK7TN0N"
+                },
+                "symfony-assets": {
+                    "package-name": "@harmonyui/primitives"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "HarmonyUi\\Bundle\\": "src/"
@@ -10713,6 +10723,7 @@
     "platform": {
         "php": ">=8.4",
         "ext-ctype": "*",
+        "ext-dom": "*",
         "ext-iconv": "*"
     },
     "platform-dev": {},

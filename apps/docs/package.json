@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "@harmonyui/primitives": "workspace:*",
+        "@harmonyui/primitives": "file:vendor/harmonyui/ui-bundle/assets",
         "@tailwindcss/cli": "^4.0.0",
         "@tailwindcss/postcss": "^4.1.12",
         "@tailwindcss/typography": "^0.5.16",
