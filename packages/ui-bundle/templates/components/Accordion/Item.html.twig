@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'accordion.item',
+    attributes
+) -%}
+
+<details
+    class="{{ style('accordion.item', styleProps) }}"
+    {{ attributes.without('class') }}
+    {%- if attributes.value is defined %} value="{{ attributes.value }}"{% endif %}
+>
+    {%- block content %}{% endblock -%}
+</details>

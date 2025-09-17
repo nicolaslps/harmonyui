@@ -1,0 +1,24 @@
+accordion:
+  base:
+    - "w-full"
+  defaultVariants: {}
+
+accordion.item:
+  base:
+    - "border-b last:border-b-0"
+  defaultVariants: {}
+
+accordion.trigger:
+  base:
+    - "focus-visible:border-ring focus-visible:ring-ring/50 select-none flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50"
+  defaultVariants: {}
+
+accordion.content:
+  base:
+    - "overflow-hidden text-sm transition-all duration-200 ease-out data-[closed]:opacity-0 data-[closed]:translate-y-[-4px] data-[enter]:transition-opacity data-[enter]:transition-transform data-[leave]:transition-opacity data-[leave]:transition-transform data-[leave]:duration-150 data-[leave]:ease-in data-[transition]:transition-discrete"
+  defaultVariants: {}
+
+accordion.content.inner:
+  base:
+    - "pt-0 pb-4"
+  defaultVariants: {}

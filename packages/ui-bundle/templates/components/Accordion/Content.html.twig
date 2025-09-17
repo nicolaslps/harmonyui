@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'accordion.content',
+    attributes
+) -%}
+
+<hui-accordion-content
+    class="{{ style('accordion.content', styleProps) }}"
+    {{ attributes.without('class') }}
+>
+    <div class="{{ style('accordion.content.inner', styleProps) }}">
+        {%- block content %}{% endblock -%}
+    </div>
+</hui-accordion-content>

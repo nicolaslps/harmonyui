@@ -1,0 +1,11 @@
+{%- set styleProps = getStyleProps(
+    'accordion.trigger',
+    attributes
+) -%}
+
+<summary
+    class="{{ style('accordion.trigger', styleProps) }}"
+    {{ attributes.without('class') }}
+>
+    {%- block content %}{% endblock -%}
+</summary>

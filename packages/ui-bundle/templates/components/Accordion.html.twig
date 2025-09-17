@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'accordion',
+    attributes
+) -%}
+
+<hui-accordion
+    class="{{ style('accordion', styleProps) }}"
+    {{ attributes.without('class') }}
+    {%- if attributes.type is defined %} type="{{ attributes.type }}"{% endif %}
+    {%- if attributes['default-value'] is defined %} default-value="{{ attributes['default-value'] }}"{% endif %}
+>
+    {%- block content %}{% endblock -%}
+</hui-accordion>
