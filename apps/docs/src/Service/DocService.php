@@ -24,7 +24,7 @@ class DocService
     public function __construct(
         private readonly MetadataService $metadataService,
     ) {
-        $this->docPath = dirname(__DIR__, 2).'/templates/documentation';
+        $this->docPath = \dirname(__DIR__, 2).'/templates/documentation';
     }
 
     /**
