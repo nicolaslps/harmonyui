@@ -15,7 +15,6 @@ namespace HarmonyUi\Bundle\Twig;
 
 use HarmonyUi\Bundle\Style\StyleRegistry;
 use Symfony\UX\TwigComponent\ComponentAttributes;
-use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -28,12 +27,10 @@ use Twig\TwigFunction;
 final class StyleExtension extends AbstractExtension
 {
     /**
-     * @param StyleRegistry $styleRegistry   Registry containing component style definitions
-     * @param Environment   $twigEnvironment Twig environment
+     * @param StyleRegistry $styleRegistry Registry containing component style definitions
      */
     public function __construct(
         private readonly StyleRegistry $styleRegistry,
-        private readonly Environment $twigEnvironment,
     ) {
     }
 
@@ -111,6 +108,7 @@ final class StyleExtension extends AbstractExtension
         if (isset($realAttributes['class'])) {
             $finalProps['class'] = $realAttributes['class'];
         }
+
         return $finalProps;
     }
 }

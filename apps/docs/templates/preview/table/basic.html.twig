@@ -1,49 +1,49 @@
 {% set projects = [
     {
-        id: "PRJ-101",
-        name: "E-commerce Platform",
-        status: "In Progress",
-        priority: "High",
-        deadline: "2024-03-15",
-        budget: "€85,000"
+        id: 'PRJ-101',
+        name: 'E-commerce Platform',
+        status: 'In Progress',
+        priority: 'High',
+        deadline: '2024-03-15',
+        budget: '€85,000',
     },
     {
-        id: "PRJ-102",
-        name: "Mobile App Redesign",
-        status: "Completed",
-        priority: "Medium",
-        deadline: "2024-02-28",
-        budget: "€42,500"
+        id: 'PRJ-102',
+        name: 'Mobile App Redesign',
+        status: 'Completed',
+        priority: 'Medium',
+        deadline: '2024-02-28',
+        budget: '€42,500',
     },
     {
-        id: "PRJ-103",
-        name: "Analytics Dashboard",
-        status: "Planning",
-        priority: "Low",
-        deadline: "2024-04-20",
-        budget: "€28,000"
+        id: 'PRJ-103',
+        name: 'Analytics Dashboard',
+        status: 'Planning',
+        priority: 'Low',
+        deadline: '2024-04-20',
+        budget: '€28,000',
     },
     {
-        id: "PRJ-104",
-        name: "API Integration",
-        status: "In Progress",
-        priority: "High",
-        deadline: "2024-03-10",
-        budget: "€67,200"
+        id: 'PRJ-104',
+        name: 'API Integration',
+        status: 'In Progress',
+        priority: 'High',
+        deadline: '2024-03-10',
+        budget: '€67,200',
     },
     {
-        id: "PRJ-105",
-        name: "Security Audit",
-        status: "Completed",
-        priority: "Critical",
-        deadline: "2024-02-15",
-        budget: "€15,800"
-    }
+        id: 'PRJ-105',
+        name: 'Security Audit',
+        status: 'Completed',
+        priority: 'Critical',
+        deadline: '2024-02-15',
+        budget: '€15,800',
+    },
 ] %}
 
 {% set totalBudget = 0 %}
 {% for project in projects %}
-    {% set cleanBudget = project.budget|replace({'€': '', ',': ''}) %}
+    {% set cleanBudget = project.budget|replace({€: '', ',': ''}) %}
     {% set totalBudget = totalBudget + cleanBudget %}
 {% endfor %}
 
