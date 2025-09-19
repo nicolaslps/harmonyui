@@ -1,0 +1,27 @@
+{% set meta = {
+    slug: '/components/skeleton',
+    title: 'Skeleton',
+    description: 'Use to show a placeholder while content is loading.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 6,
+    section: 'components',
+    image: 'images/components/skeleton.svg',
+} %}
+
+<div class="space-y-16">
+    <div class="flex items-center space-x-4 mb-8">
+        <div class="w-8 h-8 bg-primary text-primary-foreground rounded-lg flex items-center justify-center">
+            <twig:ux:icon name="lucide:loader" class="size-4"/>
+        </div>
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+    </div>
+    <div class="space-y-8">
+        <twig:Layout:Doc:Preview title="Basic Skeleton">
+            {{ include('preview/skeleton/basic.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/skeleton/basic.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>
