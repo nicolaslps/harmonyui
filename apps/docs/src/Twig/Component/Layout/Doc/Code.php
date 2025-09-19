@@ -21,16 +21,16 @@ use Twig\Environment;
 class Code
 {
     public string $title = 'Code';
+
     /** @var string|array<string> */
     public string|array $files = '';
+
     public string $language = 'twig';
 
-    private Environment $twig;
-    private Highlighter $highlighter;
+    private readonly Highlighter $highlighter;
 
-    public function __construct(Environment $twig)
+    public function __construct(private readonly Environment $twigEnvironment)
     {
-        $this->twig = $twig;
         $this->highlighter = new Highlighter();
     }
 
@@ -55,13 +55,13 @@ class Code
     private function formatCode(string $filePath): array
     {
         try {
-            $loader = $this->twig->getLoader();
+            $loader = $this->twigEnvironment->getLoader();
 
             if (!$loader->exists($filePath)) {
                 return [
                     'file' => $filePath,
-                    'rawCode' => "File not found: {$filePath}",
-                    'highlightedCode' => "File not found: {$filePath}",
+                    'rawCode' => 'File not found: '.$filePath,
+                    'highlightedCode' => 'File not found: '.$filePath,
                     'language' => 'text',
                     'error' => true,
                 ];
@@ -74,7 +74,7 @@ class Code
 
             try {
                 $highlightedCode = $this->highlighter->parse($rawCode, $language);
-            } catch (\Exception $e) {
+            } catch (\Exception) {
                 $highlightedCode = htmlspecialchars($rawCode, \ENT_QUOTES, 'UTF-8');
             }
 
@@ -85,11 +85,11 @@ class Code
                 'language' => $language,
                 'error' => false,
             ];
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
             return [
                 'file' => $filePath,
-                'rawCode' => 'Error loading file: '.$e->getMessage(),
-                'highlightedCode' => 'Error loading file: '.$e->getMessage(),
+                'rawCode' => 'Error loading file: '.$exception->getMessage(),
+                'highlightedCode' => 'Error loading file: '.$exception->getMessage(),
                 'language' => 'text',
                 'error' => true,
             ];

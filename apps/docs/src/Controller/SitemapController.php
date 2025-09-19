@@ -14,9 +14,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Service\DocService;
-use DOMDocument;
-use DOMException;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -41,16 +38,17 @@ final class SitemapController extends AbstractController
 
             $xmlContent = $xml->saveXML();
             if (false === $xmlContent) {
-                throw new DOMException('Failed to generate XML');
+                throw new \DOMException('Failed to generate XML');
             }
+
             $response = new Response($xmlContent);
             $response->headers->set('Content-Type', 'application/xml; charset=UTF-8');
 
             return $response;
-        } catch (DOMException $e) {
+        } catch (\DOMException $domException) {
             return new Response(
-                '<?xml version="1.0" encoding="UTF-8"?><error>Failed to generate sitemap: '.htmlspecialchars($e->getMessage()).'</error>',
-                500,
+                '<?xml version="1.0" encoding="UTF-8"?><error>Failed to generate sitemap: '.htmlspecialchars($domException->getMessage()).'</error>',
+                Response::HTTP_INTERNAL_SERVER_ERROR,
                 ['Content-Type' => 'application/xml; charset=UTF-8']
             );
         }
@@ -80,8 +78,11 @@ final class SitemapController extends AbstractController
 
             $sectionSlug = $component->getSectionSlug();
             $pageSlug = $component->getPageSlug();
+            if (null === $sectionSlug) {
+                continue;
+            }
 
-            if (null === $sectionSlug || null === $pageSlug) {
+            if (null === $pageSlug) {
                 continue;
             }
 
@@ -95,7 +96,7 @@ final class SitemapController extends AbstractController
                     'loc' => $url,
                     'priority' => '0.64',
                 ];
-            } catch (Exception $e) {
+            } catch (\Exception) {
                 // Skip this URL if it can't be generated
                 continue;
             }
@@ -107,45 +108,46 @@ final class SitemapController extends AbstractController
     /**
      * @param array<int, array{loc: string, priority: string}> $urls
      *
-     * @throws DOMException
+     * @throws \DOMException
      */
-    private function createSitemapXml(array $urls): DOMDocument
+    private function createSitemapXml(array $urls): \DOMDocument
     {
-        $xml = new DOMDocument('1.0', 'UTF-8');
-        $xml->formatOutput = true;
+        $domDocument = new \DOMDocument('1.0', 'UTF-8');
+        $domDocument->formatOutput = true;
 
-        $urlset = $xml->createElement('urlset');
+        $urlset = $domDocument->createElement('urlset');
         $urlset->setAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
         $urlset->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
         $urlset->setAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd');
-        $xml->appendChild($urlset);
 
-        foreach ($urls as $urlData) {
-            $urlElement = $this->createUrlElement($xml, $urlData);
+        $domDocument->appendChild($urlset);
+
+        foreach ($urls as $url) {
+            $urlElement = $this->createUrlElement($domDocument, $url);
             $urlset->appendChild($urlElement);
         }
 
-        return $xml;
+        return $domDocument;
     }
 
     /**
      * @param array{loc: string, priority: string} $urlData
      *
-     * @throws DOMException
+     * @throws \DOMException
      */
-    private function createUrlElement(DOMDocument $xml, array $urlData): DOMElement
+    private function createUrlElement(\DOMDocument $domDocument, array $urlData): \DOMElement
     {
-        $urlElement = $xml->createElement('url');
+        $urlElement = $domDocument->createElement('url');
 
-        $locElement = $xml->createElement('loc');
+        $locElement = $domDocument->createElement('loc');
         $locElement->textContent = $urlData['loc'];
         $urlElement->appendChild($locElement);
 
-        $lastmodElement = $xml->createElement('lastmod');
+        $lastmodElement = $domDocument->createElement('lastmod');
         $lastmodElement->textContent = date('c');
         $urlElement->appendChild($lastmodElement);
 
-        $priorityElement = $xml->createElement('priority');
+        $priorityElement = $domDocument->createElement('priority');
         $priorityElement->textContent = $urlData['priority'];
         $urlElement->appendChild($priorityElement);
 
