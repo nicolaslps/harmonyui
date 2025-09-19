@@ -1,7 +1,7 @@
-import { LitElement, html, css } from 'lit';
+import { css, html, LitElement } from 'lit';
 
 export class HelloBye extends LitElement {
-  static styles = css`
+	static styles = css`
     :host {
       display: block;
       font-family: Arial, sans-serif;
@@ -13,40 +13,40 @@ export class HelloBye extends LitElement {
     }
   `;
 
-  static properties = {
-    isHello: { type: Boolean }
-  };
+	static properties = {
+		isHello: { type: Boolean },
+	};
 
-  constructor() {
-    super();
-    this.isHello = true;
-  }
+	constructor() {
+		super();
+		this.isHello = true;
+	}
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.startAlternating();
-  }
+	connectedCallback() {
+		super.connectedCallback();
+		this.startAlternating();
+	}
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
-  }
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		if (this.intervalId) {
+			clearInterval(this.intervalId);
+		}
+	}
 
-  startAlternating() {
-    this.intervalId = setInterval(() => {
-      this.isHello = !this.isHello;
-    }, 2000);
-  }
+	startAlternating() {
+		this.intervalId = setInterval(() => {
+			this.isHello = !this.isHello;
+		}, 2000);
+	}
 
-  render() {
-    return html`
+	render() {
+		return html`
       <div>
         ${this.isHello ? 'Bonjour' : 'Au revoir'}
       </div>
     `;
-  }
+	}
 }
 
 customElements.define('hello-bye', HelloBye);
