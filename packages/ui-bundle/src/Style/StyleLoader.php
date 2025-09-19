@@ -17,7 +17,7 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * Loads component style definitions from YAML files.
- * Supports theme variants and recursive directory scanning.
+ * Supports recursive directory scanning.
  */
 final class StyleLoader
 {
@@ -56,7 +56,7 @@ final class StyleLoader
         foreach ($files as $file) {
             $content = $this->loadYamlFile($file);
             if (null !== $content) {
-                $map = $this->mergeStyles($map, $content, $file);
+                $map = $this->mergeStyles($map, $content);
             }
         }
 
@@ -111,31 +111,15 @@ final class StyleLoader
     }
 
     /**
-     * Merge YAML content with theme support.
-     * Files named 'component.theme.yml' create themed variants.
+     * Merge YAML content into the style map.
      *
-     * @param array<string, mixed> $map      Existing style map
-     * @param array<string, mixed> $content  Parsed YAML content
-     * @param string               $filePath Path to the YAML file
+     * @param array<string, mixed> $map     Existing style map
+     * @param array<string, mixed> $content Parsed YAML content
      *
      * @return array<string, mixed> Updated style map
      */
-    private function mergeStyles(array $map, array $content, string $filePath): array
+    private function mergeStyles(array $map, array $content): array
     {
-        $filename = pathinfo($filePath, \PATHINFO_FILENAME);
-        $parts = explode('.', $filename);
-
-        if (\count($parts) > 1) {
-            $theme = array_pop($parts);
-            $themedContent = [];
-
-            foreach ($content as $componentName => $componentConfig) {
-                $themedContent[$componentName.'.'.$theme] = $componentConfig;
-            }
-
-            return array_merge_recursive($map, $themedContent);
-        }
-
         return array_merge_recursive($map, $content);
     }
 }

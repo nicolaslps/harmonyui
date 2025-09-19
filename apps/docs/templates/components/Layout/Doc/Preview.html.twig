@@ -1,0 +1,17 @@
+<div class="flex flex-col gap-4">
+    <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ title }}</h3>
+    <div class="bg-background border border-gray-200 rounded-xl overflow-hidden" data-slot="preview">
+        {%- set preview -%}
+            {%- block content -%}
+            {%- endblock -%}
+        {%- endset -%}
+        <div class="flex min-h-20 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start">
+            {{ preview }}
+        </div>
+    </div>
+
+    <div>
+        {%- block code -%}
+        {%- endblock -%}
+    </div>
+</div>

@@ -26,6 +26,7 @@ class MetadataService
             'order' => 9999,
             'canonical' => '',
             'component' => false,
+            'image' => null,
             'section' => $this->extractSectionFromPath($templatePath),
         ];
 

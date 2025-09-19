@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'skeleton',
+    attributes
+) -%}
+
+<div
+    class="{{ style('skeleton', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="skeleton"
+>
+    {% block content %}{% endblock %}
+</div>

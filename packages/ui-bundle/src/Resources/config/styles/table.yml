@@ -1,0 +1,49 @@
+table:
+  base:
+    - "w-full caption-bottom text-sm"
+  defaultVariants: {}
+
+table.container:
+  base:
+    - "relative w-full overflow-x-auto"
+  defaultVariants: {}
+
+table.header:
+  base:
+    - "[&_tr]:border-b"
+  defaultVariants: {}
+
+table.body:
+  base:
+    - "[&_tr:last-child]:border-0"
+  defaultVariants: {}
+
+table.footer:
+  base:
+    - "bg-muted/50 border-t font-medium"
+    - "[&>tr]:last:border-b-0"
+  defaultVariants: {}
+
+table.row:
+  base:
+    - "border-b transition-colors"
+    - "hover:bg-muted/50"
+    - "data-[state=selected]:bg-muted "
+  defaultVariants: {}
+
+table.head:
+  base:
+    - "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap"
+    - "[&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+  defaultVariants: {}
+
+table.cell:
+  base:
+    - "p-2 align-middle whitespace-nowrap"
+    - "[&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]"
+  defaultVariants: {}
+
+table.caption:
+  base:
+    - "text-muted-foreground mt-4 text-sm"
+  defaultVariants: {}

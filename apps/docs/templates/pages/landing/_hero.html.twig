@@ -1,37 +1,42 @@
 <section class="relative overflow-hidden bg-white mt-" id="hero-section">
     <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-primary-50/50"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/15"></div>
         <div class="absolute inset-0 bg-grid-slate-100/50 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))]"></div>
         <twig:GridBackground/>
     </div>
 
-    <div class="relative z-30 max-w-7xl mx-auto px-6 py-24 sm:py-32 lg:py-40">
+    <div class="relative z-30 max-w-7xl mx-auto px-2 py-24 sm:py-32 lg:py-40">
         <div class="text-center">
-            <h1 class="text-5xl font-bold tracking-tight text-gray-900 text-balance sm:text-6xl lg:text-7xl">
-                Build modern <span class="text-primary-600">Symfony</span> UIs
+            <h1 class="text-5xl font-black tracking-tight text-gray-900 text-balance sm:text-6xl lg:text-7xl xl:text-8xl font-display">
+                <span class="text-primary">Symfony</span> twig components<br>that work<span class="hidden lg:inline-block">, period.</span>
             </h1>
-            <div class="mt-4">
-                <span class="text-xl sm:text-3xl lg:text-4xl font-light text-gray-600 italic">
-                    without forking components
+            <div class="mt-2 lg:mt-8">
+                <span class="text-lg sm:text-xl lg:text-2xl font-light text-gray-600 italic font-body">
+                    The foundation for your design system
                 </span>
             </div>
 
-            <p class="mt-8 text-lg leading-8 text-gray-600 max-w-3xl mx-auto text-balance">
-                Headless Twig components for Symfony with Tailwind CSS v4. Configure styles, keep upstream updates, use any CSS framework.
+            <p class="mt-2 lg:mt-8 text-base leading-7 text-gray-600 max-w-2xl mx-auto text-balance font-body">
+                Beautiful, headless Twig components that you configure instead of fork. Keep your styling, get automatic updates, maintain zero technical debt.
             </p>
 
             <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="{{ path('app_docs', {section: 'overview', page: 'getting-started'}) }}"
-                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary-600 border border-transparent rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200">
+                <twig:ui:Button
+                    tag="a"
+                    href="{{ path('app_docs', {section: 'overview', page: 'getting-started'}) }}"
+                    size="lg">
                     <span>Get Started</span>
                     <twig:ux:icon name="lucide:arrow-right" class="ml-2 w-5 h-5" />
-                </a>
+                </twig:ui:Button>
 
-                <a href="{{ path('app_components') }}"
-                   class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:border-primary-300 hover:text-primary-700 transition-all duration-200">
+                <twig:ui:Button
+                    tag="a"
+                    href="{{ path('app_components') }}"
+                    variant="outline"
+                    size="lg">
                     <span>Browse Components</span>
                     <twig:ux:icon name="lucide:eye" class="ml-2 w-5 h-5" />
-                </a>
+                </twig:ui:Button>
             </div>
         </div>
     </div>

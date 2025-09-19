@@ -1,0 +1,3 @@
+skeleton:
+  base:
+    - "bg-accent animate-pulse rounded-md"

@@ -1,0 +1,92 @@
+{% set projects = [
+    {
+        id: 'PRJ-101',
+        name: 'E-commerce Platform',
+        status: 'In Progress',
+        priority: 'High',
+        deadline: '2024-03-15',
+        budget: '€85,000',
+    },
+    {
+        id: 'PRJ-102',
+        name: 'Mobile App Redesign',
+        status: 'Completed',
+        priority: 'Medium',
+        deadline: '2024-02-28',
+        budget: '€42,500',
+    },
+    {
+        id: 'PRJ-103',
+        name: 'Analytics Dashboard',
+        status: 'Planning',
+        priority: 'Low',
+        deadline: '2024-04-20',
+        budget: '€28,000',
+    },
+    {
+        id: 'PRJ-104',
+        name: 'API Integration',
+        status: 'In Progress',
+        priority: 'High',
+        deadline: '2024-03-10',
+        budget: '€67,200',
+    },
+    {
+        id: 'PRJ-105',
+        name: 'Security Audit',
+        status: 'Completed',
+        priority: 'Critical',
+        deadline: '2024-02-15',
+        budget: '€15,800',
+    },
+] %}
+
+{% set totalBudget = 0 %}
+{% for project in projects %}
+    {% set cleanBudget = project.budget|replace({€: '', ',': ''}) %}
+    {% set totalBudget = totalBudget + cleanBudget %}
+{% endfor %}
+
+<twig:ui:Table>
+    <twig:ui:Table:Caption>Current development projects overview</twig:ui:Table:Caption>
+    <twig:ui:Table:Header>
+        <twig:ui:Table:Row>
+            <twig:ui:Table:Head class="w-[120px]">Project ID</twig:ui:Table:Head>
+            <twig:ui:Table:Head>Name</twig:ui:Table:Head>
+            <twig:ui:Table:Head>Status</twig:ui:Table:Head>
+            <twig:ui:Table:Head>Priority</twig:ui:Table:Head>
+            <twig:ui:Table:Head>Deadline</twig:ui:Table:Head>
+            <twig:ui:Table:Head class="text-right">Budget</twig:ui:Table:Head>
+        </twig:ui:Table:Row>
+    </twig:ui:Table:Header>
+    <twig:ui:Table:Body>
+        {% for project in projects %}
+            <twig:ui:Table:Row>
+                <twig:ui:Table:Cell class="font-medium">{{ project.id }}</twig:ui:Table:Cell>
+                <twig:ui:Table:Cell>{{ project.name }}</twig:ui:Table:Cell>
+                <twig:ui:Table:Cell>
+                    <twig:ui:Badge
+                        variant="{% if project.status == 'Completed' %}success{% elseif project.status == 'In Progress' %}primary{% else %}warning{% endif %}"
+                    >
+                        {{ project.status }}
+                    </twig:ui:Badge>
+                </twig:ui:Table:Cell>
+                <twig:ui:Table:Cell>
+                    <twig:ui:Badge
+                        variant="{% if project.priority == 'Critical' %}destructive{% elseif project.priority == 'High' %}destructive{% elseif project.priority == 'Medium' %}warning{% else %}secondary{% endif %}"
+                    >
+                        {{ project.priority }}
+                    </twig:ui:Badge>
+                </twig:ui:Table:Cell>
+                <twig:ui:Table:Cell>{{ project.deadline }}</twig:ui:Table:Cell>
+                <twig:ui:Table:Cell class="text-right">{{ project.budget }}</twig:ui:Table:Cell>
+            </twig:ui:Table:Row>
+        {% endfor %}
+    </twig:ui:Table:Body>
+    <twig:ui:Table:Footer>
+        <twig:ui:Table:Row>
+            <twig:ui:Table:Cell colspan="5" class="font-medium">Total Budget</twig:ui:Table:Cell>
+            <twig:ui:Table:Cell class="text-right font-medium">€{{ totalBudget|number_format }}</twig:ui:Table:Cell>
+        </twig:ui:Table:Row>
+    </twig:ui:Table:Footer>
+</twig:ui:Table>

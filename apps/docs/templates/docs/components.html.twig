@@ -1,39 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {%- block seo_title -%}
-    {{- 'seo.components.title'|trans -}} {{- parent() -}}
+    Components - {{ parent() }}
 {%- endblock -%}
 {%- block seo_description -%}
-    {{- 'seo.components.description'|trans -}}
+    Here you can find all the components available in the library. We are working on adding more components.
 {%- endblock -%}
 
 {% block body %}
-<div class="max-w-6xl mx-auto px-6 py-8">
+<div class="min-h-screen bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                Components
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl">
+                Components list
+            </p>
+        </div>
 
-    <header class="mb-12">
-        <h1 class="text-4xl font-bold mb-4 text-gray-900">
-            {{ 'components.title'|trans|capitalize }}
-        </h1>
-        <p class="text-lg text-gray-600">
-            {{ 'components.description'|trans|capitalize }}
-        </p>
-    </header>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for component in components %}
+                <a href="{{ path('app_docs', {section: component.sectionSlug, page: component.pageSlug}) }}"
+                   class="group block border rounded-xl overflow-hidden hover:shadow-md hover:border-gray-300 transition-all duration-100">
+                    <div class="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center text-white">
+                        {% if component.image %}
+                            <img src="{{ absolute_url(component.image) }}" class="w-full h-full object-cover text-foreground pointer-events-none select-none" alt="image of {{ component.title }}"/>
+                        {% endif %}
+                    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {% for component in components %}
-            <a href="{{ path('app_docs', {section: component.sectionSlug, page: component.pageSlug}) }}"
-               class="block border border-gray-200 rounded-lg p-6 hover:border-gray-300 hover:shadow-md transition-all group">
-
-                <div class="mb-4">
-                    <h3 class="text-xl font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
-                        {{ component.title|trans|capitalize }}
-                    </h3>
-                </div>
-{# <p class="text-gray-600 leading-relaxed"> #}
-{# {{ component.description|trans }} #}
-{# </p> #}
-            </a>
-        {% endfor %}
+                    <div class="p-4 border-t hover:border-gray-300">
+                        <h3 class="font-semibold text-gray-900 transition-colors">
+                            {{ component.title|capitalize }}
+                        </h3>
+                        {% if component.description is defined %}
+                            <p class="text-sm text-gray-500 mt-1 line-clamp-2">
+                                {{ component.description }}
+                            </p>
+                        {% endif %}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}

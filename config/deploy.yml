@@ -37,6 +37,7 @@ env:
         SERVER_NAME: "www.harmonyui.org, harmonyui.org, :80, :443"
         FRANKENPHP_CONFIG: "worker ./public/index.php"
         TRACKING_ENABLED: "true"
+        GA4_ID: "G-48RPQ8WC84"
     secret:
         - APP_SECRET
         - GA4_ID

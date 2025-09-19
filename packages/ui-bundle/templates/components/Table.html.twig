@@ -1,0 +1,17 @@
+{%- set styleProps = getStyleProps(
+    'table',
+    attributes
+) -%}
+
+<div
+    class="{{ style('table.container', styleProps) }}"
+    data-slot="table-container"
+>
+    <table
+        class="{{ style('table', styleProps) }}"
+        {{ attributes.without('class') }}
+        data-slot="table"
+    >
+        {%- block content %}{% endblock -%}
+    </table>
+</div>

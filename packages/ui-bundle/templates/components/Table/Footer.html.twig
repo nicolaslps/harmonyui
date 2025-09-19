@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'table',
+    attributes,
+    'footer'
+) -%}
+
+<tfoot
+    class="{{ style('table.footer', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="table-footer"
+>
+    {%- block content %}{% endblock -%}
+</tfoot>

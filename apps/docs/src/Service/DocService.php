@@ -109,6 +109,11 @@ class DocService
         $docPage->setIsPublished((bool) ($metadata['published'] ?? true));
         $docPage->setSection($docSection);
         $docPage->setTemplate($this->getTemplatePathFromFile($filePath));
+        $docPage->setImage(
+            isset($metadata['image']) && \is_string($metadata['image'])
+                ? $metadata['image']
+                : null
+        );
 
         return $docPage;
     }

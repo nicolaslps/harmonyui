@@ -1,2 +1,1 @@
-// Re-export all types from primitives
-export * from '@harmonyui/primitives';
+export { HelloBye } from './hello-bye.js';

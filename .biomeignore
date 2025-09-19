@@ -1,0 +1,14 @@
+**/node_modules/**
+**/vendor/**
+**/var/**
+**/build/**
+**/dist/**
+**/.cache/**
+**/.git/**
+**/coverage/**
+**/.phpunit.cache/**
+**/.php-cs-fixer.cache
+**/composer.lock
+**/package-lock.json
+**/pnpm-lock.yaml
+**/yarn.lock

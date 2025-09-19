@@ -1,30 +1,38 @@
 <!DOCTYPE html>
-<html lang="{{ app.locale|default('en') }}">
+<html lang="{{ app.locale|default('en') }}" class="bg-gray-900">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% set seo_title_content %}
         {% block seo_title %}
-            {{ 'seo.default.title'|trans }}
+            HarmonyUI - Modern UI Component Library for Symfony
         {% endblock %}
     {% endset %}
     {% set seo_description_content %}
         {% block seo_description %}
-            {{ 'seo.default.description'|trans }}
+            Build stunning Symfony applications with HarmonyUI. Modern component library featuring beautiful Twig components, TailwindCSS styling, and Stimulus controllers. Free, open-source, and developer-friendly.
         {% endblock %}
     {% endset %}
     {% set seo_keywords_content %}
         {% block seo_keywords %}
-            {{ 'seo.default.keywords'|trans }}
+            symfony component library, twig components, tailwindcss, stimulus, php ui library, symfony ui kit, web components, modern ui design
         {% endblock %}
     {% endset %}
+
+    {%- set ogImage -%}
+        {%- block og -%}
+            {{ absolute_url(asset('og.png')) }}
+        {%- endblock -%}
+    {%- endset -%}
 
     {{ include('./seo/_default.html.twig') }}
     {{ include('./seo/_og.html.twig') }}
     {{ include('./seo/_twitter.html.twig') }}
 
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
 
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
@@ -38,11 +46,11 @@
     {{ include('./integrations/onedollarstats.html.twig') }}
     {{ include('./integrations/clarity.html.twig') }}
 </head>
-<body class="bg-gray-900 dark:text-white">
+<body class="bg-gray-900 text-base-content">
     <twig:Layout:Navbar/>
-    <div class="relative overflow-clip rounded-b-4xl min-h-screen w-screen bg-stone-50 dark:bg-stone-800 z-10">
+    <main class="isolate relative overflow-clip rounded-b-4xl bg-background text-base-content flex flex-col z-10">
         {% block body %}{% endblock %}
-    </div>
+    </main>
     <twig:Layout:Footer/>
 </body>
 </html>

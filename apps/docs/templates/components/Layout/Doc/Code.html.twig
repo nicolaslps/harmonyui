@@ -1,0 +1,40 @@
+<div>
+    {% for codeData in this.getFormattedCodes() %}
+        <div class="mb-6 last:mb-0">
+            <div class="relative bg-gray-900 rounded-lg overflow-hidden">
+                {% if not codeData.error %}
+                    <button
+                        onclick="navigator.clipboard.writeText({{ codeData.rawCode|json_encode }}).then(() => { const btn = this; const original = btn.textContent; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = original, 1000); })"
+                        class="absolute top-2 right-2 text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 rounded hover:bg-gray-700 z-10">
+                        Copy
+                    </button>
+                {% endif %}
+                <pre class="p-4 text-sm overflow-x-auto text-gray-300 font-code">{{ codeData.highlightedCode|raw }}</pre>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<style>
+/* Tempest Highlight CSS - Dark Theme */
+.hl-keyword { color: #c792ea; }
+.hl-variable { color: #82aaff; }
+.hl-string { color: #c3e88d; }
+.hl-comment { color: #546e7a; font-style: italic; }
+.hl-number { color: #f78c6c; }
+.hl-function { color: #82aaff; }
+.hl-class { color: #ffcb6b; }
+.hl-operator { color: #89ddff; }
+.hl-punctuation { color: #89ddff; }
+.hl-tag { color: #f07178; }
+.hl-attribute { color: #c792ea; }
+.hl-value { color: #c3e88d; }
+.hl-type { color: #ffcb6b; }
+.hl-property { color: #82aaff; }
+.hl-constant { color: #f78c6c; }
+.hl-method { color: #82aaff; }
+.hl-delimiter { color: #89ddff; }
+.hl-bracket { color: #89ddff; }
+.hl-brace { color: #89ddff; }
+.hl-parenthesis { color: #89ddff; }
+</style>

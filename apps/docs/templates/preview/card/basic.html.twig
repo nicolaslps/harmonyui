@@ -1,0 +1,52 @@
+<twig:ui:Card class="w-full max-w-sm">
+    <twig:ui:Card:Header>
+        <twig:ui:Card:Title>Login to your account</twig:ui:Card:Title>
+        <twig:ui:Card:Description>
+            Enter your email below to login to your account
+        </twig:ui:Card:Description>
+        <twig:ui:Card:Action>
+            <twig:ui:Button variant="link" href="#">Sign Up</twig:ui:Button>
+        </twig:ui:Card:Action>
+    </twig:ui:Card:Header>
+    <twig:ui:Card:Content>
+        <form>
+            <div class="flex flex-col gap-6">
+                <div class="grid gap-2">
+                    <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email</label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="m@example.com"
+                        required
+                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    />
+                </div>
+                <div class="grid gap-2">
+                    <div class="flex items-center">
+                        <label for="password" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Password</label>
+                        <a
+                            href="#"
+                            class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                        >
+                            Forgot your password?
+                        </a>
+                    </div>
+                    <input
+                        id="password"
+                        type="password"
+                        required
+                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    />
+                </div>
+            </div>
+        </form>
+    </twig:ui:Card:Content>
+    <twig:ui:Card:Footer class="flex-col gap-2">
+        <twig:ui:Button type="submit" class="w-full">
+            Login
+        </twig:ui:Button>
+        <twig:ui:Button variant="outline" class="w-full">
+            Login with Google
+        </twig:ui:Button>
+    </twig:ui:Card:Footer>
+</twig:ui:Card>

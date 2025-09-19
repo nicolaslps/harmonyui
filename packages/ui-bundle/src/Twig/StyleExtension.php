@@ -15,25 +15,22 @@ namespace HarmonyUi\Bundle\Twig;
 
 use HarmonyUi\Bundle\Style\StyleRegistry;
 use Symfony\UX\TwigComponent\ComponentAttributes;
-use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**
  * StyleExtension provides Twig functions and filters for rendering component styles.
- * It integrates with StyleRegistry to render CSS classes based on component configurations,
- * themes, and user props. Supports both function and filter syntax in templates.
+ * It integrates with StyleRegistry to render CSS classes based on component configurations
+ * and user props. Supports both function and filter syntax in templates.
  */
 final class StyleExtension extends AbstractExtension
 {
     /**
-     * @param StyleRegistry $styleRegistry   Registry containing component style definitions
-     * @param Environment   $twigEnvironment Twig environment
+     * @param StyleRegistry $styleRegistry Registry containing component style definitions
      */
     public function __construct(
         private readonly StyleRegistry $styleRegistry,
-        private readonly Environment $twigEnvironment,
     ) {
     }
 
@@ -60,19 +57,12 @@ final class StyleExtension extends AbstractExtension
      * @param array<string, mixed> $context Twig template context
      * @param string               $key     Component identifier (e.g., 'button', 'card')
      * @param array<string, mixed> $props   Component props including variants and classes
-     * @param string|null          $theme   Optional theme override (defaults to context or global theme)
      *
      * @return string Rendered CSS classes
      */
-    public function style(array $context, string $key, array $props = [], ?string $theme = null): string
+    public function style(array $context, string $key, array $props = []): string
     {
-        if (null === $theme) {
-            $globals = $this->twigEnvironment->getGlobals();
-            $globalTheme = isset($globals['ui_theme']) && \is_string($globals['ui_theme']) ? $globals['ui_theme'] : null;
-            $theme = isset($context['ui_theme']) && \is_string($context['ui_theme']) ? $context['ui_theme'] : $globalTheme;
-        }
-
-        return $this->styleRegistry->render($key, $props, $theme);
+        return $this->styleRegistry->render($key, $props);
     }
 
     /**
@@ -89,8 +79,7 @@ final class StyleExtension extends AbstractExtension
      */
     public function getStyleProps(array $context, string $component, ?ComponentAttributes $componentAttributes = null): array
     {
-        $theme = isset($context['ui_theme']) && \is_string($context['ui_theme']) ? $context['ui_theme'] : null;
-        $config = $this->styleRegistry->get($component, $theme);
+        $config = $this->styleRegistry->get($component);
 
         if (\is_string($config)) {
             return [];
@@ -114,6 +103,10 @@ final class StyleExtension extends AbstractExtension
             }
 
             $finalProps[$propName] = $realAttributes[$propName];
+        }
+
+        if (isset($realAttributes['class'])) {
+            $finalProps['class'] = $realAttributes['class'];
         }
 
         return $finalProps;
