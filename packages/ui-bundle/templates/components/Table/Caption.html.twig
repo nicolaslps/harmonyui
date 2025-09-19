@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'table',
+    attributes,
+    'caption'
+) -%}
+
+<caption
+    class="{{ style('table.caption', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="table-caption"
+>
+    {%- block content %}{% endblock -%}
+</caption>

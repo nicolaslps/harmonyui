@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'table',
+    attributes,
+    'body'
+) -%}
+
+<tbody
+    class="{{ style('table.body', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="table-body"
+>
+    {%- block content %}{% endblock -%}
+</tbody>

@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'table',
+    attributes,
+    'cell'
+) -%}
+
+<td
+    class="{{ style('table.cell', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="table-cell"
+>
+    {%- block content %}{% endblock -%}
+</td>

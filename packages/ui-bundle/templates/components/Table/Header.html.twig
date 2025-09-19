@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'table',
+    attributes,
+    'header'
+) -%}
+
+<thead
+    class="{{ style('table.header', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="table-header"
+>
+    {%- block content %}{% endblock -%}
+</thead>
