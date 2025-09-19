@@ -1,9 +1,9 @@
 {%- set styleProps = getStyleProps(
-    'card-header',
+    'card.header',
     attributes
 ) -%}
 
-<header class="{{ style('card-header', styleProps) }}"
+<header class="{{ style('card.header', styleProps) }}"
     {{ attributes.without('class') }}
     data-slot="card-header"
 >

@@ -1,9 +1,9 @@
 {%- set styleProps = getStyleProps(
-    'card-title',
+    'card.title',
     attributes
 ) -%}
 
-<h3 class="{{ style('card-title', styleProps) }}"
+<h3 class="{{ style('card.title', styleProps) }}"
     {{ attributes.without('class') }}
     data-slot="card-title"
 >

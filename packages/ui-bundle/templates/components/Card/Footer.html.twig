@@ -1,9 +1,9 @@
 {%- set styleProps = getStyleProps(
-    'card-footer',
+    'card.footer',
     attributes
 ) -%}
 
-<footer class="{{ style('card-footer', styleProps) }}"
+<footer class="{{ style('card.footer', styleProps) }}"
     {{ attributes.without('class') }}
     data-slot="card-footer"
 >

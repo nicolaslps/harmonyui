@@ -2,3 +2,35 @@ card:
   base:
     - "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm"
   defaultVariants: {}
+
+card.header:
+  base:
+    - "@container/card-header"
+    - "grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6"
+    - "has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
+  defaultVariants: {}
+
+card.title:
+  base:
+    - "leading-none font-semibold"
+  defaultVariants: {}
+
+card.description:
+  base:
+    - "text-muted-foreground text-sm"
+  defaultVariants: {}
+
+card.action:
+  base:
+    - "col-start-2 row-span-2 row-start-1 self-start justify-self-end"
+  defaultVariants: {}
+
+card.content:
+  base:
+    - "px-6"
+  defaultVariants: {}
+
+card.footer:
+  base:
+    - "flex items-center px-6 [.border-t]:pt-6"
+  defaultVariants: {}
