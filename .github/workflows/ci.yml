@@ -289,6 +289,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          extensions: ctype, iconv, intl
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: cd apps/docs && composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
