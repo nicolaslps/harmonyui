@@ -1,15 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the HarmonyUI project.
+ *
+ * (c) Nicolas Lopes
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Twig\Component\Layout\Doc;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
-use Twig\Environment;
 use Tempest\Highlight\Highlighter;
+use Twig\Environment;
 
 #[AsTwigComponent('Code', template: 'components/Layout/Doc/Code.html.twig')]
 class Code
 {
     public string $title = 'Code';
+    /** @var string|array<string> */
     public string|array $files = '';
     public string $language = 'twig';
 
@@ -22,9 +34,12 @@ class Code
         $this->highlighter = new Highlighter();
     }
 
+    /**
+     * @return array<array{file: string, rawCode: string, highlightedCode: string, language: string, error: bool}>
+     */
     public function getFormattedCodes(): array
     {
-        $files = is_string($this->files) ? [$this->files] : $this->files;
+        $files = \is_string($this->files) ? [$this->files] : $this->files;
         $formattedCodes = [];
 
         foreach ($files as $file) {
@@ -34,6 +49,9 @@ class Code
         return $formattedCodes;
     }
 
+    /**
+     * @return array{file: string, rawCode: string, highlightedCode: string, language: string, error: bool}
+     */
     private function formatCode(string $filePath): array
     {
         try {
@@ -45,7 +63,7 @@ class Code
                     'rawCode' => "File not found: {$filePath}",
                     'highlightedCode' => "File not found: {$filePath}",
                     'language' => 'text',
-                    'error' => true
+                    'error' => true,
                 ];
             }
 
@@ -57,7 +75,7 @@ class Code
             try {
                 $highlightedCode = $this->highlighter->parse($rawCode, $language);
             } catch (\Exception $e) {
-                $highlightedCode = htmlspecialchars($rawCode, ENT_QUOTES, 'UTF-8');
+                $highlightedCode = htmlspecialchars($rawCode, \ENT_QUOTES, 'UTF-8');
             }
 
             return [
@@ -65,23 +83,22 @@ class Code
                 'rawCode' => $rawCode,
                 'highlightedCode' => $highlightedCode,
                 'language' => $language,
-                'error' => false
+                'error' => false,
             ];
-
         } catch (\Exception $e) {
             return [
                 'file' => $filePath,
-                'rawCode' => "Error loading file: " . $e->getMessage(),
-                'highlightedCode' => "Error loading file: " . $e->getMessage(),
+                'rawCode' => 'Error loading file: '.$e->getMessage(),
+                'highlightedCode' => 'Error loading file: '.$e->getMessage(),
                 'language' => 'text',
-                'error' => true
+                'error' => true,
             ];
         }
     }
 
     private function detectLanguage(string $filePath): string
     {
-        $extension = pathinfo($filePath, PATHINFO_EXTENSION);
+        $extension = pathinfo($filePath, \PATHINFO_EXTENSION);
 
         return match ($extension) {
             'twig' => 'twig',
@@ -94,7 +111,7 @@ class Code
             'yml', 'yaml' => 'yaml',
             'json' => 'json',
             'xml' => 'xml',
-            default => $this->language
+            default => $this->language,
         };
     }
 }
