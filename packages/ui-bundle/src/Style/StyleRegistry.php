@@ -18,7 +18,7 @@ use Twig\Extra\Html\Cva;
 
 /**
  * Registry for component styles. Renders CSS classes based on component
- * variants, themes, and props using CVA (Class Variance Authority).
+ * variants and props using CVA (Class Variance Authority).
  */
 final readonly class StyleRegistry
 {
@@ -40,13 +40,12 @@ final readonly class StyleRegistry
      *
      * @param string               $key   Component name
      * @param array<string, mixed> $props Component props and variants
-     * @param string|null          $theme Optional theme
      *
      * @return string CSS classes
      */
-    public function render(string $key, array $props = [], ?string $theme = null): string
+    public function render(string $key, array $props = []): string
     {
-        $config = $this->get($key, $theme);
+        $config = $this->get($key);
         $extraClasses = $props['class'] ?? '';
         unset($props['class']);
 
@@ -68,21 +67,14 @@ final readonly class StyleRegistry
     /**
      * Get component configuration.
      *
-     * @param string      $component Component name
-     * @param string|null $theme     Optional theme
+     * @param string $component Component name
      *
      * @return array<string, mixed>|string Component config
      *
      * @throws \InvalidArgumentException If component not found
      */
-    public function get(string $component, ?string $theme = null): array|string
+    public function get(string $component): array|string
     {
-        if ($theme && isset($this->map[$component.'.'.$theme])) {
-            $config = $this->map[$component.'.'.$theme];
-
-            return \is_array($config) || \is_string($config) ? $config : [];
-        }
-
         if (isset($this->map[$component])) {
             $config = $this->map[$component];
 
