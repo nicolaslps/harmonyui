@@ -16,6 +16,7 @@ namespace App\Controller;
 use App\Service\DocService;
 use DOMDocument;
 use DOMException;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -38,13 +39,17 @@ final class SitemapController extends AbstractController
             $urls = $this->buildSitemapUrls();
             $xml = $this->createSitemapXml($urls);
 
-            $response = new Response($xml->saveXML());
+            $xmlContent = $xml->saveXML();
+            if (false === $xmlContent) {
+                throw new DOMException('Failed to generate XML');
+            }
+            $response = new Response($xmlContent);
             $response->headers->set('Content-Type', 'application/xml; charset=UTF-8');
 
             return $response;
         } catch (DOMException $e) {
             return new Response(
-                '<?xml version="1.0" encoding="UTF-8"?><error>Failed to generate sitemap: ' . htmlspecialchars($e->getMessage()) . '</error>',
+                '<?xml version="1.0" encoding="UTF-8"?><error>Failed to generate sitemap: '.htmlspecialchars($e->getMessage()).'</error>',
                 500,
                 ['Content-Type' => 'application/xml; charset=UTF-8']
             );
@@ -90,7 +95,7 @@ final class SitemapController extends AbstractController
                     'loc' => $url,
                     'priority' => '0.64',
                 ];
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 // Skip this URL if it can't be generated
                 continue;
             }
@@ -101,6 +106,7 @@ final class SitemapController extends AbstractController
 
     /**
      * @param array<int, array{loc: string, priority: string}> $urls
+     *
      * @throws DOMException
      */
     private function createSitemapXml(array $urls): DOMDocument
@@ -124,9 +130,10 @@ final class SitemapController extends AbstractController
 
     /**
      * @param array{loc: string, priority: string} $urlData
+     *
      * @throws DOMException
      */
-    private function createUrlElement(DOMDocument $xml, array $urlData): \DOMElement
+    private function createUrlElement(DOMDocument $xml, array $urlData): DOMElement
     {
         $urlElement = $xml->createElement('url');
 
