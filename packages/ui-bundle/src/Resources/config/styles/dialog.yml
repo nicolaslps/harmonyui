@@ -4,7 +4,7 @@ dialog:
 
 dialog.native:
   base:
-    - "border-border bg-background text-foreground z-50 w-full max-w-lg gap-4 border p-6 shadow-lg rounded-lg m-auto duration-200"
+    - "z-50 m-auto duration-200 bg-transparent"
     - "backdrop:bg-black/80 backdrop:transition-all backdrop:duration-200"
     - "data-[closed]:opacity-0 data-[closed]:scale-95"
     - "data-[leave]:opacity-0 data-[leave]:scale-95 data-[leave]:duration-150"
@@ -14,7 +14,7 @@ dialog.native:
 
 dialog.content:
   base:
-    - "grid gap-4"
+    - "relative border-border bg-background text-foreground w-full max-w-lg gap-4 border p-6 shadow-lg rounded-lg grid gap-4"
   defaultVariants: {}
 
 dialog.header:
