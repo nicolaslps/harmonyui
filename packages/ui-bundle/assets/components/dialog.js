@@ -4,6 +4,7 @@ class HuiDialog extends HTMLElement {
 	constructor() {
 		super();
 		this.handleBackdropClick = this.handleBackdropClick.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
 		this.dialog = null;
 	}
 
@@ -12,6 +13,7 @@ class HuiDialog extends HTMLElement {
 		if (!this.dialog) return;
 
 		this.dialog.addEventListener('click', this.handleBackdropClick);
+		this.dialog.addEventListener('keydown', this.handleKeyDown);
 		this.dialog.addEventListener('close', () => {
 			screenLock.unlock();
 		});
@@ -29,11 +31,20 @@ class HuiDialog extends HTMLElement {
 	disconnectedCallback() {
 		if (this.dialog) {
 			this.dialog.removeEventListener('click', this.handleBackdropClick);
+			this.dialog.removeEventListener('keydown', this.handleKeyDown);
 		}
 	}
 
 	handleBackdropClick(event) {
 		if (event.target === this.dialog) {
+			this.close();
+		}
+	}
+
+	handleKeyDown(event) {
+		if (event.key === 'Escape' && this.dialog && this.dialog.open) {
+			event.preventDefault();
+			event.stopPropagation();
 			this.close();
 		}
 	}
