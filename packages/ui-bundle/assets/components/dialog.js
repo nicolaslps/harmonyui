@@ -1,4 +1,3 @@
-import { createFocusTrap } from '../utils/focus-trap.js';
 import { screenLock } from '../utils/screen-lock.js';
 
 class HuiDialog extends HTMLElement {
@@ -6,7 +5,6 @@ class HuiDialog extends HTMLElement {
 		super();
 		this.handleBackdropClick = this.handleBackdropClick.bind(this);
 		this.dialog = null;
-		this.focusTrap = null;
 	}
 
 	connectedCallback() {
@@ -16,21 +14,10 @@ class HuiDialog extends HTMLElement {
 		this.dialog.addEventListener('click', this.handleBackdropClick);
 		this.dialog.addEventListener('close', () => {
 			screenLock.unlock();
-            console.log('dsfsdfsf')
-			if (this.focusTrap) {
-				this.focusTrap.deactivate();
-			}
 		});
 
 		this.dialog.setAttribute('role', 'dialog');
 		this.dialog.setAttribute('aria-modal', 'true');
-
-		this.focusTrap = createFocusTrap(this.dialog, {
-			initialFocus: 'first',
-			returnFocus: true,
-			escapeDeactivates: true,
-			clickOutsideDeactivates: false
-		});
 
 		this.updateAnimationAttributes();
 
@@ -42,10 +29,6 @@ class HuiDialog extends HTMLElement {
 	disconnectedCallback() {
 		if (this.dialog) {
 			this.dialog.removeEventListener('click', this.handleBackdropClick);
-		}
-
-		if (this.focusTrap) {
-			this.focusTrap.deactivate();
 		}
 	}
 
@@ -103,16 +86,10 @@ class HuiDialog extends HTMLElement {
 		this.dialog.showModal();
 		screenLock.lock();
 		this.handleOpenAnimation();
-		if (this.focusTrap) {
-			this.focusTrap.activate();
-		}
 	}
 
 	async close() {
 		if (!this.dialog || !this.dialog.open) return;
-		if (this.focusTrap) {
-			this.focusTrap.deactivate();
-		}
 		await this.handleCloseAnimation();
 		this.dialog.close();
 		screenLock.unlock();
