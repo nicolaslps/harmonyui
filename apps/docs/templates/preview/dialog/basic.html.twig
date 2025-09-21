@@ -1,0 +1,21 @@
+<div class="flex items-center justify-center p-4">
+    <twig:ui:Button
+        data-dialog="simple-dialog"
+    >
+        Open Simple Dialog
+    </twig:ui:Button>
+</div>
+
+<twig:ui:Dialog id="simple-dialog">
+    <twig:ui:Dialog:Content>
+        <twig:ui:Dialog:Header>
+            <twig:ui:Dialog:Title>
+                Simple Dialog
+            </twig:ui:Dialog:Title>
+            <twig:ui:Dialog:Description>
+                This is a simple dialog with just text content. Click anywhere outside or press Escape to close.
+            </twig:ui:Dialog:Description>
+        </twig:ui:Dialog:Header>
+        <twig:ui:Dialog:Close />
+    </twig:ui:Dialog:Content>
+</twig:ui:Dialog>

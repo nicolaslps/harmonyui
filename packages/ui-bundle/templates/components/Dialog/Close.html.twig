@@ -1,0 +1,16 @@
+{%- set styleProps = getStyleProps(
+    'dialog.close',
+    attributes
+) -%}
+
+<button
+    type="button"
+    class="{{ style('dialog.close', styleProps) }}"
+    {{ attributes.without('class') }}
+    onclick="this.closest('hui-dialog').close()"
+    aria-label="{{ attributes['aria-label'] ?? 'Close dialog' }}"
+>
+    {%- block content %}
+        <twig:ux:icon name="lucide:x" class="size-4" />
+    {% endblock -%}
+</button>

@@ -1,0 +1,11 @@
+{%- set styleProps = getStyleProps(
+    'dialog.header',
+    attributes
+) -%}
+
+<div
+    class="{{ style('dialog.header', styleProps) }}"
+    {{ attributes.without('class') }}
+>
+    {%- block content %}{% endblock -%}
+</div>

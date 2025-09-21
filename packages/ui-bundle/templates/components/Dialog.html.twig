@@ -1,0 +1,14 @@
+{%- set styleProps = getStyleProps(
+    'dialog',
+    attributes
+) -%}
+
+<hui-dialog
+    class="{{ style('dialog', styleProps) }}"
+    {{ attributes.without('class') }}
+    {%- if attributes.open is defined %} open{% endif %}
+>
+    <dialog class="{{ style('dialog.native', styleProps) }}">
+        {%- block content %}{% endblock -%}
+    </dialog>
+</hui-dialog>
