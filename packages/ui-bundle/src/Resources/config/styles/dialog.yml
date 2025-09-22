@@ -4,7 +4,7 @@ dialog:
 
 dialog.native:
   base:
-    - "z-50 m-auto duration-200 bg-transparent"
+    - "z-50 m-auto duration-200 bg-transparent ease-out"
     - "backdrop:bg-black/80 backdrop:transition-all backdrop:duration-200"
     - "data-[closed]:opacity-0 data-[closed]:scale-95"
     - "data-[leave]:opacity-0 data-[leave]:scale-95 data-[leave]:duration-150"
