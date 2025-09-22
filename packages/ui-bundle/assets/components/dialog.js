@@ -36,17 +36,26 @@ class HuiDialog extends HTMLElement {
 	}
 
 	handleBackdropClick(event) {
-		if (event.target === this.dialog) {
+		if (event.target === this.dialog && !this.isAlertDialog()) {
 			this.close();
 		}
 	}
 
 	handleKeyDown(event) {
 		if (event.key === 'Escape' && this.dialog && this.dialog.open) {
+			if (this.isAlertDialog()) {
+				event.preventDefault();
+				event.stopPropagation();
+				return;
+			}
 			event.preventDefault();
 			event.stopPropagation();
 			this.close();
 		}
+	}
+
+	isAlertDialog() {
+		return this.getAttribute('data-type') === 'alert';
 	}
 
 	updateAnimationAttributes() {
