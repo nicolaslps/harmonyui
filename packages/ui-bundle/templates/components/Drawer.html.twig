@@ -1,0 +1,11 @@
+{% props open = false, modal = true, dismissible = true, direction = 'bottom' %}
+
+<hui-drawer-root
+    {{ attributes.without('open', 'modal', 'dismissible', 'direction') }}
+    {%- if open %}open{% endif %}
+    {%- if not modal %}modal="false"{% endif %}
+    {%- if not dismissible %}dismissible="false"{% endif %}
+    direction="{{ direction }}"
+>
+    {%- block content %}{% endblock -%}
+</hui-drawer-root>

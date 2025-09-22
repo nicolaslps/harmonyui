@@ -1,0 +1,21 @@
+<div class="flex items-center justify-center p-4">
+    <button onclick="document.getElementById('basic-drawer').openDrawer()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+        Open Drawer
+    </button>
+</div>
+
+<hui-drawer id="basic-drawer" data-position="bottom">
+    <div class="p-4">
+        <div class="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4"></div>
+        <h2 class="text-lg font-semibold mb-2">Basic Drawer</h2>
+        <p class="text-sm text-gray-600 mb-4">
+            This drawer slides up from the bottom. You can click outside or press Escape to close.
+        </p>
+        <p class="text-sm text-gray-600 mb-4">
+            Drawer content goes here. The drawer uses native dialog functionality for better accessibility.
+        </p>
+        <button onclick="document.getElementById('basic-drawer').closeDrawer()" class="px-4 py-2 border rounded-md hover:bg-gray-50">
+            Close
+        </button>
+    </div>
+</hui-drawer>
