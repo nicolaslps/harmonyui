@@ -1,17 +1,15 @@
-{% props type = 'dialog', open = 'false' %}
+{% props open = 'false' %}
 
 {%- set styleProps = getStyleProps(
     'dialog',
     attributes
 ) -%}
 
-<hui-dialog
-    class="{{ style('dialog', styleProps) }}"
-    data-type="{{ type }}"
-    {{ attributes.without('class', 'type', 'open') }}
-    {%- if open == 'true' %}open{% endif %}
->
-    <dialog class="{{ style('dialog.native', styleProps) }}">
+<hui-dialog>
+    <dialog class="{{ style('dialog.native', styleProps) }}"
+            {{ attributes.without('class') }}
+            {% if open is not same as('false') %}data-open=""{% endif %}
+    >
         {%- block content %}{% endblock -%}
     </dialog>
 </hui-dialog>

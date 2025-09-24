@@ -4,7 +4,7 @@ dialog:
 
 dialog.native:
   base:
-    - "z-50 m-auto duration-200 bg-transparent ease-out"
+    - "relative z-50 m-auto duration-200 bg-transparent ease-out"
     - "backdrop:bg-black/80 backdrop:transition-all backdrop:duration-200"
     - "data-[closed]:opacity-0 data-[closed]:scale-95"
     - "data-[leave]:opacity-0 data-[leave]:scale-95 data-[leave]:duration-150"
@@ -37,7 +37,7 @@ dialog.footer:
     - "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2"
   defaultVariants: {}
 
-dialog.close:
+dialog.close_icon:
   base:
     - "border-input bg-background ring-offset-background absolute right-4 top-4 rounded-sm opacity-70 transition-opacity"
     - "hover:bg-accent hover:text-accent-foreground hover:opacity-100"

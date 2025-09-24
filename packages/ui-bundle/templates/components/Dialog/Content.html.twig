@@ -6,6 +6,7 @@
 <div
     class="{{ style('dialog.content', styleProps) }}"
     {{ attributes.without('class') }}
+    data-slot="panel"
 >
     {%- block content %}{% endblock -%}
 </div>

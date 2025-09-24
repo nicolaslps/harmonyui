@@ -1,176 +1,214 @@
-import { screenLock } from '../utils/screen-lock.js';
+import {screenLock} from "../utils/screen-lock";
 
 class HuiDialog extends HTMLElement {
-	constructor() {
-		super();
-		this.handleBackdropClick = this.handleBackdropClick.bind(this);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.dialog = null;
-	}
 
-	connectedCallback() {
-		this.dialog = this.querySelector('dialog');
-		if (!this.dialog) return;
+    constructor() {
+        super();
+        this._handleBackdropClick = this._handleBackdropClick.bind(this);
+        this._handleKeyDown = this._handleKeyDown.bind(this);
+        this.dialog = null;
+        this.panel = null;
+    }
 
-		this.dialog.addEventListener('click', this.handleBackdropClick);
-		this.dialog.addEventListener('keydown', this.handleKeyDown);
-		this.dialog.addEventListener('close', () => {
-			screenLock.unlock();
-		});
+    connectedCallback() {
+        this.dialog = this.querySelector('dialog');
+        if (!this.dialog) return;
+        this.panel = this.querySelector('[data-slot="panel"]');
 
-		this.dialog.setAttribute('role', 'dialog');
-		this.dialog.setAttribute('aria-modal', 'true');
+        this.dialog.addEventListener('click', this._handleBackdropClick);
+        this.dialog.addEventListener('keydown', this._handleKeyDown);
 
-		this.updateAnimationAttributes();
+        const form = this.dialog.querySelector('form[method="dialog"]');
+        if (form) {
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                await this.hide();
+            });
+        }
 
-		if (this.hasAttribute('open')) {
-			this.open();
-		}
-	}
+        this.dialog.addEventListener('close', () => {
+            screenLock.unlock()
+        });
 
-	disconnectedCallback() {
-		if (this.dialog) {
-			this.dialog.removeEventListener('click', this.handleBackdropClick);
-			this.dialog.removeEventListener('keydown', this.handleKeyDown);
-		}
-	}
 
-	handleBackdropClick(event) {
-		if (event.target === this.dialog && !this.isAlertDialog()) {
-			this.close();
-		}
-	}
+        this.dialog.setAttribute('role', 'dialog');
+        this.dialog.setAttribute('aria-modal', 'true');
 
-	handleKeyDown(event) {
-		if (event.key === 'Escape' && this.dialog && this.dialog.open) {
-			if (this.isAlertDialog()) {
-				event.preventDefault();
-				event.stopPropagation();
-				return;
-			}
-			event.preventDefault();
-			event.stopPropagation();
-			this.close();
-		}
-	}
+        this._handleInitialState();
 
-	isAlertDialog() {
-		return this.getAttribute('data-type') === 'alert';
-	}
+        if (this.hasAttribute('open')) {
+            this.show();
+        }
+    }
 
-	updateAnimationAttributes() {
-		if (!this.dialog) return;
+    disconnectedCallback() {
+        if (!this.dialog) return;
+        this.dialog.removeEventListener('click', this._handleBackdropClick);
+        this.dialog.removeEventListener('keydown', this._handleKeyDown);
+    }
 
-		const isOpen = this.dialog.open;
+    _handleInitialState() {
+        if (!this.dialog) return;
+        const isOpen = this.dialog.hasAttribute('data-open');
+        if (isOpen) {
+            this.show();
+        }
+    }
 
-		if (isOpen) {
-			this.dialog.removeAttribute('data-closed');
-		} else {
-			this.dialog.setAttribute('data-closed', '');
-		}
-	}
+    async _handleBackdropClick(event) {
+        if (event.target !== this.dialog || this._isAlertDialog()) {
+            return;
+        }
+        if (this.panel?.contains(event.target)) {
+            return;
+        }
+        await this.hide();
+    }
 
-	handleOpenAnimation() {
-		if (!this.dialog) return;
+    _handleKeyDown(event) {
+        if (event.key === 'Escape' && this.dialog && this.dialog.open) {
+            if (this._isAlertDialog()) {
+                event.preventDefault();
+                event.stopPropagation();
+                return;
+            }
+            event.preventDefault();
+            event.stopPropagation();
+            this.hide();
+        }
+    }
 
-		this.dialog.removeAttribute('data-closed');
-		this.dialog.setAttribute('data-enter', '');
-		this.dialog.setAttribute('data-transition', '');
+    _isAlertDialog() {
+        return this.dialog.getAttribute('type') === 'alert';
+    }
 
-		setTimeout(() => {
-			this.dialog.removeAttribute('data-enter');
-			this.dialog.removeAttribute('data-transition');
-		}, 200);
-	}
+    _getTransitionDuration(element) {
+        if (!element) return 0;
 
-	handleCloseAnimation() {
-		if (!this.dialog) return;
+        const computedStyle = window.getComputedStyle(element);
+        const duration = computedStyle.transitionDuration;
+        const durations = duration.split(',').map(d => {
+            const trimmed = d.trim();
+            if (trimmed.endsWith('ms')) {
+                return parseFloat(trimmed);
+            } else if (trimmed.endsWith('s')) {
+                return parseFloat(trimmed) * 1000;
+            }
+            return 0;
+        });
 
-		this.dialog.setAttribute('data-leave', '');
-		this.dialog.setAttribute('data-transition', '');
+        return Math.max(...durations, 0);
+    }
 
-		return new Promise((resolve) => {
-			setTimeout(() => {
-				if (this.dialog) {
-					this.dialog.removeAttribute('data-leave');
-					this.dialog.removeAttribute('data-transition');
-					this.dialog.setAttribute('data-closed', '');
-				}
-				resolve();
-			}, 200);
-		});
-	}
+    _nextFrame() {
+        return new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+    }
 
-	open() {
-		if (!this.dialog) return;
-		this.dialog.showModal();
-		screenLock.lock();
-		this.handleOpenAnimation();
-	}
+    async _handleOpenAnimation() {
+        if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+            return Promise.resolve();
+        }
+        if (!this.dialog) return;
 
-	async close() {
-		if (!this.dialog || !this.dialog.open) return;
-		await this.handleCloseAnimation();
-		this.dialog.close();
-		screenLock.unlock();
-	}
+        const elements = [ this.dialog, this.panel];
 
-	static get observedAttributes() {
-		return ['open'];
-	}
+        elements.forEach((el) => {
+            el.removeAttribute('data-closed');
+            el.setAttribute('data-enter', '');
+            el.setAttribute('data-transition', '');
+        });
 
-	attributeChangedCallback(name, oldValue, newValue) {
-		if (name === 'open') {
-			if (newValue !== null) {
-				this.open();
-			} else {
-				this.close();
-			}
-		}
-	}
+        await this._nextFrame();
+
+        elements.forEach((el) => {
+            const duration = this._getTransitionDuration(el);
+            setTimeout(() => {
+                el.removeAttribute('data-enter');
+                el.removeAttribute('data-transition');
+            }, duration || 200);
+        });
+    }
+
+    async _handleCloseAnimation() {
+        if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+            return Promise.resolve();
+        }
+        if (!this.dialog) return Promise.resolve();
+        const elements = [ this.dialog, this.panel];
+
+        elements.forEach((el) => {
+            el.setAttribute('data-leave', '');
+            el.setAttribute('data-transition', '');
+            el.setAttribute('data-closed', '');
+        });
+
+        await this._nextFrame();
+
+        elements.forEach((el) => {
+            const duration = this._getTransitionDuration(el);
+            setTimeout(() => {
+                el.removeAttribute('data-leave');
+                el.removeAttribute('data-transition');
+            }, duration || 200);
+        });
+
+        const dialogDuration = this._getTransitionDuration(this.dialog);
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve();
+            }, dialogDuration || 200);
+        });
+    }
+
+    show() {
+        if (!this.dialog) return;
+        screenLock.lock()
+        this.dialog.showModal();
+        this._handleOpenAnimation();
+    }
+
+    async hide() {
+        if (!this.dialog || !this.dialog.open) return;
+        await this._handleCloseAnimation();
+        this.dialog.close();
+        screenLock.unlock()
+    }
 }
 
 customElements.define('hui-dialog', HuiDialog);
 
-document.addEventListener('click', async (event) => {
-	const trigger = event.target.closest('[data-dialog]');
-	if (!trigger) return;
+function handleDialogAction(attribute, action) {
+    document.addEventListener('click', async (event) => {
+        const trigger = event.target.closest(`[${attribute}]`);
+        if (!trigger) return;
 
-	const dialogId = trigger.getAttribute('data-dialog');
-	const action = trigger.getAttribute('data-action') || 'open';
-	const dialog = document.querySelector(`#${dialogId}`);
+        const dialogId = trigger.getAttribute(attribute);
+        const dialog = document.querySelector(`#${dialogId}`);
 
-	if (!dialog) {
-		return;
-	}
+        if (!dialog) {
+            console.warn(`Dialog with id "${dialogId}" not found`);
+            return;
+        }
 
-	if (!customElements.get('hui-dialog')) {
-		await customElements.whenDefined('hui-dialog');
-	}
+        const huiDialog = dialog.closest('hui-dialog');
+        if (!huiDialog) {
+            console.warn(`Dialog "${dialogId}" is not inside a hui-dialog component`);
+            return;
+        }
 
-	if (dialog.tagName === 'HUI-DIALOG' && !dialog.open) {
-		await new Promise(resolve => setTimeout(resolve, 50));
-	}
+        if (action === 'show') {
+            if (!customElements.get('hui-dialog')) {
+                await customElements.whenDefined('hui-dialog');
+            }
+            if (!huiDialog.dialog) {
+                await new Promise(resolve => setTimeout(resolve, 50));
+            }
+        }
 
-	if (typeof dialog.open !== 'function') {
-		return;
-	}
-
-	switch (action) {
-		case 'open':
-			dialog.open();
-			break;
-		case 'close':
-			dialog.close();
-			break;
-		case 'toggle':
-			if (dialog.dialog && dialog.dialog.open) {
-				dialog.close();
-			} else {
-				dialog.open();
-			}
-			break;
-	}
-});
-
-export { HuiDialog };
+        if (typeof huiDialog[action] === 'function') {
+            huiDialog[action]();
+        }
+    });
+}
+handleDialogAction('data-dialog-show', 'show');
+handleDialogAction('data-dialog-close', 'hide');

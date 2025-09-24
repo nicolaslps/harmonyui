@@ -1,0 +1,17 @@
+{% props modalId = null %}
+
+{%- set styleProps = getStyleProps(
+    'dialog.close_icon',
+    attributes
+) -%}
+
+<button
+    type="button"
+    class="{{ style('dialog.close_icon', styleProps) }}"
+    aria-label="{{ attributes['aria-label'] ?? 'Close dialog' }}"
+    data-dialog-close="{{ modalId }}"
+    {{ attributes.without('class') }}
+>
+    {%- block content %}
+    {% endblock -%}
+</button>

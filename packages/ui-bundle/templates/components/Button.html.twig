@@ -1,4 +1,4 @@
-{%- props href = null -%}
+{%- props href = null, type = "button" -%}
 
 {%- set styleProps = getStyleProps(
     'button',
@@ -9,7 +9,7 @@
 
 <{{ element }} class="{{ style('button', styleProps) }}"
     {%- if element == 'button' %}
-        type="button"
+        type="{{ type }}"
     {%- else %}
         href="{{ href }}"
     {%- endif %}

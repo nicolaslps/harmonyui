@@ -1,12 +1,12 @@
 <div class="flex items-center justify-center p-4">
     <twig:ui:Button
-        data-dialog-show="simple-dialog"
+        data-dialog-show="custom-backdrop"
     >
         Open Simple Dialog
     </twig:ui:Button>
 </div>
 
-<twig:ui:Dialog id="simple-dialog">
+<twig:ui:Dialog id="custom-backdrop" class="backdrop:bg-(--primary)/30 data-[leave]:backdrop:bg-(--primary)/0">
     <twig:ui:Dialog:Content>
         <twig:ui:Dialog:Header>
             <twig:ui:Dialog:Title>
@@ -16,7 +16,7 @@
                 This is a simple dialog with just text content. Click anywhere outside or press Escape to close.
             </twig:ui:Dialog:Description>
         </twig:ui:Dialog:Header>
-        <twig:ui:Dialog:CloseIcon modalId="simple-dialog">
+        <twig:ui:Dialog:CloseIcon modalId="custom-backdrop">
             <twig:ux:icon name="lucide:x" class="size-4" />
         </twig:ui:Dialog:CloseIcon>
     </twig:ui:Dialog:Content>

@@ -1,9 +1,9 @@
 <div class="flex items-center justify-center p-4">
     <twig:ui:Button
-        variant="outline"
-        data-dialog="alert-basic"
+        variant="destructive"
+        data-dialog-show="alert-basic"
     >
-        Show Alert
+        Delete account
     </twig:ui:Button>
 </div>
 
@@ -21,12 +21,13 @@
             <twig:ui:Dialog:Footer>
                 <twig:ui:Button
                     variant="outline"
-                    data-dialog="alert-basic"
+                    data-dialog-close="alert-basic"
                     data-action="close"
                 >
                     Cancel
                 </twig:ui:Button>
                 <twig:ui:Button
+                    type="submit"
                     variant="destructive"
                 >
                     Continue
