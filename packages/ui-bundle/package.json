@@ -19,7 +19,5 @@
     "symfony",
     "bundle"
   ],
-  "dependencies": {
-    "lit": "^3.0.0"
-  }
+  "dependencies": {}
 }
