@@ -1,0 +1,43 @@
+{% set docPages = this.getDocPages() %}
+<div class="fixed z-40 bottom-0 left-0 w-screen p-4 pt-6 bg-background rounded-t-xl shadow-[0_-4px_10px_rgba(0,0,0,0.15)] lg:hidden">
+    <twig:ui:Button data-drawer-show="doc-links" class="w-full">
+        <twig:ux:icon name="lucide:menu" class="size-4 mr-2"/>
+        Menu
+    </twig:ui:Button>
+</div>
+
+<twig:ui:Drawer id="doc-links" placement="bottom">
+    <div class="p-4">
+        <nav class="space-y-6">
+            {% for section in docPages %}
+                <div>
+                    <h4 class="font-medium text-gray-900 mb-3 text-sm">
+                        {{ section.title }}
+                    </h4>
+                    <ul class="space-y-1">
+                        {% for page in section.pages %}
+                            <li>
+                                <a href="{{ path('app_docs', {section: page.sectionSlug, page: page.pageSlug}) }}"
+                                   class="group flex items-center px-3 py-2 text-sm rounded-lg transition-all
+                                              {%- if section == page.sectionSlug and page == page.pageSlug -%}
+                                                  bg-primary text-primary font-medium border border-primary
+                                              {%- else -%}
+                                                  text-gray-600 hover:text-gray-900 hover:bg-gray-50
+                                              {%- endif -%}">
+                                    <span class="flex-1">{{ page.title|capitalize }}</span>
+                                    {%- if section == page.sectionSlug and page == page.pageSlug -%}
+                                        <twig:ux:icon name="lucide:chevron-right" class="size-4 text-primary" />
+                                    {%- endif -%}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </nav>
+    </div>
+    <twig:ui:Drawer:CloseIcon drawerId="doc-links">
+        <span class="sr-only">Close panel</span>
+        <twig:ux:icon name="lucide:x" class="size-4" />
+    </twig:ui:Drawer:CloseIcon>
+</twig:ui:Drawer>
