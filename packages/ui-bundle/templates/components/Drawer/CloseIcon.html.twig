@@ -1,0 +1,17 @@
+{% props drawerId = null %}
+
+{%- set styleProps = getStyleProps(
+    'drawer.close_icon',
+    attributes
+) -%}
+
+<button
+    type="button"
+    class="{{ style('drawer.close_icon', styleProps) }}"
+    aria-label="{{ attributes['aria-label'] ?? 'Close drawer' }}"
+    data-drawer-close="{{ drawerId }}"
+    {{ attributes.without('class') }}
+>
+    {%- block content %}
+    {% endblock -%}
+</button>

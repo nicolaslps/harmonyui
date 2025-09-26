@@ -1,0 +1,28 @@
+{% set meta = {
+    slug: '/components/alert-dialog',
+    title: 'Alert Dialog',
+    description: 'A modal dialog that interrupts the user with important information requiring immediate attention or action.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 7,
+    section: 'components',
+    image: 'images/components/dialog.png',
+} %}
+
+<div class="space-y-16">
+    <div class="flex items-center space-x-4 mb-8">
+        <div class="w-8 h-8 bg-destructive text-destructive-foreground rounded-lg flex items-center justify-center">
+            <twig:ux:icon name="lucide:alert-triangle" class="size-4"/>
+        </div>
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+    </div>
+
+    <div class="space-y-12">
+        <twig:Layout:Doc:Preview title="Basic">
+            {{ include('preview/alert-dialog/basic.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/alert-dialog/basic.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>

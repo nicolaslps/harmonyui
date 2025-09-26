@@ -1,0 +1,10 @@
+{% props drawerId = null, as = 'button'%}
+
+<{{ as }}
+    {% if as == "button" %}type="button"{% endif %}
+data-drawer-close="{{ drawerId }}"
+{{ attributes }}
+>
+{%- block content %}
+{% endblock -%}
+</{{ as }}>

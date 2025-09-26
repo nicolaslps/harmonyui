@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'dialog.title',
+    attributes
+) -%}
+
+<h2
+    class="{{ style('dialog.title', styleProps) }}"
+    {{ attributes.without('class') }}
+    id="{{ attributes.id ?? ('dialog-title-' ~ random()) }}"
+>
+    {%- block content %}{% endblock -%}
+</h2>

@@ -1,0 +1,10 @@
+{% props modalId = null, as = 'button'%}
+
+<{{ as }}
+    {% if as == "button" %}type="button"{% endif %}
+    data-dialog-close="{{ modalId }}"
+    {{ attributes }}
+>
+    {%- block content %}
+    {% endblock -%}
+</{{ as }}>

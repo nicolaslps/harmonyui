@@ -1,0 +1,40 @@
+drawer:
+  base:
+  defaultVariants: { }
+
+drawer.native:
+  base:
+    - "relative z-50 m-auto duration-200 bg-transparent ease-out"
+    - "backdrop:bg-black/80 backdrop:transition-all backdrop:duration-200 backdrop:ease-out"
+    - "data-[closed]:opacity-0"
+    - "data-[leave]:opacity-0 data-[leave]:duration-200 data-[leave]:ease-out data-[leave]:backdrop:bg-black/0 data-[leave]:backdrop:duration-200 data-[leave]:backdrop:ease-out"
+    - "data-[transition]:transition-all"
+  defaultVariants: { }
+
+drawer.container:
+  base:
+    - "fixed z-50 flex h-auto flex-col bg-background shadow-xl pointer-events-auto transition-transform duration-200 ease-out"
+    - "data-[placement=right]:inset-y-0 data-[placement=right]:right-0 data-[placement=right]:w-3/4 data-[placement=right]:border-l"
+    - "data-[placement=right]:data-[closed]:translate-x-full data-[placement=right]:data-[enter]:translate-x-0"
+    - "data-[placement=right]:sm:max-w-sm"
+    - "data-[placement=left]:inset-y-0 data-[placement=left]:left-0 data-[placement=left]:w-3/4 data-[placement=left]:border-r"
+    - "data-[placement=left]:data-[closed]:-translate-x-full data-[placement=left]:data-[enter]:translate-x-0"
+    - "data-[placement=left]:sm:max-w-sm"
+    - "data-[placement=top]:inset-x-0 data-[placement=top]:top-0 data-[placement=top]:mb-24 data-[placement=top]:max-h-[90svh] data-[placement=top]:rounded-b-lg data-[placement=top]:border-b"
+    - "data-[placement=top]:data-[closed]:-translate-y-full data-[placement=top]:data-[enter]:translate-y-0"
+    - "data-[placement=bottom]:inset-x-0 data-[placement=bottom]:bottom-0 data-[placement=bottom]:mt-24 data-[placement=bottom]:max-h-[90svh] data-[placement=bottom]:rounded-t-lg data-[placement=bottom]:border-t"
+    - "data-[placement=bottom]:data-[closed]:translate-y-full data-[placement=bottom]:data-[enter]:translate-y-0"
+  defaultVariants: { }
+
+drawer.close:
+  base:
+    - "absolute top-4 right-4 z-10"
+  defaultVariants: { }
+
+drawer.close_icon:
+  base:
+    - "border-input bg-background ring-offset-background absolute right-4 top-4 rounded-sm opacity-70 transition-opacity"
+    - "disabled:pointer-events-none"
+    - "hover:bg-accent hover:text-accent-foreground hover:opacity-100"
+    - "focus:ring-ring focus:outline-none focus:ring-2 focus:ring-offset-2"
+  defaultVariants: { }
