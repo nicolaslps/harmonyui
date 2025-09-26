@@ -1,0 +1,159 @@
+{% set drawerContent %}
+    <div class="space-y-6">
+        <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Digital Art Portfolio</h3>
+            <p class="text-gray-600 leading-relaxed">
+                Explore a curated collection of digital artworks featuring vibrant illustrations,
+                abstract compositions, and character designs created with modern digital tools.
+            </p>
+        </div>
+
+        <div>
+            <h4 class="text-sm font-medium text-gray-900 mb-2">Featured Collections</h4>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-gradient-to-br from-purple-100 to-pink-100 p-3 rounded-lg">
+                    <h5 class="text-sm font-medium text-gray-900">Neon Dreams</h5>
+                    <p class="text-xs text-gray-600 mt-1">Cyberpunk cityscapes</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-100 to-cyan-100 p-3 rounded-lg">
+                    <h5 class="text-sm font-medium text-gray-900">Ocean Depths</h5>
+                    <p class="text-xs text-gray-600 mt-1">Underwater fantasies</p>
+                </div>
+                <div class="bg-gradient-to-br from-green-100 to-emerald-100 p-3 rounded-lg">
+                    <h5 class="text-sm font-medium text-gray-900">Forest Spirits</h5>
+                    <p class="text-xs text-gray-600 mt-1">Mystical creatures</p>
+                </div>
+                <div class="bg-gradient-to-br from-orange-100 to-red-100 p-3 rounded-lg">
+                    <h5 class="text-sm font-medium text-gray-900">Solar Flare</h5>
+                    <p class="text-xs text-gray-600 mt-1">Space abstracts</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h4 class="text-sm font-medium text-gray-900 mb-2">Creative Tools</h4>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-gray-100 text-xs text-gray-700 rounded-full">Procreate</span>
+                <span class="px-2 py-1 bg-gray-100 text-xs text-gray-700 rounded-full">Photoshop</span>
+                <span class="px-2 py-1 bg-gray-100 text-xs text-gray-700 rounded-full">Blender 3D</span>
+                <span class="px-2 py-1 bg-gray-100 text-xs text-gray-700 rounded-full">Cinema 4D</span>
+                <span class="px-2 py-1 bg-gray-100 text-xs text-gray-700 rounded-full">After Effects</span>
+            </div>
+        </div>
+
+        <div>
+            <h4 class="text-sm font-medium text-gray-900 mb-2">Latest Updates</h4>
+            <div class="space-y-3">
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+                    <div>
+                        <p class="text-sm text-gray-900">New character design series launched</p>
+                        <p class="text-xs text-gray-500">3 days ago</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                    <div>
+                        <p class="text-sm text-gray-900">Animation reel featured on ArtStation</p>
+                        <p class="text-xs text-gray-500">1 week ago</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                    <div>
+                        <p class="text-sm text-gray-900">Collaboration with indie game studio</p>
+                        <p class="text-xs text-gray-500">2 weeks ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-4 border-t border-gray-200">
+            <div class="flex items-center justify-between">
+                <p class="text-xs text-gray-500">127 artworks • 15.2k views</p>
+                <div class="flex space-x-1">
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endset %}
+
+<div class="grid grid-cols-3 grid-rows-3 gap-4 p-4 place-items-center">
+    <div class="col-start-2 row-start-1">
+        <twig:ui:Button data-drawer-show="drawer-top">
+            <twig:ux:icon name="lucide:arrow-down" class="size-4 mr-2"/>
+            Top Drawer
+        </twig:ui:Button>
+    </div>
+
+    <div class="col-start-1 row-start-2">
+        <twig:ui:Button data-drawer-show="drawer-left">
+            <twig:ux:icon name="lucide:arrow-right" class="size-4 mr-2"/>
+            Left Drawer
+        </twig:ui:Button>
+    </div>
+
+    <div class="col-start-3 row-start-2">
+        <twig:ui:Button data-drawer-show="drawer-right">
+            <twig:ux:icon name="lucide:arrow-left" class="size-4 mr-2"/>
+            Right Drawer
+        </twig:ui:Button>
+    </div>
+
+    <div class="col-start-2 row-start-3">
+        <twig:ui:Button data-drawer-show="drawer-bottom">
+            <twig:ux:icon name="lucide:arrow-up" class="size-4 mr-2"/>
+            Bottom Drawer
+        </twig:ui:Button>
+    </div>
+</div>
+
+
+<twig:ui:Drawer id="drawer-right" placement="right">
+    <div class="p-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Project Details (Right)</h2>
+        {{ drawerContent }}
+    </div>
+    <twig:ui:Drawer:CloseIcon drawerId="drawer-right">
+        <span class="sr-only">Close panel</span>
+        <twig:ux:icon name="lucide:x" class="size-4" />
+    </twig:ui:Drawer:CloseIcon>
+</twig:ui:Drawer>
+
+<twig:ui:Drawer id="drawer-left" placement="left">
+    <div class="p-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Project Details (Left)</h2>
+        {{ drawerContent }}
+    </div>
+    <twig:ui:Drawer:CloseIcon drawerId="drawer-left">
+        <span class="sr-only">Close panel</span>
+        <twig:ux:icon name="lucide:x" class="size-4" />
+    </twig:ui:Drawer:CloseIcon>
+</twig:ui:Drawer>
+
+<twig:ui:Drawer id="drawer-top" placement="top">
+    <div class="p-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Project Details (Top)</h2>
+        {{ drawerContent }}
+    </div>
+    <twig:ui:Drawer:CloseIcon drawerId="drawer-top">
+        <span class="sr-only">Close panel</span>
+        <twig:ux:icon name="lucide:x" class="size-4" />
+    </twig:ui:Drawer:CloseIcon>
+</twig:ui:Drawer>
+
+<twig:ui:Drawer id="drawer-bottom" placement="bottom">
+    <div class="p-6">
+        <h2 class="text-lg font-semibold text-gray-900 mb-4">Project Details (Bottom)</h2>
+        {{ drawerContent }}
+    </div>
+    <twig:ui:Drawer:CloseIcon drawerId="drawer-bottom">
+        <span class="sr-only">Close panel</span>
+        <twig:ux:icon name="lucide:x" class="size-4" />
+    </twig:ui:Drawer:CloseIcon>
+</twig:ui:Drawer>

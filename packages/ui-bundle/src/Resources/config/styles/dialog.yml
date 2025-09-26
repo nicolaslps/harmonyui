@@ -7,19 +7,22 @@ dialog.native:
     - "relative z-50 m-auto duration-200 bg-transparent ease-out"
     - "backdrop:bg-black/80 backdrop:transition-all backdrop:duration-200"
     - "data-[closed]:opacity-0 data-[closed]:scale-95"
-    - "data-[leave]:opacity-0 data-[leave]:scale-95 data-[leave]:duration-150"
-    - "data-[leave]:backdrop:bg-black/0 data-[leave]:backdrop:duration-150"
+    - "data-[enter]:opacity-100 data-[enter]:scale-100"
+    - "data-[leave]:opacity-0 data-[leave]:scale-95 data-[leave]:duration-200 data-[leave]:backdrop:bg-black/0 data-[leave]:backdrop:duration-200"
     - "data-[transition]:transition-all"
   defaultVariants: {}
 
 dialog.content:
   base:
-    - "relative border-border bg-background text-foreground w-full max-w-lg gap-4 border p-6 shadow-lg rounded-lg grid gap-4"
+    - "relative border-border bg-background text-foreground w-full max-w-lg gap-4 border p-6 shadow-lg rounded-lg grid gap-4 transition-all duration-200 ease-out"
+    - "data-[closed]:opacity-0 data-[closed]:scale-95"
+    - "data-[enter]:opacity-100 data-[enter]:scale-100"
   defaultVariants: {}
 
 dialog.header:
   base:
-    - "flex flex-col space-y-1.5 text-center sm:text-left"
+    - "flex flex-col space-y-1.5 text-center"
+    - "sm:text-left"
   defaultVariants: {}
 
 dialog.title:
@@ -34,7 +37,8 @@ dialog.description:
 
 dialog.footer:
   base:
-    - "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2"
+    - "flex flex-col-reverse"
+    - "sm:flex-row sm:justify-end sm:space-x-2"
   defaultVariants: {}
 
 dialog.close_icon:

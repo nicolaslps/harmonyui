@@ -1,0 +1,22 @@
+{% props
+    open = 'false',
+    placement = 'right'
+%}
+
+{%- set styleProps = getStyleProps(
+    'drawer',
+    attributes
+) -%}
+
+<hui-dialog>
+    <dialog class="{{ style('drawer.native', styleProps) }}"
+            {{ attributes.without('class') }}
+            {% if open is not same as('false') %}data-open=""{% endif %}
+            data-placement="{{ placement }}"
+            data-closed=""
+    >
+        <div class="{{ style('drawer.container', styleProps) }}" data-slot="panel" data-placement="{{ placement }}" data-closed="">
+            {%- block content %}{% endblock -%}
+        </div>
+    </dialog>
+</hui-dialog>
