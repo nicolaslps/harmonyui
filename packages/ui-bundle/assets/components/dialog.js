@@ -211,4 +211,6 @@ function handleDialogAction(attribute, action) {
     });
 }
 handleDialogAction('data-dialog-show', 'show');
+handleDialogAction('data-drawer-show', 'show');
 handleDialogAction('data-dialog-close', 'hide');
+handleDialogAction('data-drawer-close', 'hide');
