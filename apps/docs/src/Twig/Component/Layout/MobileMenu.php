@@ -20,8 +20,9 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent('Layout:MobileMenu', template: 'components/Layout/Doc/MobileMenu.html.twig')]
 class MobileMenu
 {
-
-    public function __construct(private readonly DocService $docService){}
+    public function __construct(private readonly DocService $docService)
+    {
+    }
 
     /**
      * @return DocSection[]
