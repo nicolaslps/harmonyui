@@ -13,7 +13,7 @@ drawer.native:
 
 drawer.container:
   base:
-    - "fixed z-50 flex h-auto flex-col bg-background shadow-xl pointer-events-auto transition-transform duration-200 ease-out"
+    - "fixed z-50 flex h-auto flex-col bg-background shadow-xl pointer-events-auto transition-transform duration-200 ease-out overflow-y-auto"
     - "data-[placement=right]:inset-y-0 data-[placement=right]:right-0 data-[placement=right]:w-3/4 data-[placement=right]:border-l"
     - "data-[placement=right]:data-[closed]:translate-x-full data-[placement=right]:data-[enter]:translate-x-0"
     - "data-[placement=right]:sm:max-w-sm"
