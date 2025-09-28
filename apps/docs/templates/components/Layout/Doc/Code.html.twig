@@ -1,38 +1,54 @@
-<div>
-    {% for codeData in this.getFormattedCodes() %}
-        <div class="mb-6 last:mb-0">
-            <div class="relative bg-gray-900 rounded-lg max-h-96 overflow-auto">
+{% set slotContent %}{% block content %}{% endblock %}{% endset %}
+
+<div class="code-block-container">
+    {% for codeData in this.getFormattedCodes(slotContent|trim) %}
+        <div class="mb-8 last:mb-0">
+            <div class="isolate relative bg-gray-900 rounded-xl border border-gray-700 shadow-lg group">
                 {% if not codeData.error %}
-                    <button
-                        onclick="navigator.clipboard.writeText({{ codeData.rawCode|json_encode }}).then(() => { const btn = this; const original = btn.textContent; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = original, 1000); })"
-                        class="absolute top-2 right-2 text-xs text-gray-400 hover:text-white transition-colors px-2 py-1 rounded hover:bg-gray-700 z-10">
+                    <twig:ui:Button variant="outline" size="sm" class="z-40 absolute right-1 top-1"
+                        onclick="navigator.clipboard.writeText({{ codeData.rawCode|json_encode }}).then(() => {
+                            const btn = this;
+                            const copyIcon = btn.querySelector('[data-icon=copy]');
+                            const checkIcon = btn.querySelector('[data-icon=check]');
+                            copyIcon.style.display = 'none';
+                            checkIcon.style.display = 'inline';
+                            setTimeout(() => {
+                                copyIcon.style.display = 'inline';
+                                checkIcon.style.display = 'none';
+                            }, 1000);
+                        })">
+                        <twig:ux:icon name="lucide:copy" data-icon="copy" />
+                        <twig:ux:icon name="lucide:check" data-icon="check" style="display: none;" />
                         Copy
-                    </button>
+                    </twig:ui:Button>
                 {% endif %}
-                <pre class="p-4 text-sm overflow-x-auto text-gray-300 font-code">{{ codeData.highlightedCode|raw }}</pre>
+                <div class="flex max-h-96 overflow-auto min-h-8">
+                    <pre class="w-full mx-4 my-2 text-sm overflow-x-auto text-gray-300 font-code leading-relaxed">{{ codeData.highlightedCode|raw }}</pre>
+                </div>
             </div>
         </div>
     {% endfor %}
 </div>
 
 <style>
-/* Tempest Highlight CSS - Dark Theme */
-.hl-keyword { color: #c792ea; }
+
+/* Tempest Highlight CSS - Enhanced Dark Theme */
+.hl-keyword { color: #c792ea; font-weight: 500; }
 .hl-variable { color: #82aaff; }
 .hl-string { color: #c3e88d; }
-.hl-comment { color: #546e7a; font-style: italic; }
-.hl-number { color: #f78c6c; }
-.hl-function { color: #82aaff; }
-.hl-class { color: #ffcb6b; }
+.hl-comment { color: #546e7a; font-style: italic; opacity: 0.8; }
+.hl-number { color: #f78c6c; font-weight: 500; }
+.hl-function { color: #82aaff; font-weight: 500; }
+.hl-class { color: #ffcb6b; font-weight: 600; }
 .hl-operator { color: #89ddff; }
 .hl-punctuation { color: #89ddff; }
-.hl-tag { color: #f07178; }
+.hl-tag { color: #f07178; font-weight: 500; }
 .hl-attribute { color: #c792ea; }
 .hl-value { color: #c3e88d; }
-.hl-type { color: #ffcb6b; }
+.hl-type { color: #ffcb6b; font-weight: 500; }
 .hl-property { color: #82aaff; }
-.hl-constant { color: #f78c6c; }
-.hl-method { color: #82aaff; }
+.hl-constant { color: #f78c6c; font-weight: 600; }
+.hl-method { color: #82aaff; font-weight: 500; }
 .hl-delimiter { color: #89ddff; }
 .hl-bracket { color: #89ddff; }
 .hl-brace { color: #89ddff; }

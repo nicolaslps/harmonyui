@@ -29,13 +29,6 @@
             <div data-slot="docs" class="flex items-stretch text-base xl:w-full h-full">
                 <div class="flex min-w-0 flex-1 flex-col overflow-y-auto pt-4 px-6 lg:px-0" data-docs--page-content-target="content">
                     <div class="max-w-4xl mx-auto w-full pb-36">
-                        <twig:ui:Alert variant="warning" class="mb-6">
-                            <twig:ux:icon name="lucide:alert-triangle" />
-                            <div>
-                                <h4 class="font-semibold">Development Version</h4>
-                                <p class="text-sm">This library is currently in development and not stable. It is not ready for production use as APIs, component names, and internal functionality may change.</p>
-                            </div>
-                        </twig:ui:Alert>
                         <twig:Layout:Doc:PageContent
                             :title="page.title"
                             :description="page.description"

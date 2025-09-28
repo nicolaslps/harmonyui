@@ -37,8 +37,12 @@ class Code
     /**
      * @return array<array{file: string, rawCode: string, highlightedCode: string, language: string, error: bool}>
      */
-    public function getFormattedCodes(): array
+    public function getFormattedCodes(string $slotContent = ''): array
     {
+        if (!empty($slotContent)) {
+            return [$this->formatContent($slotContent)];
+        }
+
         $files = \is_string($this->files) ? [$this->files] : $this->files;
         $formattedCodes = [];
 
@@ -47,6 +51,26 @@ class Code
         }
 
         return $formattedCodes;
+    }
+
+    /**
+     * @return array{file: string, rawCode: string, highlightedCode: string, language: string, error: bool}
+     */
+    private function formatContent(string $content): array
+    {
+        try {
+            $highlightedCode = $this->highlighter->parse($content, $this->language);
+        } catch (\Exception) {
+            $highlightedCode = htmlspecialchars($content, \ENT_QUOTES, 'UTF-8');
+        }
+
+        return [
+            'file' => '',
+            'rawCode' => $content,
+            'highlightedCode' => $highlightedCode,
+            'language' => $this->language,
+            'error' => false,
+        ];
     }
 
     /**

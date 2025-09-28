@@ -7,6 +7,228 @@
     section: 'overview',
 } %}
 
-<div>
-    <p>Follow this guide to quickly install HarmonyUI in your Symfony application. Get started with our modern component library in minutes.</p>
+<div class="prose prose-lg max-w-none">
+    <div class="mb-8">
+        <p class="text-lg text-gray-700 leading-relaxed">Follow these steps to install HarmonyUI in your Symfony
+            project.</p>
+    </div>
+
+    <twig:ui:Alert variant="warning" class="mb-6">
+        <twig:ux:icon name="lucide:alert-triangle" />
+        <div>
+            <h4 class="font-semibold">Development Version</h4>
+            <p class="text-sm">This library is currently in development and not stable. It is not ready for production use as APIs, component names, and internal functionality may change.</p>
+        </div>
+    </twig:ui:Alert>
+
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">Install the Composer Package</h2>
+        <div class="mb-6">
+            <twig:Code language="bash">
+                composer require harmonyui/ui-bundle
+            </twig:Code>
+        </div>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">Add Package to package.json</h2>
+        <div class="mb-4">
+            <p class="text-gray-700 leading-relaxed">Add the following dependency to your <code
+                    class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">package.json</code>:</p>
+        </div>
+        <div class="mb-4">
+            <twig:Code language="json">
+                "@harmonyui/primitives": "file:vendor/harmonyui/ui-bundle/assets"
+            </twig:Code>
+        </div>
+        <twig:ui:Alert variant="warning">
+            <twig:ux:icon name="lucide:info" />
+            <div>
+                <h4 class="font-semibold">Note</h4>
+                <p class="text-sm">This is a temporary solution. We plan to automate this process in the future, but we're currently focusing on developing the components first.</p>
+            </div>
+        </twig:ui:Alert>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">Install Dependencies</h2>
+        <div class="mb-4">
+            <p class="text-gray-700 leading-relaxed">Install the npm dependencies:</p>
+        </div>
+        <div class="mb-4">
+            <twig:Code language="bash">
+                npm install
+            </twig:Code>
+        </div>
+        <div class="mb-4">
+            <p class="text-gray-700 leading-relaxed">Or with pnpm:</p>
+        </div>
+        <div class="mb-6">
+            <twig:Code language="bash">
+                pnpm install
+            </twig:Code>
+        </div>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">Import in JavaScript</h2>
+        <div class="mb-4">
+            <p class="text-gray-700 leading-relaxed">Add the following import to your application's JavaScript entry
+                point:</p>
+        </div>
+        <div class="mb-6">
+            <twig:Code language="javascript">
+                import '@harmonyui/primitives';
+            </twig:Code>
+        </div>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">Configure CSS</h2>
+        <div class="mb-4">
+            <p class="text-gray-700 leading-relaxed">Add the following configuration to your CSS file:</p>
+        </div>
+        <div class="mb-6">
+            <twig:Code language="css">
+<style>
+    @source "path_to_your_project_root/vendor/harmonyui/ui-bundle/src/Resources/config/styles/**/*";
+    @custom-variant dark (&:is(.dark *));
+    @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-warning: var(--warning);
+        --color-success: var(--success);
+        --color-info: var(--info);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+    }
+
+    :root {
+        --radius: 0.625rem;
+        --background: oklch(0.9911 0 0);
+        --foreground: oklch(0.2046 0 0);
+        --card: oklch(0.9911 0 0);
+        --card-foreground: oklch(0.2046 0 0);
+        --popover: oklch(0.9911 0 0);
+        --popover-foreground: oklch(0.4386 0 0);
+        --primary: oklch(0.8348 0.1302 160.9080);
+        --primary-foreground: oklch(0.2626 0.0147 166.4589);
+        --secondary: oklch(0.967 0.003 264.542);
+        --secondary-foreground: oklch(0.21 0.034 264.665);
+        --muted: oklch(0.967 0.003 264.542);
+        --muted-foreground: oklch(0.551 0.027 264.364);
+        --accent: oklch(0.967 0.003 264.542);
+        --accent-foreground: oklch(0.21 0.034 264.665);
+        --destructive: oklch(0.577 0.245 27.325);
+        --destructive-foreground: oklch(0.9934 0.0032 17.2118);
+        --info: oklch(0.654 0.135 237.1);
+        --info-foreground: oklch(0.9934 0.0032 17.2118);
+        --success: oklch(0.710 0.160 159.5);
+        --success-foreground: oklch(0.9934 0.0032 17.2118);
+        --warning: oklch(0.860 0.158 89.5);
+        --warning-foreground: oklch(0.9934 0.0032 17.2118);
+        --border: oklch(0.928 0.006 264.531);
+        --input: oklch(0.928 0.006 264.531);
+        --ring: oklch(0.707 0.022 261.325);
+        --chart-1: oklch(0.646 0.222 41.116);
+        --chart-2: oklch(0.6 0.118 184.704);
+        --chart-3: oklch(0.398 0.07 227.392);
+        --chart-4: oklch(0.828 0.189 84.429);
+        --chart-5: oklch(0.769 0.188 70.08);
+        --sidebar: oklch(0.985 0.002 247.839);
+        --sidebar-foreground: oklch(0.13 0.028 261.692);
+        --sidebar-primary: oklch(0.21 0.034 264.665);
+        --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
+        --sidebar-accent: oklch(0.967 0.003 264.542);
+        --sidebar-accent-foreground: oklch(0.21 0.034 264.665);
+        --sidebar-border: oklch(0.928 0.006 264.531);
+        --sidebar-ring: oklch(0.707 0.022 261.325);
+    }
+
+    .dark {
+        --background: oklch(0.13 0.028 261.692);
+        --foreground: oklch(0.985 0.002 247.839);
+        --card: oklch(0.21 0.034 264.665);
+        --card-foreground: oklch(0.985 0.002 247.839);
+        --popover: oklch(0.21 0.034 264.665);
+        --popover-foreground: oklch(0.985 0.002 247.839);
+        --primary: oklch(0.928 0.006 264.531);
+        --primary-foreground: oklch(0.21 0.034 264.665);
+        --secondary: oklch(0.278 0.033 256.848);
+        --secondary-foreground: oklch(0.985 0.002 247.839);
+        --muted: oklch(0.278 0.033 256.848);
+        --muted-foreground: oklch(0.707 0.022 261.325);
+        --accent: oklch(0.278 0.033 256.848);
+        --accent-foreground: oklch(0.985 0.002 247.839);
+        --destructive: oklch(0.704 0.191 22.216);
+        --info: oklch(0.654 0.135 237.1);
+        --success: oklch(0.710 0.160 159.5);
+        --warning: oklch(0.860 0.158 89.5);
+        --border: oklch(1 0 0 / 10%);
+        --input: oklch(1 0 0 / 15%);
+        --ring: oklch(0.551 0.027 264.364);
+        --chart-1: oklch(0.488 0.243 264.376);
+        --chart-2: oklch(0.696 0.17 162.48);
+        --chart-3: oklch(0.769 0.188 70.08);
+        --chart-4: oklch(0.627 0.265 303.9);
+        --chart-5: oklch(0.645 0.246 16.439);
+        --sidebar: oklch(0.21 0.034 264.665);
+        --sidebar-foreground: oklch(0.985 0.002 247.839);
+        --sidebar-primary: oklch(0.488 0.243 264.376);
+        --sidebar-primary-foreground: oklch(0.985 0.002 247.839);
+        --sidebar-accent: oklch(0.278 0.033 256.848);
+        --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
+        --sidebar-border: oklch(1 0 0 / 10%);
+        --sidebar-ring: oklch(0.551 0.027 264.364);
+    }
+
+    @layer base {
+        * {
+            border-color: var(--border);
+            outline-color: var(--ring);
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+        }
+    }
+</style>
+            </twig:Code>
+        </div>
+    </section>
+
+    <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">Build and Use Components</h2>
+        <div class="mb-4">
+            <p class="text-gray-700 leading-relaxed">Build your project and start using HarmonyUI components in your
+                Symfony templates.</p>
+        </div>
+        <twig:ui:Alert variant="success">
+            <twig:ux:icon name="lucide:check-circle" />
+            <div>
+                <h4 class="font-semibold">Ready to Go!</h4>
+                <p class="text-sm">You're now ready to use HarmonyUI components in your application!</p>
+            </div>
+        </twig:ui:Alert>
+    </section>
 </div>
