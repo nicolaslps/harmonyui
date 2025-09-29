@@ -9,7 +9,7 @@
     {% if as == "button" %}type="button"{% endif %}
     class="{{ style('tabs.tab', styleProps) }}"
     {{ attributes.without('class') }}
-    data-slot="tab-tab"
+    data-slot="tab-trigger"
 >
     {%- block content %}{% endblock -%}
 </{{ as }}>

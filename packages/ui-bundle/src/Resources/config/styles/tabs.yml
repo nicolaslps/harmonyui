@@ -7,7 +7,7 @@ tabs.root:
       vertical:
         - "flex items-start mb-2"
         - "[&_[data-slot='tab-list']]:flex-col [&_[data-slot='tab-list']]:h-fit [&_[data-slot='tab-list']]:me-2"
-        - "[&_[data-slot='tab-tab']]:w-full [&_[data-slot='tab-tab']]:items-start"
+        - "[&_[data-slot='tab-trigger']]:w-full [&_[data-slot='tab-trigger']]:items-start"
 
 tabs.list:
   base:
