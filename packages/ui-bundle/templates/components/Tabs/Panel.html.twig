@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'tabs.panel',
+    attributes
+) -%}
+
+<div
+    class="{{ style('tabs.panel', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="tab-panel"
+>
+    {%- block content %}{% endblock -%}
+</div>

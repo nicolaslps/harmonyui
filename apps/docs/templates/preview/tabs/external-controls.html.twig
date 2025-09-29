@@ -1,0 +1,51 @@
+<div class="w-full max-w-md mx-auto space-y-4">
+    <div class="flex space-x-2 justify-center">
+        <twig:ui:Button variant="outline"
+            onclick="document.getElementById('external-tabs').setActiveTab(0)"
+        >
+            Home
+        </twig:ui:Button>
+        <twig:ui:Button variant="outline"
+            onclick="document.getElementById('external-tabs').setActiveTab(1)"
+        >
+            Products
+        </twig:ui:Button>
+        <twig:ui:Button variant="outline"
+            onclick="document.getElementById('external-tabs').setActiveTab(2)"
+        >
+            Contact
+        </twig:ui:Button>
+    </div>
+
+    <twig:ui:Tabs id="external-tabs">
+        <twig:ui:Tabs:List>
+            <twig:ui:Tabs:Tab>Home</twig:ui:Tabs:Tab>
+            <twig:ui:Tabs:Tab>Products</twig:ui:Tabs:Tab>
+            <twig:ui:Tabs:Tab>Contact</twig:ui:Tabs:Tab>
+        </twig:ui:Tabs:List>
+        <twig:ui:Tabs:Panels>
+            <twig:ui:Tabs:Panel>
+                <twig:ui:Card class="h-48 bg-cyan-50 border-cyan-200">
+                    <div class="flex flex-col items-center justify-center h-full text-center space-y-2">
+                        <h3 class="text-xl font-semibold text-cyan-800">Home</h3>
+                        <p class="text-sm text-cyan-600">Controlled by external buttons</p>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+            <twig:ui:Tabs:Panel hidden>
+                <twig:ui:Card class="h-48 bg-emerald-50 border-emerald-200">
+                    <div class="flex items-center justify-center h-full">
+                        <h3 class="text-xl font-semibold text-emerald-800">Products</h3>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+            <twig:ui:Tabs:Panel hidden>
+                <twig:ui:Card class="h-48 bg-violet-50 border-violet-200">
+                    <div class="flex items-center justify-center h-full">
+                        <h3 class="text-xl font-semibold text-violet-800">Contact</h3>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+        </twig:ui:Tabs:Panels>
+    </twig:ui:Tabs>
+</div>

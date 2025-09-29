@@ -1,0 +1,33 @@
+tabs.root:
+  base:
+    - "block w-full [&_[data-slot='tab-list']]:mb-2"
+  defaultVariants: {}
+  variants:
+    orientation:
+      vertical:
+        - "flex items-start mb-2"
+        - "[&_[data-slot='tab-list']]:flex-col [&_[data-slot='tab-list']]:h-fit [&_[data-slot='tab-list']]:me-2"
+        - "[&_[data-slot='tab-tab']]:w-full [&_[data-slot='tab-tab']]:items-start"
+
+tabs.list:
+  base:
+    - "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground"
+  defaultVariants: {}
+
+tabs.tab:
+  base:
+    - "inline-flex items-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all"
+    - "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    - "disabled:pointer-events-none disabled:opacity-50"
+    - "data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+  defaultVariants: {}
+
+tabs.panels:
+  base: "grow"
+  defaultVariants: {}
+
+tabs.panel:
+  base:
+    - "ring-offset-background"
+    - "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+  defaultVariants: {}

@@ -1,0 +1,15 @@
+{% props as = 'button' %}
+
+{%- set styleProps = getStyleProps(
+    'tabs.tab',
+    attributes
+) -%}
+
+<{{ as }}
+    {% if as == "button" %}type="button"{% endif %}
+    class="{{ style('tabs.tab', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="tab-tab"
+>
+    {%- block content %}{% endblock -%}
+</{{ as }}>

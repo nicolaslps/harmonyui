@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'tabs.root',
+    attributes
+) -%}
+
+<hui-tabs
+    class="{{ style('tabs.root', styleProps) }}"
+    {{ attributes.without('class') }}
+        data-slot="tabs"
+>
+    {%- block content %}{% endblock -%}
+</hui-tabs>

@@ -1,0 +1,33 @@
+<div class="w-full max-w-md mx-auto">
+    <twig:ui:Tabs>
+        <twig:ui:Tabs:List>
+            <twig:ui:Tabs:Tab>First</twig:ui:Tabs:Tab>
+            <twig:ui:Tabs:Tab>Second</twig:ui:Tabs:Tab>
+            <twig:ui:Tabs:Tab>Third</twig:ui:Tabs:Tab>
+        </twig:ui:Tabs:List>
+        <twig:ui:Tabs:Panels>
+            <twig:ui:Tabs:Panel hidden>
+                <twig:ui:Card class="h-48 bg-gray-50 border-gray-200">
+                    <div class="flex items-center justify-center h-full">
+                        <h3 class="text-xl font-semibold text-gray-800">First</h3>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+            <twig:ui:Tabs:Panel>
+                <twig:ui:Card class="h-48 bg-indigo-50 border-indigo-200">
+                    <div class="flex flex-col items-center justify-center h-full text-center space-y-2">
+                        <h3 class="text-xl font-semibold text-indigo-800">Second</h3>
+                        <p class="text-sm text-indigo-600">This panel is active by default</p>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+            <twig:ui:Tabs:Panel hidden>
+                <twig:ui:Card class="h-48 bg-amber-50 border-amber-200">
+                    <div class="flex items-center justify-center h-full">
+                        <h3 class="text-xl font-semibold text-amber-800">Third</h3>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+        </twig:ui:Tabs:Panels>
+    </twig:ui:Tabs>
+</div>

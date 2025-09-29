@@ -1,0 +1,33 @@
+<div class="w-full max-w-md mx-auto">
+    <twig:ui:Tabs data-activation="manual">
+        <twig:ui:Tabs:List>
+            <twig:ui:Tabs:Tab>Overview</twig:ui:Tabs:Tab>
+            <twig:ui:Tabs:Tab>Details</twig:ui:Tabs:Tab>
+            <twig:ui:Tabs:Tab>Summary</twig:ui:Tabs:Tab>
+        </twig:ui:Tabs:List>
+        <twig:ui:Tabs:Panels>
+            <twig:ui:Tabs:Panel>
+                <twig:ui:Card class="h-48 bg-orange-50 border-orange-200">
+                    <div class="flex flex-col items-center justify-center h-full text-center space-y-2">
+                        <h3 class="text-xl font-semibold text-orange-800">Overview</h3>
+                        <p class="text-sm text-orange-600">Use Space/Enter to activate tabs</p>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+            <twig:ui:Tabs:Panel hidden>
+                <twig:ui:Card class="h-48 bg-teal-50 border-teal-200">
+                    <div class="flex items-center justify-center h-full">
+                        <h3 class="text-xl font-semibold text-teal-800">Details</h3>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+            <twig:ui:Tabs:Panel hidden>
+                <twig:ui:Card class="h-48 bg-rose-50 border-rose-200">
+                    <div class="flex items-center justify-center h-full">
+                        <h3 class="text-xl font-semibold text-rose-800">Summary</h3>
+                    </div>
+                </twig:ui:Card>
+            </twig:ui:Tabs:Panel>
+        </twig:ui:Tabs:Panels>
+    </twig:ui:Tabs>
+</div>
