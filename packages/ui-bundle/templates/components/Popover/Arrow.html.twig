@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'popover.arrow',
+    attributes
+) -%}
+
+<div
+    class="{{ style('popover.arrow', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="arrow"
+>
+    <div class="size-4 bg-red-500"></div>
+</div>

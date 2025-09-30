@@ -1,0 +1,86 @@
+<div class="grid grid-cols-3 grid-rows-3 gap-4 p-4 place-items-center">
+    <div class="col-start-2 row-start-1">
+        <div class="flex items-center justify-center p-8">
+            <button
+                popovertarget="top-popover"
+                type="button"
+                class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            >
+                Popover top
+            </button>
+        </div>
+    </div>
+
+    <div class="col-start-1 row-start-2">
+        <div class="flex items-center justify-center p-8">
+            <button
+                popovertarget="left-popover"
+                type="button"
+                class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            >
+                Popover left
+            </button>
+        </div>
+    </div>
+
+    <div class="col-start-3 row-start-2">
+        <div class="flex items-center justify-center p-8">
+            <button
+                popovertarget="right-popover"
+                type="button"
+                class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            >
+                Popover right
+            </button>
+        </div>
+    </div>
+
+    <div class="col-start-2 row-start-3">
+        <div class="flex items-center justify-center p-8">
+            <button
+                popovertarget="bottom-popover"
+                type="button"
+                class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            >
+                Popover bottom
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<twig:ui:Popover id="top-popover" data-position="top" data-gap="16">
+    <twig:ui:Popover:Content class="w-fit p-4">
+        <h4 class="font-medium leading-none">top</h4>
+    </twig:ui:Popover:Content>
+    <twig:ui:Popover:Arrow>
+    </twig:ui:Popover:Arrow>
+</twig:ui:Popover>
+
+
+<twig:ui:Popover id="left-popover" data-position="left" data-gap="16">
+    <twig:ui:Popover:Content class="w-fit p-4">
+        <h4 class="font-medium leading-none">left</h4>
+    </twig:ui:Popover:Content>
+    <twig:ui:Popover:Arrow>
+    </twig:ui:Popover:Arrow>
+</twig:ui:Popover>
+
+
+<twig:ui:Popover id="right-popover" data-position="right" data-gap="16">
+    <twig:ui:Popover:Content class="w-fit p-4">
+        <h4 class="font-medium leading-none">right</h4>
+    </twig:ui:Popover:Content>
+    <twig:ui:Popover:Arrow>
+    </twig:ui:Popover:Arrow>
+</twig:ui:Popover>
+
+
+<twig:ui:Popover id="bottom-popover" data-position="bottom" data-gap="16">
+    <twig:ui:Popover:Content class="w-fit p-4">
+        <h4 class="font-medium leading-none">bottom</h4>
+    </twig:ui:Popover:Content>
+    <twig:ui:Popover:Arrow>
+    </twig:ui:Popover:Arrow>
+</twig:ui:Popover>
+

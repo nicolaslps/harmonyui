@@ -1,0 +1,19 @@
+{% props
+    anchor = 'bottom',
+    anchorStrategy = 'absolute'
+%}
+
+{%- set styleProps = getStyleProps(
+    'popover.root',
+    attributes
+) -%}
+
+<hui-popover
+    class="{{ style('popover.root', styleProps) }}"
+    {{ attributes.without('class') }}
+    popover
+    {% if anchor %}anchor="{{ anchor }}"{% endif %}
+    {% if anchorStrategy %}anchor-strategy="{{ anchorStrategy }}"{% endif %}
+>
+    {%- block content %}{% endblock -%}
+</hui-popover>

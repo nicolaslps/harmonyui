@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'popover.content',
+    attributes
+) -%}
+
+<div
+    class="{{ style('popover.content', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="content"
+>
+    {%- block content %}{% endblock -%}
+</div>

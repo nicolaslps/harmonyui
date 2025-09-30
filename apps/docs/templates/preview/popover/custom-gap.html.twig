@@ -1,0 +1,20 @@
+<div class="col-start-2 row-start-3">
+    <div class="flex items-center justify-center p-8">
+        <button
+            popovertarget="custom-gap-popover"
+            type="button"
+            class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+        >
+            Popover bottom
+        </button>
+    </div>
+</div>
+
+
+<twig:ui:Popover id="custom-gap-popover" data-gap="32">
+    <twig:ui:Popover:Content class="w-fit p-4">
+        <h4 class="font-medium leading-none">top</h4>
+    </twig:ui:Popover:Content>
+    <twig:ui:Popover:Arrow>
+    </twig:ui:Popover:Arrow>
+</twig:ui:Popover>

@@ -1,4 +1,5 @@
 {
+  "version": "0.0.1",
   "name": "@harmonyui/primitives",
   "version": "0.0.1",
   "description": "HarmonyUI Bundle",
@@ -19,5 +20,7 @@
     "symfony",
     "bundle"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.4"
+  }
 }

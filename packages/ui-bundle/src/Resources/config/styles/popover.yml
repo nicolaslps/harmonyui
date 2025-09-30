@@ -1,0 +1,32 @@
+popover:
+  base:
+  defaultVariants: {}
+
+popover.root:
+  base:
+    - "fixed bg-background border border-border rounded-md shadow-md p-4 z-30 overflow-visible"
+    - "focus:outline-none"
+  defaultVariants: {}
+
+popover.content:
+  base:
+    - "text-foreground"
+  defaultVariants: {}
+
+popover.close:
+  base:
+    - "inline-flex items-center justify-center rounded-sm text-sm font-medium transition-colors"
+    - "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    - "disabled:pointer-events-none disabled:opacity-50"
+    - "hover:bg-accent hover:text-accent-foreground"
+    - "h-8 w-8"
+  defaultVariants: {}
+
+popover.arrow:
+  base:
+    - "absolute size-4 bg-red-500"
+    - "data-[side=top]:top-full"
+    - "data-[side=bottom]:bottom-full"
+    - "data-[side=left]:left-full"
+    - "data-[side=right]:right-full"
+  defaultVariants: {}
