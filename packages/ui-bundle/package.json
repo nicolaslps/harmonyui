@@ -1,6 +1,5 @@
 {
   "name": "@harmonyui/primitives",
-  "version": "0.0.1",
   "description": "HarmonyUI Bundle",
   "main": "assets/index.js",
   "module": "assets/index.js",
