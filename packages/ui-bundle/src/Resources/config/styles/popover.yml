@@ -4,13 +4,28 @@ popover:
 
 popover.root:
   base:
-    - "fixed bg-background border border-border rounded-md shadow-md p-4 overflow-visible duration-200 ease-out"
+    - "fixed bg-popover text-popover-foreground border border-border rounded-md shadow-md p-4 overflow-visible "
     - "focus:outline-none"
     - "data-[closed]:opacity-0 data-[closed]:scale-95"
-    - "data-[enter]:visible data-[enter]:opacity-100 data-[enter]:scale-100"
-    - "data-[leave]:visible data-[leave]:opacity-0 data-[leave]:scale-95"
-    - "data-[transition]:transition-transform data-[transition]:transition-opacity"
+    - "data-[enter]:animate-in data-[enter]:fade-in-0 data-[enter]:zoom-in-95"
+    - "data-[leave]:animate-out data-[leave]:fade-out-0 data-[leave]:zoom-out-95"
+    - "data-[transition]:transition-gpu data-[transition]:ease-out data-[transition]:duration-150"
+
+    - "data-[side=top]:origin-bottom data-[side=top]:slide-in-from-bottom-2"
+    - "data-[side=top-start]:origin-bottom data-[side=top-start]:slide-in-from-bottom-2"
+    - "data-[side=top-end]:origin-bottom data-[side=top-end]:slide-in-from-bottom-2"
+    - "data-[side=bottom]:origin-top data-[side=bottom]:slide-in-from-top-2"
+    - "data-[side=bottom-start]:origin-top data-[side=bottom-start]:slide-in-from-top-2"
+    - "data-[side=bottom-end]:origin-top data-[side=bottom-end]:slide-in-from-top-2"
+    - "data-[side=left]:origin-right data-[side=left]:slide-in-from-right-2"
+    - "data-[side=left-start]:origin-right data-[side=left-start]:slide-in-from-right-2"
+    - "data-[side=left-end]:origin-right data-[side=left-end]:slide-in-from-right-2"
+    - "data-[side=right]:origin-left data-[side=right]:slide-in-from-left-2"
+    - "data-[side=right-start]:origin-left data-[side=right-start]:slide-in-from-left-2"
+    - "data-[side=right-end]:origin-left data-[side=right-end]:slide-in-from-left-2"
   defaultVariants: {}
+
+
 
 popover.content:
   base:
@@ -30,7 +45,15 @@ popover.arrow:
   base:
     - "absolute size-4 bg-red-500"
     - "data-[side=top]:top-full"
+    - "data-[side=top-start]:top-full"
+    - "data-[side=top-end]:top-full"
     - "data-[side=bottom]:bottom-full"
+    - "data-[side=bottom-start]:bottom-full"
+    - "data-[side=bottom-end]:bottom-full"
     - "data-[side=left]:left-full"
+    - "data-[side=left-start]:left-full"
+    - "data-[side=left-end]:left-full"
     - "data-[side=right]:right-full"
+    - "data-[side=right-start]:right-full"
+    - "data-[side=right-end]:right-full"
   defaultVariants: {}

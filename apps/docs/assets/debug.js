@@ -58,12 +58,7 @@ class HuiFloatingElement extends HTMLElement {
             console.log('Lock screen - popover opened');
         }
 
-        const originalUpdatePosition = this.updatePosition;
-
-        this.updatePosition = async (...args) => {
-            await originalUpdatePosition.call(this, ...args);
-            this._handleOpenAnimation();
-        };
+        this._handleOpenAnimation();
 
         this.cleanup = autoUpdate(
             this.trigger,
@@ -181,7 +176,6 @@ class HuiFloatingElement extends HTMLElement {
         const shiftEnabled = this.hasAttribute('data-shift');
         const hideEnabled = this.hasAttribute('data-hide');
         const autoPlacementEnabled = this.hasAttribute('data-auto-placement');
-        const lockEnabled = this.hasAttribute('data-lock');
         const baseGap = parseInt(this.getAttribute('data-gap')) || 4;
         const arrowElement = this.querySelector('[data-slot="arrow"]');
 
@@ -234,9 +228,11 @@ class HuiFloatingElement extends HTMLElement {
                 }
             }
 
+            const side = result.placement;
+            this.setAttribute('data-side', side);
             if (arrowElement && result.middlewareData.arrow) {
+                const arrowSide = side.split('-')[0];
                 const { x, y } = result.middlewareData.arrow;
-                const side = result.placement.split('-')[0];
 
                 Object.assign(arrowElement.style, {
                     left: x != null ? `${x}px` : '',
@@ -244,9 +240,11 @@ class HuiFloatingElement extends HTMLElement {
                     position: 'absolute'
                 });
 
-                arrowElement.setAttribute('data-side', side);
+                arrowElement.setAttribute('data-side', arrowSide);
             }
         });
+
+        this.style.visibility = 'visible';
     }
 
 
