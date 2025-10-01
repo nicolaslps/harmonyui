@@ -4,8 +4,12 @@ popover:
 
 popover.root:
   base:
-    - "fixed bg-background border border-border rounded-md shadow-md p-4 z-30 overflow-visible"
+    - "fixed bg-background border border-border rounded-md shadow-md p-4 overflow-visible duration-200 ease-out"
     - "focus:outline-none"
+    - "data-[closed]:opacity-0 data-[closed]:scale-95"
+    - "data-[enter]:visible data-[enter]:opacity-100 data-[enter]:scale-100"
+    - "data-[leave]:visible data-[leave]:opacity-0 data-[leave]:scale-95"
+    - "data-[transition]:transition-transform data-[transition]:transition-opacity"
   defaultVariants: {}
 
 popover.content:

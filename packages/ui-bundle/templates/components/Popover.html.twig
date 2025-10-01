@@ -1,6 +1,11 @@
 {% props
-    anchor = 'bottom',
-    anchorStrategy = 'absolute'
+    position = 'bottom',
+    gap = null,
+    flip = false,
+    shift = false,
+    hide = false,
+    autoPlacement = false,
+    lock = false
 %}
 
 {%- set styleProps = getStyleProps(
@@ -11,9 +16,13 @@
 <hui-popover
     class="{{ style('popover.root', styleProps) }}"
     {{ attributes.without('class') }}
-    popover
-    {% if anchor %}anchor="{{ anchor }}"{% endif %}
-    {% if anchorStrategy %}anchor-strategy="{{ anchorStrategy }}"{% endif %}
+    {% if position %}data-position="{{ position }}"{% endif %}
+    {% if gap %}data-gap="{{ gap }}"{% endif %}
+    {% if flip %}data-flip{% endif %}
+    {% if shift %}data-shift{% endif %}
+    {% if hide %}data-hide{% endif %}
+    {% if autoPlacement %}data-auto-placement{% endif %}
+    {% if lock %}data-lock{% endif %}
 >
     {%- block content %}{% endblock -%}
 </hui-popover>
