@@ -4,13 +4,18 @@ popover:
 
 popover.root:
   base:
-    - "fixed bg-popover text-popover-foreground border border-border rounded-md shadow-md p-4 overflow-visible "
+    - "fixed overflow-visible"
+    - "focus:outline-none"
+  defaultVariants: {}
+
+popover.content:
+  base:
+    - "bg-popover text-popover-foreground border border-border rounded-md shadow-md p-4"
     - "focus:outline-none"
     - "data-[closed]:opacity-0 data-[closed]:scale-95"
     - "data-[enter]:animate-in data-[enter]:fade-in-0 data-[enter]:zoom-in-95"
     - "data-[leave]:animate-out data-[leave]:fade-out-0 data-[leave]:zoom-out-95"
     - "data-[transition]:transition-gpu data-[transition]:ease-out data-[transition]:duration-150"
-
     - "data-[side=top]:origin-bottom data-[side=top]:slide-in-from-bottom-2"
     - "data-[side=top-start]:origin-bottom data-[side=top-start]:slide-in-from-bottom-2"
     - "data-[side=top-end]:origin-bottom data-[side=top-end]:slide-in-from-bottom-2"
@@ -23,13 +28,6 @@ popover.root:
     - "data-[side=right]:origin-left data-[side=right]:slide-in-from-left-2"
     - "data-[side=right-start]:origin-left data-[side=right-start]:slide-in-from-left-2"
     - "data-[side=right-end]:origin-left data-[side=right-end]:slide-in-from-left-2"
-  defaultVariants: {}
-
-
-
-popover.content:
-  base:
-    - "text-foreground"
   defaultVariants: {}
 
 popover.close:

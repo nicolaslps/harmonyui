@@ -58,7 +58,15 @@ class HuiFloatingElement extends HTMLElement {
             console.log('Lock screen - popover opened');
         }
 
-        this._handleOpenAnimation();
+        this.style.visibility = 'hidden';
+        this.removeAttribute('data-closed');
+        this.contentTarget = this.querySelector('[data-slot="content"]') || this;
+        this.arrowTarget = this.querySelector('[data-slot="arrow"]');
+        this.contentTarget.setAttribute('data-closed', '');
+        if (this.arrowTarget) {
+            this.arrowTarget.setAttribute('data-closed', '');
+        }
+        this.isInitialOpen = true;
 
         this.cleanup = autoUpdate(
             this.trigger,
@@ -86,17 +94,17 @@ class HuiFloatingElement extends HTMLElement {
             return Promise.resolve();
         }
 
-        this.removeAttribute('data-closed');
-        this.setAttribute('data-enter', '');
-        this.setAttribute('data-transition', '');
+        this.contentTarget.removeAttribute('data-closed');
+        this.contentTarget.setAttribute('data-enter', '');
+        this.contentTarget.setAttribute('data-transition', '');
 
         await this._nextFrame();
 
-        const duration = this._getTransitionDuration(this);
+        const duration = this._getTransitionDuration(this.contentTarget);
         setTimeout(() => {
-            this.removeAttribute('data-enter');
-            this.removeAttribute('data-transition');
-            this.setAttribute('data-open', '');
+            this.contentTarget.removeAttribute('data-enter');
+            this.contentTarget.removeAttribute('data-transition');
+            this.contentTarget.setAttribute('data-open', '');
         }, duration || 200);
     }
 
@@ -105,17 +113,24 @@ class HuiFloatingElement extends HTMLElement {
             return Promise.resolve();
         }
 
-        this.removeAttribute('data-open');
-        this.setAttribute('data-leave', '');
-        this.setAttribute('data-transition', '');
-        this.setAttribute('data-closed', '');
+        this.contentTarget.removeAttribute('data-open');
+        this.contentTarget.setAttribute('data-leave', '');
+        this.contentTarget.setAttribute('data-transition', '');
+        this.contentTarget.setAttribute('data-closed', '');
+
+        if (this.arrowTarget) {
+            this.arrowTarget.removeAttribute('data-open');
+            this.arrowTarget.setAttribute('data-leave', '');
+            this.arrowTarget.setAttribute('data-transition', '');
+            this.arrowTarget.setAttribute('data-closed', '');
+        }
 
         await this._nextFrame();
 
-        const duration = this._getTransitionDuration(this);
+        const duration = this._getTransitionDuration(this.contentTarget);
         setTimeout(() => {
-            this.removeAttribute('data-leave');
-            this.removeAttribute('data-transition');
+            this.contentTarget.removeAttribute('data-leave');
+            this.contentTarget.removeAttribute('data-transition');
         }, duration || 200);
 
         return new Promise((resolve) => {
@@ -154,7 +169,12 @@ class HuiFloatingElement extends HTMLElement {
 
     setupFloatingBehavior() {
         this.setAttribute('popover', '');
-        this.setAttribute('data-closed', '');
+        const contentTarget = this.querySelector('[data-slot="content"]') || this;
+        const arrowTarget = this.querySelector('[data-slot="arrow"]');
+        contentTarget.setAttribute('data-closed', '');
+        if (arrowTarget) {
+            arrowTarget.setAttribute('data-closed', '');
+        }
     }
 
     handleOutsideClick(event) {
@@ -230,6 +250,11 @@ class HuiFloatingElement extends HTMLElement {
 
             const side = result.placement;
             this.setAttribute('data-side', side);
+            this.contentTarget.setAttribute('data-side', side);
+            if (this.arrowTarget) {
+                this.arrowTarget.setAttribute('data-side', side);
+            }
+
             if (arrowElement && result.middlewareData.arrow) {
                 const arrowSide = side.split('-')[0];
                 const { x, y } = result.middlewareData.arrow;
@@ -245,6 +270,10 @@ class HuiFloatingElement extends HTMLElement {
         });
 
         this.style.visibility = 'visible';
+        if (this.isInitialOpen) {
+            this.isInitialOpen = false;
+            this._handleOpenAnimation();
+        }
     }
 
 
