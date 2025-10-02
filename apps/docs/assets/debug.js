@@ -109,33 +109,11 @@ class HuiFloatingElement extends HTMLElement {
             this.arrowTarget.setAttribute('data-state', 'closed');
         }
 
-        const duration = this._getTransitionDuration(this.contentTarget);
-
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, duration || 200);
-        });
+        const animations = this.getAnimations({ subtree: true });
+        if (animations.length > 0) {
+            await Promise.all(animations.map(animation => animation.finished));
+        }
     }
-
-    _getTransitionDuration(element) {
-        if (!element) return 200;
-
-        const computedStyle = getComputedStyle(element);
-        const transitionDuration = computedStyle.transitionDuration;
-        const transitionDelay = computedStyle.transitionDelay;
-
-        const parseDuration = (duration) => {
-            if (!duration || duration === '0s') return 0;
-            return parseFloat(duration) * (duration.includes('ms') ? 1 : 1000);
-        };
-
-        const duration = parseDuration(transitionDuration);
-        const delay = parseDuration(transitionDelay);
-
-        return duration + delay;
-    }
-
 
     _setupFloatingBehavior() {
         this.setAttribute('popover', '');
@@ -247,17 +225,12 @@ class HuiFloatingElement extends HTMLElement {
 
         this.showPopover();
 
-        await new Promise(resolve => {
-            const checkAnimation = () => {
-                if (this.contentTarget.getAttribute('data-state') === 'open') {
-                    this.isAnimating = false;
-                    resolve();
-                } else {
-                    requestAnimationFrame(checkAnimation);
-                }
-            };
-            checkAnimation();
-        });
+        const animations = this.getAnimations({ subtree: true });
+        if (animations.length > 0) {
+            await Promise.all(animations.map(animation => animation.finished));
+        }
+
+        this.isAnimating = false;
     }
 
     async close() {
