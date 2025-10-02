@@ -59,12 +59,12 @@ class HuiFloatingElement extends HTMLElement {
         }
 
         this.style.visibility = 'hidden';
-        this.removeAttribute('data-closed');
+        this.setAttribute('data-state', 'open');
         this.contentTarget = this.querySelector('[data-slot="content"]') || this;
         this.arrowTarget = this.querySelector('[data-slot="arrow"]');
-        this.contentTarget.setAttribute('data-closed', '');
+        this.contentTarget.setAttribute('data-state', 'closed');
         if (this.arrowTarget) {
-            this.arrowTarget.setAttribute('data-closed', '');
+            this.arrowTarget.setAttribute('data-state', 'closed');
         }
         this.isInitialOpen = true;
 
@@ -94,18 +94,8 @@ class HuiFloatingElement extends HTMLElement {
             return Promise.resolve();
         }
 
-        this.contentTarget.removeAttribute('data-closed');
-        this.contentTarget.setAttribute('data-enter', '');
-        this.contentTarget.setAttribute('data-transition', '');
+        this.contentTarget.setAttribute('data-state', 'open');
 
-        await this._nextFrame();
-
-        const duration = this._getTransitionDuration(this.contentTarget);
-        setTimeout(() => {
-            this.contentTarget.removeAttribute('data-enter');
-            this.contentTarget.removeAttribute('data-transition');
-            this.contentTarget.setAttribute('data-open', '');
-        }, duration || 200);
     }
 
     async _handleCloseAnimation() {
@@ -113,38 +103,18 @@ class HuiFloatingElement extends HTMLElement {
             return Promise.resolve();
         }
 
-        this.contentTarget.removeAttribute('data-open');
-        this.contentTarget.setAttribute('data-leave', '');
-        this.contentTarget.setAttribute('data-transition', '');
-        this.contentTarget.setAttribute('data-closed', '');
+        this.contentTarget.setAttribute('data-state', 'closed');
 
         if (this.arrowTarget) {
-            this.arrowTarget.removeAttribute('data-open');
-            this.arrowTarget.setAttribute('data-leave', '');
-            this.arrowTarget.setAttribute('data-transition', '');
-            this.arrowTarget.setAttribute('data-closed', '');
+            this.arrowTarget.setAttribute('data-state', 'closed');
         }
 
-        await this._nextFrame();
-
         const duration = this._getTransitionDuration(this.contentTarget);
-        setTimeout(() => {
-            this.contentTarget.removeAttribute('data-leave');
-            this.contentTarget.removeAttribute('data-transition');
-        }, duration || 200);
 
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve();
             }, duration || 200);
-        });
-    }
-
-    async _nextFrame() {
-        return new Promise((resolve) => {
-            requestAnimationFrame(() => {
-                requestAnimationFrame(resolve);
-            });
         });
     }
 
@@ -171,9 +141,9 @@ class HuiFloatingElement extends HTMLElement {
         this.setAttribute('popover', '');
         const contentTarget = this.querySelector('[data-slot="content"]') || this;
         const arrowTarget = this.querySelector('[data-slot="arrow"]');
-        contentTarget.setAttribute('data-closed', '');
+        contentTarget.setAttribute('data-state', 'closed');
         if (arrowTarget) {
-            arrowTarget.setAttribute('data-closed', '');
+            arrowTarget.setAttribute('data-state', 'closed');
         }
     }
 
@@ -227,8 +197,6 @@ class HuiFloatingElement extends HTMLElement {
         if (arrowElement) {
             middleware.push(arrow({ element: arrowElement }));
         }
-
-
 
         computePosition(trigger, this, {
             placement: autoPlacementEnabled ? 'bottom' : placement,
@@ -289,7 +257,7 @@ class HuiFloatingElement extends HTMLElement {
 
         await new Promise(resolve => {
             const checkAnimation = () => {
-                if (!this.hasAttribute('data-enter') && !this.hasAttribute('data-transition')) {
+                if (this.contentTarget.getAttribute('data-state') === 'open') {
                     this.isAnimating = false;
                     resolve();
                 } else {
