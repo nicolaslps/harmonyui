@@ -2,7 +2,7 @@
     position = 'bottom',
     sideOffset = null,
     avoidCollisions = null,
-    shift = false,
+    sticky = false,
     hideWhenDetached = null,
     screenLock = false
 %}
@@ -18,7 +18,7 @@
     {% if position %}data-position="{{ position }}"{% endif %}
     {% if sideOffset %}data-side-offset="{{ sideOffset }}"{% endif %}
     {% if avoidCollisions %}avoidCollisions{% endif %}
-    {% if shift %}data-shift{% endif %}
+    {% if sticky %}data-sticky{% endif %}
     {% if hideWhenDetached %}hideWhenDetached{% endif %}
     {% if screenLock %}data-screen-lock{% endif %}
     style="visibility: hidden"

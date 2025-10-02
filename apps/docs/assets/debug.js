@@ -163,7 +163,7 @@ class HuiFloatingElement extends HTMLElement {
 
         const placement = this.getAttribute('data-position') || 'bottom';
         const avoidCollisions = this.hasAttribute('avoidCollisions');
-        const shiftEnabled = this.hasAttribute('data-shift');
+        const stickyEnabled = this.hasAttribute('data-sticky');
         const hideWhenDetached = this.hasAttribute('hideWhenDetached');
         const baseGap = parseInt(this.getAttribute('data-side-offset')) || 4;
         const arrowElement = this.querySelector('[data-slot="arrow"]');
@@ -183,7 +183,7 @@ class HuiFloatingElement extends HTMLElement {
         const middleware = [];
         middleware.push(offset(totalGap));
         if (avoidCollisions) middleware.push(flip());
-        if (shiftEnabled) middleware.push(shift({ padding: 5 }));
+        if (stickyEnabled) middleware.push(shift({ padding: 5 }));
         if (hideWhenDetached) middleware.push(hide());
 
         if (arrowElement) {
