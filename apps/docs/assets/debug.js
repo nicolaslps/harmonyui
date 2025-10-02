@@ -54,7 +54,7 @@ class HuiFloatingElement extends HTMLElement {
     startAutoUpdate() {
         if (!this.trigger || this.cleanup) return;
 
-        if (this.hasAttribute('data-lock')) {
+        if (this.hasAttribute('data-screen-lock')) {
             console.log('Lock screen - popover opened');
         }
 
@@ -77,7 +77,7 @@ class HuiFloatingElement extends HTMLElement {
     }
 
     async stopAutoUpdate() {
-        if (this.hasAttribute('data-lock')) {
+        if (this.hasAttribute('data-screen-lock')) {
             console.log('Unlock screen - popover closed');
         }
 

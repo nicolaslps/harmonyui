@@ -4,7 +4,7 @@
     avoidCollisions = null,
     shift = false,
     hideWhenDetached = null,
-    lock = false
+    screenLock = false
 %}
 
 {%- set styleProps = getStyleProps(
@@ -20,7 +20,7 @@
     {% if avoidCollisions %}avoidCollisions{% endif %}
     {% if shift %}data-shift{% endif %}
     {% if hideWhenDetached %}hideWhenDetached{% endif %}
-    {% if lock %}data-lock{% endif %}
+    {% if screenLock %}data-screen-lock{% endif %}
     style="visibility: hidden"
 >
     {%- block content %}{% endblock -%}
