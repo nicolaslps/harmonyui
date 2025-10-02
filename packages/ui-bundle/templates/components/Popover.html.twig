@@ -1,9 +1,9 @@
 {% props
     position = 'bottom',
     gap = null,
-    flip = false,
+    avoidCollisions = null,
     shift = false,
-    hide = false,
+    hideWhenDetached = null,
     autoPlacement = false,
     lock = false
 %}
@@ -18,9 +18,9 @@
     {{ attributes.without('class') }}
     {% if position %}data-position="{{ position }}"{% endif %}
     {% if gap %}data-gap="{{ gap }}"{% endif %}
-    {% if flip %}data-flip{% endif %}
+    {% if avoidCollisions %}avoidCollisions{% endif %}
     {% if shift %}data-shift{% endif %}
-    {% if hide %}hideWhenDetached{% endif %}
+    {% if hideWhenDetached %}hideWhenDetached{% endif %}
     {% if autoPlacement %}data-auto-placement{% endif %}
     {% if lock %}data-lock{% endif %}
     style="visibility: hidden"

@@ -192,7 +192,7 @@ class HuiFloatingElement extends HTMLElement {
         if (!trigger) return;
 
         const placement = this.getAttribute('data-position') || 'bottom';
-        const flipEnabled = this.hasAttribute('data-flip');
+        const avoidCollisions = this.hasAttribute('avoidCollisions');
         const shiftEnabled = this.hasAttribute('data-shift');
         const hideWhenDetached = this.hasAttribute('hideWhenDetached');
         const autoPlacementEnabled = this.hasAttribute('data-auto-placement');
@@ -219,7 +219,7 @@ class HuiFloatingElement extends HTMLElement {
             );
         } else {
             middleware.push(offset(totalGap));
-            if (flipEnabled) middleware.push(flip());
+            if (avoidCollisions) middleware.push(flip());
             if (shiftEnabled) middleware.push(shift({ padding: 5 }));
             if (hideWhenDetached) middleware.push(hide());
         }
