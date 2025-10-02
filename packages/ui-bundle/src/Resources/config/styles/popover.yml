@@ -4,7 +4,7 @@ popover:
 
 popover.root:
   base:
-    - "fixed overflow-visible"
+    - "fixed overflow-visible bg-transparent"
     - "focus:outline-none"
   defaultVariants: {}
 

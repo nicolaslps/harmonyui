@@ -1,6 +1,6 @@
 {% props
     position = 'bottom',
-    gap = null,
+    sideOffset = null,
     avoidCollisions = null,
     shift = false,
     hideWhenDetached = null,
@@ -17,7 +17,7 @@
     class="{{ style('popover.root', styleProps) }}"
     {{ attributes.without('class') }}
     {% if position %}data-position="{{ position }}"{% endif %}
-    {% if gap %}data-gap="{{ gap }}"{% endif %}
+    {% if sideOffset %}data-side-offset="{{ sideOffset }}"{% endif %}
     {% if avoidCollisions %}avoidCollisions{% endif %}
     {% if shift %}data-shift{% endif %}
     {% if hideWhenDetached %}hideWhenDetached{% endif %}

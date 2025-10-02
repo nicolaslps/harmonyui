@@ -166,7 +166,7 @@ class HuiFloatingElement extends HTMLElement {
         const shiftEnabled = this.hasAttribute('data-shift');
         const hideWhenDetached = this.hasAttribute('hideWhenDetached');
         const autoPlacementEnabled = this.hasAttribute('data-auto-placement');
-        const baseGap = parseInt(this.getAttribute('data-gap')) || 4;
+        const baseGap = parseInt(this.getAttribute('data-side-offset')) || 4;
         const arrowElement = this.querySelector('[data-slot="arrow"]');
 
         let totalGap = baseGap;
