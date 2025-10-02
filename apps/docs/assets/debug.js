@@ -1,4 +1,4 @@
-import { computePosition, flip, offset, shift, arrow, hide, autoPlacement, autoUpdate } from '@floating-ui/dom';
+import { computePosition, flip, offset, shift, arrow, hide, autoUpdate } from '@floating-ui/dom';
 
 class HuiFloatingElement extends HTMLElement {
     constructor() {
@@ -165,7 +165,6 @@ class HuiFloatingElement extends HTMLElement {
         const avoidCollisions = this.hasAttribute('avoidCollisions');
         const shiftEnabled = this.hasAttribute('data-shift');
         const hideWhenDetached = this.hasAttribute('hideWhenDetached');
-        const autoPlacementEnabled = this.hasAttribute('data-auto-placement');
         const baseGap = parseInt(this.getAttribute('data-side-offset')) || 4;
         const arrowElement = this.querySelector('[data-slot="arrow"]');
 
@@ -182,24 +181,17 @@ class HuiFloatingElement extends HTMLElement {
         }
 
         const middleware = [];
-
-        if (autoPlacementEnabled) {
-            middleware.push(
-                autoPlacement({ crossAxis: true })
-            );
-        } else {
-            middleware.push(offset(totalGap));
-            if (avoidCollisions) middleware.push(flip());
-            if (shiftEnabled) middleware.push(shift({ padding: 5 }));
-            if (hideWhenDetached) middleware.push(hide());
-        }
+        middleware.push(offset(totalGap));
+        if (avoidCollisions) middleware.push(flip());
+        if (shiftEnabled) middleware.push(shift({ padding: 5 }));
+        if (hideWhenDetached) middleware.push(hide());
 
         if (arrowElement) {
             middleware.push(arrow({ element: arrowElement }));
         }
 
         computePosition(trigger, this, {
-            placement: autoPlacementEnabled ? 'bottom' : placement,
+            placement: placement,
             strategy: 'fixed',
             middleware: middleware,
         }).then((result) => {
