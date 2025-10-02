@@ -194,7 +194,7 @@ class HuiFloatingElement extends HTMLElement {
         const placement = this.getAttribute('data-position') || 'bottom';
         const flipEnabled = this.hasAttribute('data-flip');
         const shiftEnabled = this.hasAttribute('data-shift');
-        const hideEnabled = this.hasAttribute('data-hide');
+        const hideWhenDetached = this.hasAttribute('hideWhenDetached');
         const autoPlacementEnabled = this.hasAttribute('data-auto-placement');
         const baseGap = parseInt(this.getAttribute('data-gap')) || 4;
         const arrowElement = this.querySelector('[data-slot="arrow"]');
@@ -221,7 +221,7 @@ class HuiFloatingElement extends HTMLElement {
             middleware.push(offset(totalGap));
             if (flipEnabled) middleware.push(flip());
             if (shiftEnabled) middleware.push(shift({ padding: 5 }));
-            if (hideEnabled) middleware.push(hide());
+            if (hideWhenDetached) middleware.push(hide());
         }
 
         if (arrowElement) {
@@ -239,7 +239,7 @@ class HuiFloatingElement extends HTMLElement {
             this.style.left = `${result.x}px`;
             this.style.top = `${result.y}px`;
 
-            if (hideEnabled && result.middlewareData.hide) {
+            if (hideWhenDetached && result.middlewareData.hide) {
                 const { referenceHidden, escaped } = result.middlewareData.hide;
 
                 if (referenceHidden || escaped) {
