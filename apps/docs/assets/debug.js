@@ -7,51 +7,51 @@ class HuiFloatingElement extends HTMLElement {
         this.contentTarget = null;
         this.cleanup = null;
         this.isAnimating = false;
-        this.updatePosition = this.updatePosition.bind(this);
+        this._updatePosition = this._updatePosition.bind(this);
     }
 
     connectedCallback() {
-        this.setupTrigger();
-        this.setupEventListeners();
-        this.setupFloatingBehavior();
+        this._setupTrigger();
+        this._setupEventListeners();
+        this._setupFloatingBehavior();
     }
 
     disconnectedCallback() {
-        this.cleanupEventListeners();
-        this.stopAutoUpdate();
+        this._cleanupEventListeners();
+        this._stopAutoUpdate();
     }
 
-    setupTrigger() {
+    _setupTrigger() {
         const elementId = this.id;
         if (elementId) {
-            this.trigger = this.findTrigger(elementId);
+            this.trigger = this._findTrigger(elementId);
         }
         this.contentTarget = this;
     }
 
-    findTrigger(elementId) {
+    _findTrigger(elementId) {
         return document.querySelector(`[popovertarget="${elementId}"]`) ||
             document.querySelector(`[data-target="${elementId}"]`) ||
             document.querySelector(`[aria-controls="${elementId}"]`);
     }
 
-    setupEventListeners() {
+    _setupEventListeners() {
         this.addEventListener('toggle', (event) => {
             if (event.newState === 'open') {
-                this.startAutoUpdate();
+                this._startAutoUpdate();
             } else {
-                this.stopAutoUpdate();
+                this._stopAutoUpdate();
             }
         });
 
-        document.addEventListener('click', this.handleOutsideClick.bind(this));
+        document.addEventListener('click', this._handleOutsideClick.bind(this));
     }
 
-    cleanupEventListeners() {
-        this.stopAutoUpdate();
+    _cleanupEventListeners() {
+        this._stopAutoUpdate();
     }
 
-    startAutoUpdate() {
+    _startAutoUpdate() {
         if (!this.trigger || this.cleanup) return;
 
         if (this.hasAttribute('data-screen-lock')) {
@@ -71,12 +71,12 @@ class HuiFloatingElement extends HTMLElement {
         this.cleanup = autoUpdate(
             this.trigger,
             this,
-            this.updatePosition
+            this._updatePosition
         );
 
     }
 
-    async stopAutoUpdate() {
+    async _stopAutoUpdate() {
         if (this.hasAttribute('data-screen-lock')) {
             console.log('Unlock screen - popover closed');
         }
@@ -137,7 +137,7 @@ class HuiFloatingElement extends HTMLElement {
     }
 
 
-    setupFloatingBehavior() {
+    _setupFloatingBehavior() {
         this.setAttribute('popover', '');
         const contentTarget = this.querySelector('[data-slot="content"]') || this;
         const arrowTarget = this.querySelector('[data-slot="arrow"]');
@@ -147,7 +147,7 @@ class HuiFloatingElement extends HTMLElement {
         }
     }
 
-    handleOutsideClick(event) {
+    _handleOutsideClick(event) {
         if (this.hasAttribute('popover') && this.matches(':popover-open')) {
             if (!this.contains(event.target) && !this.trigger?.contains(event.target)) {
                 this.hidePopover();
@@ -155,7 +155,7 @@ class HuiFloatingElement extends HTMLElement {
         }
     }
 
-    async updatePosition(event, data) {
+    async _updatePosition(event, data) {
         if (!this.matches(':popover-open')) return;
 
         const trigger = data?.target ?? this.trigger;
@@ -264,7 +264,7 @@ class HuiFloatingElement extends HTMLElement {
         if (this.isAnimating) return;
         this.isAnimating = true;
 
-        await this.stopAutoUpdate();
+        await this._stopAutoUpdate();
 
         this.hidePopover();
         this.isAnimating = false;
