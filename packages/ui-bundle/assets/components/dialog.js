@@ -123,6 +123,7 @@ class HuiDialog extends HTMLElement {
 			setTimeout(() => {
 				el.removeAttribute('data-enter');
 				el.removeAttribute('data-transition');
+				el.setAttribute('data-open', '');
 			}, duration || 200);
 		});
 	}
@@ -135,9 +136,9 @@ class HuiDialog extends HTMLElement {
 		const elements = [this.dialog, this.panel];
 
 		elements.forEach((el) => {
+			el.removeAttribute('data-open');
 			el.setAttribute('data-leave', '');
 			el.setAttribute('data-transition', '');
-			el.setAttribute('data-closed', '');
 		});
 
 		await this._nextFrame();
@@ -147,6 +148,7 @@ class HuiDialog extends HTMLElement {
 			setTimeout(() => {
 				el.removeAttribute('data-leave');
 				el.removeAttribute('data-transition');
+                el.setAttribute('data-closed', '');
 			}, duration || 200);
 		});
 
