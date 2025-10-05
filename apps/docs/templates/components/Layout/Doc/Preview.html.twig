@@ -15,8 +15,13 @@
         </twig:ui:Tabs:List>
         <twig:ui:Tabs:Panels>
             <twig:ui:Tabs:Panel>
-                <twig:ui:Card class="px-2" data-slot="preview">
-                    {{ preview }}
+                <twig:ui:Card>
+                    <div
+                        class="flex min-h-20 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start px-2"
+                        data-slot="preview"
+                    >
+                        {{ preview }}
+                    </div>
                 </twig:ui:Card>
             </twig:ui:Tabs:Panel>
             <twig:ui:Tabs:Panel hidden>
