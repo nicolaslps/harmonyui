@@ -4,22 +4,19 @@ dialog:
 
 dialog.native:
   base:
-    - "relative z-50 m-auto bg-transparent transition-all "
-    - "backdrop:bg-black/50"
-    - "data-[enter]:animate-in data-[leave]:animate-out"
-    - "data-[leave]:fade-out-0 data-[enter]:fade-in-0"
-    - "data-[closed]:opacity-0"
-    - "backdrop:data-[enter]:animate-in backdrop:data-[leave]:animate-out"
-    - "backdrop:data-[leave]:fade-out-0 backdrop:data-[enter]:fade-in-0"
-    - "backdrop:data-[closed]:opacity-0"
+    - "relative z-50 m-auto bg-transparent"
+    - "data-[enter]:fade-in-0 data-[enter]:animate-in"
+    - "data-[leave]:fade-out-0 data-[leave]:animate-out"
+    - "backdrop:bg-black/50 backdrop:transition-opacity"
+    - "data-[enter]:backdrop:fade-in-0 data-[enter]:backdrop:animate-in"
+    - "data-[leave]:backdrop:opacity-0"
   defaultVariants: {}
 
 dialog.content:
   base:
-    - "relative border-border bg-background text-foreground w-full max-w-lg gap-4 border p-6 shadow-lg rounded-lg grid gap-4 transition-all duration-200"
-    - "data-[enter]:animate-in data-[leave]:animate-out data-[enter]:zoom-in-95"
-    - "data-[leave]:fade-out-0 data-[enter]:fade-in-0 data-[leave]:zoom-out-95"
-    - "data-[closed]:opacity-0 data-[closed]:scale-95"
+    - "relative border-border bg-background text-foreground w-full max-w-lg gap-4 border p-6 shadow-lg rounded-lg grid gap-4"
+    - "data-[enter]:animate-in data-[enter]:fade-in-0 data-[enter]:zoom-in-95"
+    - "data-[leave]:animate-out data-[leave]:fade-out-0 data-[leave]:zoom-out-95"
   defaultVariants: {}
 
 dialog.header:
