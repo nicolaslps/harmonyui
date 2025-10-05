@@ -80,28 +80,6 @@ class HuiDialog extends HTMLElement {
 		return this.dialog.getAttribute('type') === 'alert';
 	}
 
-	_getTransitionDuration(element) {
-		if (!element) return 0;
-
-		const computedStyle = window.getComputedStyle(element);
-		const duration = computedStyle.transitionDuration;
-		const durations = duration.split(',').map((d) => {
-			const trimmed = d.trim();
-			if (trimmed.endsWith('ms')) {
-				return parseFloat(trimmed);
-			} else if (trimmed.endsWith('s')) {
-				return parseFloat(trimmed) * 1000;
-			}
-			return 0;
-		});
-
-		return Math.max(...durations, 0);
-	}
-
-	_nextFrame() {
-		return new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-	}
-
 	async _handleOpenAnimation() {
 		if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
 			return Promise.resolve();
@@ -116,15 +94,17 @@ class HuiDialog extends HTMLElement {
 			el.setAttribute('data-transition', '');
 		});
 
-		await this._nextFrame();
+		await new Promise(resolve => requestAnimationFrame(resolve));
+
+		const animations = this.dialog.getAnimations({ subtree: true });
+		if (animations.length > 0) {
+			await Promise.all(animations.map(animation => animation.finished));
+		}
 
 		elements.forEach((el) => {
-			const duration = this._getTransitionDuration(el);
-			setTimeout(() => {
-				el.removeAttribute('data-enter');
-				el.removeAttribute('data-transition');
-				el.setAttribute('data-open', '');
-			}, duration || 200);
+			el.removeAttribute('data-enter');
+			el.removeAttribute('data-transition');
+			el.setAttribute('data-open', '');
 		});
 	}
 
@@ -133,6 +113,7 @@ class HuiDialog extends HTMLElement {
 			return Promise.resolve();
 		}
 		if (!this.dialog) return Promise.resolve();
+
 		const elements = [this.dialog, this.panel];
 
 		elements.forEach((el) => {
@@ -141,22 +122,15 @@ class HuiDialog extends HTMLElement {
 			el.setAttribute('data-transition', '');
 		});
 
-		await this._nextFrame();
+		const animations = this.dialog.getAnimations({ subtree: true });
+		if (animations.length > 0) {
+			await Promise.all(animations.map(animation => animation.finished));
+		}
 
 		elements.forEach((el) => {
-			const duration = this._getTransitionDuration(el);
-			setTimeout(() => {
-				el.removeAttribute('data-leave');
-				el.removeAttribute('data-transition');
-                el.setAttribute('data-closed', '');
-			}, duration || 200);
-		});
-
-		const dialogDuration = this._getTransitionDuration(this.dialog);
-		return new Promise((resolve) => {
-			setTimeout(() => {
-				resolve();
-			}, dialogDuration || 200);
+			el.removeAttribute('data-leave');
+			el.removeAttribute('data-transition');
+			el.setAttribute('data-closed', '');
 		});
 	}
 
