@@ -1,4 +1,4 @@
-import { computePosition, flip, offset, shift, arrow, hide, autoUpdate } from '@floating-ui/dom';
+import { computePosition, flip, offset, shift, arrow, hide, size, autoUpdate } from '@floating-ui/dom';
 
 class HuiFloatingElement extends HTMLElement {
     constructor() {
@@ -211,7 +211,31 @@ class HuiFloatingElement extends HTMLElement {
 
             if (arrowElement && result.middlewareData.arrow) {
                 const arrowSide = side.split('-')[0];
-                const { x, y } = result.middlewareData.arrow;
+                let { x, y } = result.middlewareData.arrow;
+                if (stickyEnabled) {
+                    const arrowRect = arrowElement.getBoundingClientRect();
+                    const popoverRect = this.getBoundingClientRect();
+                    const computedStyle = window.getComputedStyle(this.contentTarget);
+                    const borderRadius = parseFloat(computedStyle.borderRadius);
+
+                    if (arrowSide === 'top' || arrowSide === 'bottom') {
+                        const minX = borderRadius;
+                        const maxX = popoverRect.width - arrowRect.width - borderRadius;
+                        if (maxX >= minX) {
+                            x = Math.max(minX, Math.min(x, maxX));
+                        } else {
+                            x = (popoverRect.width - arrowRect.width) / 2;
+                        }
+                    } else if (arrowSide === 'left' || arrowSide === 'right') {
+                        const minY = borderRadius;
+                        const maxY = popoverRect.height - arrowRect.height - borderRadius;
+                        if (maxY >= minY) {
+                            y = Math.max(minY, Math.min(y, maxY));
+                        } else {
+                            y = (popoverRect.height - arrowRect.height) / 2;
+                        }
+                    }
+                }
 
                 Object.assign(arrowElement.style, {
                     left: x != null ? `${x}px` : '',
