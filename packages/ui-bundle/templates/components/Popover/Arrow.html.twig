@@ -3,10 +3,19 @@
     attributes
 ) -%}
 
-<div
+<span
     class="{{ style('popover.arrow', styleProps) }}"
     {{ attributes.without('class') }}
     data-slot="arrow"
 >
-    <div class="size-4 bg-red-500"></div>
-</div>
+    <svg
+        width="10"
+        height="5"
+        viewBox="0 0 30 10"
+        preserveAspectRatio="none"
+    >
+        <polygon points="0,0 30,0 15,10" data-slot="arrow-background" />
+        <line x1="0" y1="0" x2="15" y2="10" stroke-width="1" data-slot="arrow-border"/>
+        <line x1="30" y1="0" x2="15" y2="10" stroke-width="1" data-slot="arrow-border"/>
+    </svg>
+</span>

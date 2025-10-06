@@ -61,11 +61,7 @@ class HuiFloatingElement extends HTMLElement {
         this.style.visibility = 'hidden';
         this.removeAttribute('data-closed');
         this.contentTarget = this.querySelector('[data-slot="content"]') || this;
-        this.arrowTarget = this.querySelector('[data-slot="arrow"]');
         this.contentTarget.setAttribute('data-closed', '');
-        if (this.arrowTarget) {
-            this.arrowTarget.setAttribute('data-closed', '');
-        }
         this.isInitialOpen = true;
 
         this.cleanup = autoUpdate(
@@ -122,10 +118,6 @@ class HuiFloatingElement extends HTMLElement {
         this.contentTarget.setAttribute('data-leave', '');
         this.contentTarget.setAttribute('data-transition', '');
 
-        if (this.arrowTarget) {
-            this.arrowTarget.setAttribute('data-state', 'closed');
-        }
-
         if (reduceMotion) {
             const animations = this.getAnimations({ subtree: true });
             animations.forEach(animation => {
@@ -146,11 +138,7 @@ class HuiFloatingElement extends HTMLElement {
     _setupFloatingBehavior() {
         this.setAttribute('popover', 'manual');
         const contentTarget = this.querySelector('[data-slot="content"]') || this;
-        const arrowTarget = this.querySelector('[data-slot="arrow"]');
         contentTarget.setAttribute('data-closed', '');
-        if (arrowTarget) {
-            arrowTarget.setAttribute('data-closed', '');
-        }
     }
 
     _handleOutsideClick(event) {
