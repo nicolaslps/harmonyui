@@ -59,12 +59,12 @@ class HuiFloatingElement extends HTMLElement {
         }
 
         this.style.visibility = 'hidden';
-        this.setAttribute('data-state', 'open');
+        this.removeAttribute('data-closed');
         this.contentTarget = this.querySelector('[data-slot="content"]') || this;
         this.arrowTarget = this.querySelector('[data-slot="arrow"]');
-        this.contentTarget.setAttribute('data-state', 'closed');
+        this.contentTarget.setAttribute('data-closed', '');
         if (this.arrowTarget) {
-            this.arrowTarget.setAttribute('data-state', 'closed');
+            this.arrowTarget.setAttribute('data-closed', '');
         }
         this.isInitialOpen = true;
 
@@ -90,45 +90,73 @@ class HuiFloatingElement extends HTMLElement {
     }
 
     async _handleOpenAnimation() {
-        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
-            return Promise.resolve();
+        const skipAnimations = this._skipAnimations() || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+        this.contentTarget.removeAttribute('data-closed');
+        this.contentTarget.setAttribute('data-enter', '');
+        this.contentTarget.setAttribute('data-transition', '');
+
+        if (skipAnimations) {
+            const animations = this.contentTarget.getAnimations();
+            animations.forEach(animation => {
+                animation.currentTime = animation.effect.getComputedTiming().duration;
+            });
         }
 
-        this.contentTarget.setAttribute('data-state', 'open');
+        await new Promise(resolve => requestAnimationFrame(resolve));
 
+        const animations = this.contentTarget.getAnimations();
+        if (animations.length > 0) {
+            await Promise.all(animations.map(animation => animation.finished));
+        }
+
+        this.contentTarget.removeAttribute('data-enter');
+        this.contentTarget.removeAttribute('data-transition');
+        this.contentTarget.setAttribute('data-open', '');
     }
 
     async _handleCloseAnimation() {
-        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
-            return Promise.resolve();
-        }
+        const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-        this.contentTarget.setAttribute('data-state', 'closed');
+        this.contentTarget.removeAttribute('data-open');
+        this.contentTarget.setAttribute('data-leave', '');
+        this.contentTarget.setAttribute('data-transition', '');
 
         if (this.arrowTarget) {
             this.arrowTarget.setAttribute('data-state', 'closed');
+        }
+
+        if (reduceMotion) {
+            const animations = this.getAnimations({ subtree: true });
+            animations.forEach(animation => {
+                animation.currentTime = animation.effect.getComputedTiming().duration;
+            });
         }
 
         const animations = this.getAnimations({ subtree: true });
         if (animations.length > 0) {
             await Promise.all(animations.map(animation => animation.finished));
         }
+
+        this.contentTarget.removeAttribute('data-leave');
+        this.contentTarget.removeAttribute('data-transition');
+        this.contentTarget.setAttribute('data-closed', '');
     }
 
     _setupFloatingBehavior() {
-        this.setAttribute('popover', '');
+        this.setAttribute('popover', 'manual');
         const contentTarget = this.querySelector('[data-slot="content"]') || this;
         const arrowTarget = this.querySelector('[data-slot="arrow"]');
-        contentTarget.setAttribute('data-state', 'closed');
+        contentTarget.setAttribute('data-closed', '');
         if (arrowTarget) {
-            arrowTarget.setAttribute('data-state', 'closed');
+            arrowTarget.setAttribute('data-closed', '');
         }
     }
 
     _handleOutsideClick(event) {
         if (this.hasAttribute('popover') && this.matches(':popover-open')) {
             if (!this.contains(event.target) && !this.trigger?.contains(event.target)) {
-                this.hidePopover();
+                this.close();
             }
         }
     }
@@ -214,9 +242,15 @@ class HuiFloatingElement extends HTMLElement {
         }
     }
 
-
-    isOpen() {
-        return this.matches(':popover-open');
+    _skipAnimations() {
+        const popoverGroup = this.closest('[data-slot="popover-group"]');
+        if (popoverGroup) {
+            const openPopovers = popoverGroup.querySelectorAll('hui-popover:popover-open');
+            if (openPopovers.length > 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     async open() {
@@ -244,7 +278,7 @@ class HuiFloatingElement extends HTMLElement {
     }
 
     toggle() {
-        if (this.isOpen()) {
+        if (this.matches(':popover-open')) {
             this.close();
         } else {
             this.open();
