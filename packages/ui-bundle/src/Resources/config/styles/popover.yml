@@ -50,6 +50,6 @@ popover.arrow:
     - "data-[side=bottom]:-top-[0.3rem] data-[side=bottom]:rotate-180"
     - "data-[side=bottom-start]:-top-[0.3rem] data-[side=bottom-start]:rotate-180"
     - "data-[side=bottom-end]:-top-[0.3rem] data-[side=bottom-end]:rotate-180"
-    - "data-[side=left]:-right-[0.48rem] data-[side=left]:-rotate-90"
-    - "data-[side=right]:-left-[0.48rem] data-[side=right]:rotate-90"
+    - "data-[side=left]:-right-[0.47rem] data-[side=left]:-rotate-90"
+    - "data-[side=right]:-left-[0.47rem] data-[side=right]:rotate-90"
   defaultVariants: {}
