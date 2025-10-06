@@ -15,14 +15,6 @@
         <p class="text-gray-600 mt-2">The popover component is used to display floating panels with arbitrary content — perfect for things like navigation menus, tooltips, and flyouts.</p>
     </div>
 
-    <twig:ui:Alert>
-        <twig:ux:icon name="lucide:info" />
-        <div>
-            <h4 class="font-semibold">Preview</h4>
-            <p class="text-sm">We are currently working on this component</p>
-        </div>
-    </twig:ui:Alert>
-
     <div class="space-y-12">
         <twig:Layout:Doc:Preview title="Basic">
             {{ include('preview/popover/basic.html.twig') }}
@@ -66,7 +58,6 @@
             </twig:block>
         </twig:Layout:Doc:Preview>
 
-
         <twig:Layout:Doc:Preview title="Screen Lock">
             {{ include('preview/popover/screenLock.html.twig') }}
             <twig:block name="code">
@@ -74,5 +65,11 @@
             </twig:block>
         </twig:Layout:Doc:Preview>
 
+        <twig:Layout:Doc:Preview title="Group">
+            {{ include('preview/popover/group.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/group.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
     </div>
 </div>

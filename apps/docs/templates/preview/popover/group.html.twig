@@ -1,0 +1,29 @@
+<div class="flex gap-2">
+    <twig:ui:Button popovertarget="group-popover-1">
+        Open 1
+    </twig:ui:Button>
+    <twig:ui:Button popovertarget="group-popover-2">
+        Open 2
+    </twig:ui:Button>
+    <twig:ui:Button popovertarget="group-popover-3">
+        Open 3
+    </twig:ui:Button>
+</div>
+
+<twig:ui:Popover:Group>
+    <twig:ui:Popover id="group-popover-1">
+        <twig:ui:Popover:Content>
+            <p class="font-medium leading-none">Group</p>
+        </twig:ui:Popover:Content>
+    </twig:ui:Popover>
+    <twig:ui:Popover id="group-popover-2">
+        <twig:ui:Popover:Content>
+            <p class="font-medium leading-none">Group</p>
+        </twig:ui:Popover:Content>
+    </twig:ui:Popover>
+    <twig:ui:Popover id="group-popover-3">
+        <twig:ui:Popover:Content>
+            <p class="font-medium leading-none">Group</p>
+        </twig:ui:Popover:Content>
+    </twig:ui:Popover>
+</twig:ui:Popover:Group>
