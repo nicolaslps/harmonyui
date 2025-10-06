@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "@floating-ui/dom": "^1.7.4",
         "@harmonyui/primitives": "file:vendor/harmonyui/ui-bundle/assets",
         "@tailwindcss/cli": "^4.0.0",
         "@tailwindcss/postcss": "^4.1.12",

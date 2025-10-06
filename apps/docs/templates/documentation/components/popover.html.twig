@@ -1,0 +1,75 @@
+{% set meta = {
+    slug: '/components/popover',
+    title: 'Popover',
+    description: 'A popover is a floating panel that displays content over other page elements.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 8,
+    section: 'components',
+    image: 'images/components/popover.png',
+} %}
+
+<div class="space-y-16">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+        <p class="text-gray-600 mt-2">The popover component is used to display floating panels with arbitrary content — perfect for things like navigation menus, tooltips, and flyouts.</p>
+    </div>
+
+    <div class="space-y-12">
+        <twig:Layout:Doc:Preview title="Basic">
+            {{ include('preview/popover/basic.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/basic.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Placements">
+            {{ include('preview/popover/placements.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/placements.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="SideOffset">
+            {{ include('preview/popover/sideOffset.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/sideOffset.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="AvoidCollisions">
+            {{ include('preview/popover/avoid-collisions.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/avoid-collisions.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Sticky">
+            {{ include('preview/popover/sticky.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/sticky.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="HideWhenDetached">
+            {{ include('preview/popover/hideWhenDetached.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/hideWhenDetached.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Screen Lock">
+            {{ include('preview/popover/screenLock.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/screenLock.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Group">
+            {{ include('preview/popover/group.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/popover/group.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>

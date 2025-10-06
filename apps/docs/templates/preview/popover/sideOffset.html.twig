@@ -1,0 +1,21 @@
+<div class="flex items-center justify-center gap-4">
+    <twig:ui:Button popovertarget="custom-gap-popover">
+        Open
+    </twig:ui:Button>
+    <twig:ui:Button popovertarget="custom-gap-popover-arrow">
+        Open
+    </twig:ui:Button>
+</div>
+
+<twig:ui:Popover id="custom-gap-popover" sideOffset="16">
+    <twig:ui:Popover:Content class="w-fit p-4">
+        <p class="font-medium leading-none">Default</p>
+    </twig:ui:Popover:Content>
+</twig:ui:Popover>
+
+<twig:ui:Popover id="custom-gap-popover-arrow" sideOffset="16">
+    <twig:ui:Popover:Content class="w-fit p-4">
+        <p class="font-medium leading-none">With arrow</p>
+        <twig:ui:Popover:Arrow/>
+    </twig:ui:Popover:Content>
+</twig:ui:Popover>

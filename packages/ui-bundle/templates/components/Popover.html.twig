@@ -1,0 +1,27 @@
+{% props
+    position = 'bottom',
+    sideOffset = null,
+    avoidCollisions = null,
+    sticky = null,
+    hideWhenDetached = null,
+    screenLock = null
+%}
+
+{%- set styleProps = getStyleProps(
+    'popover.root',
+    attributes
+) -%}
+
+<hui-popover
+    class="{{ style('popover.root', styleProps) }}"
+    {{ attributes.without('class') }}
+    {% if position %}position="{{ position }}"{% endif %}
+    {% if sideOffset %}sideOffset="{{ sideOffset }}"{% endif %}
+    {% if avoidCollisions %}avoidCollisions{% endif %}
+    {% if sticky %}sticky{% endif %}
+    {% if hideWhenDetached %}hideWhenDetached{% endif %}
+    {% if screenLock %}screenLock{% endif %}
+    style="visibility: hidden"
+>
+    {%- block content %}{% endblock -%}
+</hui-popover>

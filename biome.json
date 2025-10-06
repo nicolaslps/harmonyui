@@ -14,7 +14,8 @@
 			"!**/package-lock.json",
 			"!**/composer.lock",
 			"!**/.git",
-			"!**/styles/app.css"
+			"!**/styles/app.css",
+			"!**/styles/animate.css"
 		]
 	},
 	"linter": {

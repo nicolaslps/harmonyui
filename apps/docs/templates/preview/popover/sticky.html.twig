@@ -1,0 +1,10 @@
+<twig:ui:Button popovertarget="sticky-popover">
+    Click me (with sticky)
+</twig:ui:Button>
+
+<twig:ui:Popover id="sticky-popover" data-position="right" sticky hideWhenDetached>
+    <twig:ui:Popover:Content class="w-80 h-20">
+        <p class="font-medium leading-none">sticky</p>
+        <twig:ui:Popover:Arrow/>
+    </twig:ui:Popover:Content>
+</twig:ui:Popover>
