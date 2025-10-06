@@ -94,11 +94,11 @@ class HuiDialog extends HTMLElement {
 			el.setAttribute('data-transition', '');
 		});
 
-		await new Promise(resolve => requestAnimationFrame(resolve));
+		await new Promise((resolve) => requestAnimationFrame(resolve));
 
 		const animations = this.dialog.getAnimations({ subtree: true });
 		if (animations.length > 0) {
-			await Promise.all(animations.map(animation => animation.finished));
+			await Promise.all(animations.map((animation) => animation.finished));
 		}
 
 		elements.forEach((el) => {
@@ -124,7 +124,7 @@ class HuiDialog extends HTMLElement {
 
 		const animations = this.dialog.getAnimations({ subtree: true });
 		if (animations.length > 0) {
-			await Promise.all(animations.map(animation => animation.finished));
+			await Promise.all(animations.map((animation) => animation.finished));
 		}
 
 		elements.forEach((el) => {
