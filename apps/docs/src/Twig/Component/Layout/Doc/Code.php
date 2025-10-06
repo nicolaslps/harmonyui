@@ -39,7 +39,7 @@ class Code
      */
     public function getFormattedCodes(string $slotContent = ''): array
     {
-        if (!empty($slotContent)) {
+        if ($slotContent !== '') {
             return [$this->formatContent($slotContent)];
         }
 
