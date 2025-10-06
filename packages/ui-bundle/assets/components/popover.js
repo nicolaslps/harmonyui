@@ -1,4 +1,5 @@
-import { computePosition, flip, offset, shift, arrow, hide, size, autoUpdate } from '@floating-ui/dom';
+import { computePosition, flip, offset, shift, arrow, hide, autoUpdate } from '@floating-ui/dom';
+import {screenLock} from "../utils/screen-lock";
 
 class HuiFloatingElement extends HTMLElement {
     constructor() {
@@ -54,8 +55,8 @@ class HuiFloatingElement extends HTMLElement {
     _startAutoUpdate() {
         if (!this.trigger || this.cleanup) return;
 
-        if (this.hasAttribute('data-screen-lock')) {
-            console.log('Lock screen - popover opened');
+        if (this.hasAttribute('screenLock')) {
+            screenLock.lock();
         }
 
         this.style.visibility = 'hidden';
@@ -73,8 +74,8 @@ class HuiFloatingElement extends HTMLElement {
     }
 
     async _stopAutoUpdate() {
-        if (this.hasAttribute('data-screen-lock')) {
-            console.log('Unlock screen - popover closed');
+        if (this.hasAttribute('screenLock')) {
+            screenLock.unlock();
         }
 
         await this._handleCloseAnimation();
@@ -155,11 +156,11 @@ class HuiFloatingElement extends HTMLElement {
         const trigger = data?.target ?? this.trigger;
         if (!trigger) return;
 
-        const placement = this.getAttribute('data-position') || 'bottom';
+        const placement = this.getAttribute('position') || 'bottom';
         const avoidCollisions = this.hasAttribute('avoidCollisions');
-        const stickyEnabled = this.hasAttribute('data-sticky');
+        const stickyEnabled = this.hasAttribute('sticky');
         const hideWhenDetached = this.hasAttribute('hideWhenDetached');
-        const baseGap = parseInt(this.getAttribute('data-side-offset')) || 4;
+        const baseGap = parseInt(this.getAttribute('sideOffset')) || 4;
         const arrowElement = this.querySelector('[data-slot="arrow"]');
 
         let totalGap = baseGap;

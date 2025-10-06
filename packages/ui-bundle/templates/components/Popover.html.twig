@@ -2,9 +2,9 @@
     position = 'bottom',
     sideOffset = null,
     avoidCollisions = null,
-    sticky = false,
+    sticky = null,
     hideWhenDetached = null,
-    screenLock = false
+    screenLock = null
 %}
 
 {%- set styleProps = getStyleProps(
@@ -15,12 +15,12 @@
 <hui-popover
     class="{{ style('popover.root', styleProps) }}"
     {{ attributes.without('class') }}
-    {% if position %}data-position="{{ position }}"{% endif %}
-    {% if sideOffset %}data-side-offset="{{ sideOffset }}"{% endif %}
+    {% if position %}position="{{ position }}"{% endif %}
+    {% if sideOffset %}sideOffset="{{ sideOffset }}"{% endif %}
     {% if avoidCollisions %}avoidCollisions{% endif %}
-    {% if sticky %}data-sticky{% endif %}
+    {% if sticky %}sticky{% endif %}
     {% if hideWhenDetached %}hideWhenDetached{% endif %}
-    {% if screenLock %}data-screen-lock{% endif %}
+    {% if screenLock %}screenLock{% endif %}
     style="visibility: hidden"
 >
     {%- block content %}{% endblock -%}
