@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'button.group',
+    attributes
+) -%}
+
+<div
+    class="{{ style('button.group', styleProps) }}"
+    role="group"
+    {{ attributes.without('class') }}
+    data-slot="button-group"
+>
+    {%- block content -%}{%- endblock -%}
+</div>

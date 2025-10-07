@@ -1,0 +1,26 @@
+<div class="flex items-center justify-center p-8">
+    <twig:ui:ButtonGroup>
+        <twig:ui:Button variant="outline">
+            <twig:ux:icon name="lucide:bot" />
+            Copilot
+        </twig:ui:Button>
+        <twig:ui:Button variant="outline" size="icon" popovertarget="copilot-popover" aria-label="Open Popover">
+            <twig:ux:icon name="lucide:chevron-down" />
+        </twig:ui:Button>
+    </twig:ui:ButtonGroup>
+</div>
+
+<twig:ui:Popover id="copilot-popover" position="bottom-end">
+    <twig:ui:Popover:Content class="w-72 rounded-xl p-0 text-sm">
+        <div class="px-4 py-3">
+            <div class="text-sm font-medium">Agent Tasks</div>
+        </div>
+        <twig:ui:Separator/>
+        <div class="p-4 text-sm [&_p:not(:last-child)]:mb-2">
+            <p class="font-medium">Start a new task with Copilot</p>
+            <p class="text-muted-foreground">
+                Describe your task in natural language. Copilot will work in the background and open a pull request for your review.
+            </p>
+        </div>
+    </twig:ui:Popover:Content>
+</twig:ui:Popover>

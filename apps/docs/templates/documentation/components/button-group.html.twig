@@ -1,0 +1,76 @@
+{% set meta = {
+    slug: '/components/button-group',
+    title: 'Button Group',
+    description: 'A container that groups related buttons together with consistent styling.',
+    canonical: 'app_home',
+    isComponent: true,
+    isPreview: true,
+    order: 2,
+    section: 'components',
+    image: 'images/components/button-group.png',
+} %}
+
+<div class="space-y-16">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+        <p class="text-gray-600 mt-2">The ButtonGroup component groups related buttons together with consistent styling. It supports both horizontal and vertical orientations.</p>
+    </div>
+
+    <div class="space-y-12">
+        <twig:Layout:Doc:Preview title="Base">
+            {{ include('preview/button-group/base.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/button-group/base.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Orientation">
+            {{ include('preview/button-group/orientation.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/button-group/orientation.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Size">
+            {{ include('preview/button-group/size.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/button-group/size.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Nested">
+            {{ include('preview/button-group/nested.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/button-group/nested.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Separator">
+            {{ include('preview/button-group/separator.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/button-group/separator.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Split">
+            {{ include('preview/button-group/split.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/button-group/split.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Dropdown Menu">
+            {{ include('preview/button-group/dropdown-menu.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/button-group/dropdown-menu.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+
+        <twig:Layout:Doc:Preview title="Popover">
+            {{ include('preview/button-group/popover.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/button-group/popover.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>

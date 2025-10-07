@@ -1,0 +1,12 @@
+{% props orientation = 'vertical' %}
+
+{%- set styleProps = getStyleProps(
+    'button.group.separator',
+    attributes
+) -%}
+
+<twig:ui:Separator
+    :orientation="orientation"
+    :class="style('button.group.separator', styleProps)"
+    :decorative="true"
+/>

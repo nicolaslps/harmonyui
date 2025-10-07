@@ -1,0 +1,44 @@
+<div class="flex items-center justify-center p-8">
+    <twig:ui:ButtonGroup>
+        <twig:ui:Button variant="outline">
+            Follow
+        </twig:ui:Button>
+        <twig:ui:Button variant="outline" popovertarget="actions-dropdown" class="!pl-2">
+            <twig:ux:icon name="lucide:chevron-down" />
+        </twig:ui:Button>
+    </twig:ui:ButtonGroup>
+</div>
+
+<twig:ui:DropdownMenu id="actions-dropdown" position="bottom-end">
+    <twig:ui:DropdownMenu:Content>
+        <twig:ui:DropdownMenu:Item>
+            <twig:ux:icon name="lucide:volume-off" />
+            <span>Mute Conversation</span>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>
+            <twig:ux:icon name="lucide:check" />
+            <span>Mark as Read</span>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>
+            <twig:ux:icon name="lucide:alert-triangle" />
+            <span>Report Conversation</span>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>
+            <twig:ux:icon name="lucide:user-round-x" />
+            <span>Block User</span>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>
+            <twig:ux:icon name="lucide:share" />
+            <span>Share Conversation</span>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>
+            <twig:ux:icon name="lucide:copy" />
+            <span>Copy Conversation</span>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Separator/>
+        <twig:ui:DropdownMenu:Item variant="destructive">
+            <twig:ux:icon name="lucide:trash" />
+            <span>Delete Conversation</span>
+        </twig:ui:DropdownMenu:Item>
+    </twig:ui:DropdownMenu:Content>
+</twig:ui:DropdownMenu>
