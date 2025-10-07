@@ -1,0 +1,59 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ absolute_url(path('front_landing_index')) }}",
+      "name": "HarmonyUI",
+      "url": "{{ absolute_url(path('front_landing_index')) }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ absolute_url(asset('og.png')) }}",
+        "width": 1200,
+        "height": 630
+      },
+      "description": "Modern UI component library for Symfony applications",
+      "foundingDate": "2025",
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ absolute_url(path('front_landing_index')) }}",
+      "url": "{{ absolute_url(path('front_landing_index')) }}",
+      "name": "HarmonyUI",
+      "description": "{{ seo_description_content }}",
+      "publisher": {
+        "@id": "{{ absolute_url(path('front_landing_index')) }}"
+      },
+      "inLanguage": "{{ app.locale|default('en') }}"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{ app.request.uri }}",
+      "url": "{{ app.request.uri }}",
+      "name": "{{ seo_title_content }}",
+      "description": "{{ seo_description_content }}",
+      "isPartOf": {
+        "@id": "{{ absolute_url(path('front_landing_index')) }}"
+      },
+      "about": {
+        "@id": "{{ absolute_url(path('front_landing_index')) }}"
+      },
+      "inLanguage": "{{ app.locale|default('en') }}"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "{{ absolute_url(path('front_landing_index')) }}",
+      "name": "HarmonyUI",
+      "description": "{{ seo_description_content }}",
+      "programmingLanguage": ["PHP", "Twig", "JavaScript"],
+      "runtimePlatform": "Symfony",
+      "codeRepository": "https://github.com/harmonyui/harmonyui",
+      "license": "https://opensource.org/licenses/MIT",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Cross-platform"
+    }
+  ]
+}
+</script>
