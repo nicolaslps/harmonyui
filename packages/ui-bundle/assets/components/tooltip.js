@@ -72,7 +72,7 @@ class HuiTooltip extends HTMLElement {
 
 	_handleMouseEnter() {
 		clearTimeout(this.hideTimeout);
-		const delay = parseInt(this.getAttribute('delay')) || 200;
+		const delay = parseInt(this.getAttribute('delay'), 10) || 200;
 		this.showTimeout = setTimeout(() => {
 			this.open();
 		}, delay);
@@ -173,7 +173,7 @@ class HuiTooltip extends HTMLElement {
 		contentTarget.setAttribute('data-closed', '');
 	}
 
-	async _updatePosition(event, data) {
+	async _updatePosition(_event, data) {
 		if (!this.matches(':popover-open')) return;
 
 		const trigger = data?.target ?? this.trigger;
@@ -183,7 +183,7 @@ class HuiTooltip extends HTMLElement {
 		const avoidCollisions = this.hasAttribute('avoidCollisions');
 		const stickyEnabled = this.hasAttribute('sticky');
 		const hideWhenDetached = this.hasAttribute('hideWhenDetached');
-		const baseGap = parseInt(this.getAttribute('sideOffset')) || 4;
+		const baseGap = parseInt(this.getAttribute('sideOffset'), 10) || 4;
 		const arrowElement = this.querySelector('[data-slot="arrow"]');
 
 		let totalGap = baseGap;

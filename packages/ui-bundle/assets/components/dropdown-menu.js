@@ -74,15 +74,13 @@ class HuiDropdownMenu extends HTMLElement {
 			requestAnimationFrame(() => {
 				this._focusFirstItem();
 			});
-		}
-		else if (event.key === 'ArrowDown') {
+		} else if (event.key === 'ArrowDown') {
 			event.preventDefault();
 			this.open();
 			requestAnimationFrame(() => {
 				this._focusFirstItem();
 			});
-		}
-		else if (event.key === 'ArrowUp') {
+		} else if (event.key === 'ArrowUp') {
 			event.preventDefault();
 			this.open();
 			requestAnimationFrame(() => {
@@ -163,8 +161,7 @@ class HuiDropdownMenu extends HTMLElement {
 		this.menuItems = this._getMenuItems();
 		if (this.menuItems.length === 0) return;
 
-		this.currentFocusIndex =
-			this.currentFocusIndex <= 0 ? this.menuItems.length - 1 : this.currentFocusIndex - 1;
+		this.currentFocusIndex = this.currentFocusIndex <= 0 ? this.menuItems.length - 1 : this.currentFocusIndex - 1;
 		this.menuItems[this.currentFocusIndex].focus();
 	}
 
@@ -286,7 +283,7 @@ class HuiDropdownMenu extends HTMLElement {
 		}
 	}
 
-	async _updatePosition(event, data) {
+	async _updatePosition(_event, data) {
 		if (!this.matches(':popover-open')) return;
 
 		const trigger = data?.target ?? this.trigger;
@@ -296,7 +293,7 @@ class HuiDropdownMenu extends HTMLElement {
 		const avoidCollisions = this.hasAttribute('avoidCollisions');
 		const stickyEnabled = this.hasAttribute('sticky');
 		const hideWhenDetached = this.hasAttribute('hideWhenDetached');
-		const baseGap = parseInt(this.getAttribute('sideOffset')) || 4;
+		const baseGap = parseInt(this.getAttribute('sideOffset'), 10) || 4;
 		const arrowElement = this.querySelector('[data-slot="arrow"]');
 
 		let totalGap = baseGap;

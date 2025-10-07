@@ -148,7 +148,7 @@ class HuiFloatingElement extends HTMLElement {
 		}
 	}
 
-	async _updatePosition(event, data) {
+	async _updatePosition(_event, data) {
 		if (!this.matches(':popover-open')) return;
 
 		const trigger = data?.target ?? this.trigger;
@@ -158,7 +158,7 @@ class HuiFloatingElement extends HTMLElement {
 		const avoidCollisions = this.hasAttribute('avoidCollisions');
 		const stickyEnabled = this.hasAttribute('sticky');
 		const hideWhenDetached = this.hasAttribute('hideWhenDetached');
-		const baseGap = parseInt(this.getAttribute('sideOffset')) || 4;
+		const baseGap = parseInt(this.getAttribute('sideOffset'), 10) || 4;
 		const arrowElement = this.querySelector('[data-slot="arrow"]');
 
 		let totalGap = baseGap;
