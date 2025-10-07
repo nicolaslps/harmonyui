@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'dropdown-menu.label',
+    attributes
+) -%}
+
+<div
+    class="{{ style('dropdown-menu.label', styleProps) }}"
+    {{ attributes.without('class') }}
+    role="presentation"
+    data-slot="menu-label"
+>
+    {%- block content %}{% endblock -%}
+</div>

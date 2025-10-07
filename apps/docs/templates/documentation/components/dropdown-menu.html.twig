@@ -1,0 +1,62 @@
+{% set meta = {
+    slug: '/components/dropdown-menu',
+    title: 'Dropdown Menu',
+    description: 'A dropdown menu displays a list of actions or options when triggered by a button.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 10,
+    section: 'components',
+    image: 'images/components/dropdown-menu.png',
+} %}
+
+<div class="space-y-16">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+        <p class="text-gray-600 mt-2">The dropdown menu component provides a menu of actions or options. It features full keyboard navigation following ARIA practices, including Enter/Space to open, arrow keys to navigate, and Escape to close.</p>
+    </div>
+
+    <div class="space-y-8 mb-8">
+        <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">Keyboard Interaction</h3>
+            <div class="space-y-2">
+                <div class="flex gap-2">
+                    <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-300 rounded">Enter</kbd>
+                    <span class="text-gray-600">Opens the menu and places focus on the first menu item</span>
+                </div>
+                <div class="flex gap-2">
+                    <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-300 rounded">Space</kbd>
+                    <span class="text-gray-600">Opens the menu and places focus on the first menu item</span>
+                </div>
+                <div class="flex gap-2">
+                    <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-300 rounded">↓</kbd>
+                    <span class="text-gray-600">Opens the menu and moves focus to the first menu item</span>
+                </div>
+                <div class="flex gap-2">
+                    <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-300 rounded">↑</kbd>
+                    <span class="text-gray-600">Opens the menu and moves focus to the last menu item</span>
+                </div>
+                <div class="flex gap-2">
+                    <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-300 rounded">Esc</kbd>
+                    <span class="text-gray-600">Closes the menu and returns focus to the trigger</span>
+                </div>
+                <div class="flex gap-2">
+                    <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-300 rounded">Home</kbd>
+                    <span class="text-gray-600">Moves focus to the first menu item</span>
+                </div>
+                <div class="flex gap-2">
+                    <kbd class="px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-300 rounded">End</kbd>
+                    <span class="text-gray-600">Moves focus to the last menu item</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="space-y-12">
+        <twig:Layout:Doc:Preview title="Basic">
+            {{ include('preview/dropdown-menu/basic.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/dropdown-menu/basic.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>

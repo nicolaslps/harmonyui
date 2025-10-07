@@ -1,0 +1,25 @@
+{% props
+    position = 'bottom-start',
+    sideOffset = null,
+    avoidCollisions = null,
+    sticky = null,
+    hideWhenDetached = null
+%}
+
+{%- set styleProps = getStyleProps(
+    'dropdown-menu.root',
+    attributes
+) -%}
+
+<hui-dropdown-menu
+    class="{{ style('dropdown-menu.root', styleProps) }}"
+    {{ attributes.without('class') }}
+    {% if position %}position="{{ position }}"{% endif %}
+    {% if sideOffset %}sideOffset="{{ sideOffset }}"{% endif %}
+    {% if avoidCollisions %}avoidCollisions{% endif %}
+    {% if sticky %}sticky{% endif %}
+    {% if hideWhenDetached %}hideWhenDetached{% endif %}
+    style="visibility: hidden"
+>
+    {%- block content %}{% endblock -%}
+</hui-dropdown-menu>

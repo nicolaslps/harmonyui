@@ -1,0 +1,13 @@
+{%- set styleProps = getStyleProps(
+    'dropdown-menu.group',
+    attributes
+) -%}
+
+<div
+    class="{{ style('dropdown-menu.group', styleProps) }}"
+    {{ attributes.without('class') }}
+    role="group"
+    data-slot="menu-group"
+>
+    {%- block content %}{% endblock -%}
+</div>

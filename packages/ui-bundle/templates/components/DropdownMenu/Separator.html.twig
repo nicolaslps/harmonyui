@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'dropdown-menu.separator',
+    attributes
+) -%}
+
+<div
+    class="{{ style('dropdown-menu.separator', styleProps) }}"
+    {{ attributes.without('class') }}
+    role="separator"
+    aria-orientation="horizontal"
+    data-slot="menu-separator"
+></div>

@@ -1,0 +1,29 @@
+<div class="flex items-center justify-center p-8">
+    <twig:ui:Button popovertarget="basic-dropdown-menu">
+        Open Menu
+    </twig:ui:Button>
+</div>
+
+<twig:ui:DropdownMenu id="basic-dropdown-menu">
+    <twig:ui:DropdownMenu:Content class="w-56">
+        <twig:ui:DropdownMenu:Label>My Account</twig:ui:DropdownMenu:Label>
+        <twig:ui:DropdownMenu:Separator/>
+        <twig:ui:DropdownMenu:Item>
+            <span>Profile</span>
+            <twig:ui:DropdownMenu:Shortcut>⇧⌘P</twig:ui:DropdownMenu:Shortcut>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>
+            <span>Settings</span>
+            <twig:ui:DropdownMenu:Shortcut>⌘S</twig:ui:DropdownMenu:Shortcut>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Separator/>
+        <twig:ui:DropdownMenu:Item>
+            <span>Team</span>
+        </twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Separator/>
+        <twig:ui:DropdownMenu:Item>
+            <span>Log out</span>
+            <twig:ui:DropdownMenu:Shortcut>⇧⌘Q</twig:ui:DropdownMenu:Shortcut>
+        </twig:ui:DropdownMenu:Item>
+    </twig:ui:DropdownMenu:Content>
+</twig:ui:DropdownMenu>

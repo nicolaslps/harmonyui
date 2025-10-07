@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'dropdown-menu.shortcut',
+    attributes
+) -%}
+
+<span
+    class="{{ style('dropdown-menu.shortcut', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="menu-shortcut"
+>
+    {%- block content %}{% endblock -%}
+</span>
