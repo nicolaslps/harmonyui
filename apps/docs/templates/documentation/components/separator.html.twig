@@ -1,0 +1,24 @@
+{% set meta = {
+    slug: '/components/separator',
+    title: 'Separator',
+    description: 'Visually or semantically separates content.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 20,
+    section: 'components',
+    image: 'images/components/separator.png',
+} %}
+
+<div class="space-y-16">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+    </div>
+    <div class="space-y-8">
+        <twig:Layout:Doc:Preview title="Basic">
+            {{ include('preview/separator/basic.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/separator/basic.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>

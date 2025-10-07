@@ -1,0 +1,17 @@
+{%- props decorative = true -%}
+
+{%- set styleProps = getStyleProps(
+    'separator',
+    attributes
+) -%}
+
+{%- set orientation = styleProps.orientation ?? 'horizontal' -%}
+
+<div
+    class="{{ style('separator', styleProps) }}"
+    role="{{ decorative ? 'none' : 'separator' }}"
+    aria-orientation="{{ decorative ? null : orientation }}"
+    data-orientation="{{ orientation }}"
+    {{ attributes.without('class') }}
+    data-slot="separator"
+></div>
