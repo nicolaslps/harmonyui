@@ -5,7 +5,7 @@ drawer:
 drawer.native:
   base:
     - "relative z-50 m-auto duration-200 bg-transparent ease-out"
-    - "backdrop:bg-black/80 backdrop:transition-all backdrop:duration-200 backdrop:ease-out"
+    - "backdrop:bg-black/50 backdrop:transition-all backdrop:duration-200 backdrop:ease-out"
     - "data-[closed]:opacity-0"
     - "data-[leave]:opacity-0 data-[leave]:duration-200 data-[leave]:ease-out data-[leave]:backdrop:bg-black/0 data-[leave]:backdrop:duration-200 data-[leave]:backdrop:ease-out"
     - "data-[transition]:transition-all"
@@ -16,14 +16,22 @@ drawer.container:
     - "fixed z-50 flex h-auto flex-col bg-background shadow-xl pointer-events-auto transition-transform duration-200 ease-out overflow-y-auto"
     - "data-[placement=right]:inset-y-0 data-[placement=right]:right-0 data-[placement=right]:w-3/4 data-[placement=right]:border-l"
     - "data-[placement=right]:data-[closed]:translate-x-full data-[placement=right]:data-[enter]:translate-x-0"
+    - "data-[placement=right]:data-[enter]:animate-in data-[placement=right]:data-[enter]:slide-in-from-right"
+    - "data-[placement=right]:data-[leave]:animate-out data-[placement=right]:data-[leave]:slide-out-to-right data-[placement=right]:data-[leave]:translate-x-full"
     - "data-[placement=right]:sm:max-w-sm"
     - "data-[placement=left]:inset-y-0 data-[placement=left]:left-0 data-[placement=left]:w-3/4 data-[placement=left]:border-r"
     - "data-[placement=left]:data-[closed]:-translate-x-full data-[placement=left]:data-[enter]:translate-x-0"
+    - "data-[placement=left]:data-[enter]:animate-in data-[placement=left]:data-[enter]:slide-in-from-left"
+    - "data-[placement=left]:data-[leave]:animate-out data-[placement=left]:data-[leave]:slide-out-to-left data-[placement=left]:data-[leave]:-translate-x-full"
     - "data-[placement=left]:sm:max-w-sm"
     - "data-[placement=top]:inset-x-0 data-[placement=top]:top-0 data-[placement=top]:mb-24 data-[placement=top]:max-h-[90svh] data-[placement=top]:rounded-b-lg data-[placement=top]:border-b"
     - "data-[placement=top]:data-[closed]:-translate-y-full data-[placement=top]:data-[enter]:translate-y-0"
+    - "data-[placement=top]:data-[enter]:animate-in data-[placement=top]:data-[enter]:slide-in-from-top"
+    - "data-[placement=top]:data-[leave]:animate-out data-[placement=top]:data-[leave]:slide-out-to-top data-[placement=top]:data-[leave]:-translate-y-full"
     - "data-[placement=bottom]:inset-x-0 data-[placement=bottom]:bottom-0 data-[placement=bottom]:mt-24 data-[placement=bottom]:max-h-[90svh] data-[placement=bottom]:rounded-t-lg data-[placement=bottom]:border-t"
     - "data-[placement=bottom]:data-[closed]:translate-y-full data-[placement=bottom]:data-[enter]:translate-y-0"
+    - "data-[placement=bottom]:data-[enter]:animate-in data-[placement=bottom]:data-[enter]:slide-in-from-bottom"
+    - "data-[placement=bottom]:data-[leave]:animate-out data-[placement=bottom]:data-[leave]:slide-out-to-bottom data-[placement=bottom]:data-[leave]:translate-y-full"
   defaultVariants: { }
 
 drawer.close:
