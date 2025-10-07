@@ -107,6 +107,7 @@ class DocService
         );
         $docPage->setType($this->determinePageType($metadata));
         $docPage->setIsPublished((bool) ($metadata['published'] ?? true));
+        $docPage->setIsPreview((bool) ($metadata['isPreview'] ?? false));
         $docPage->setSection($docSection);
         $docPage->setTemplate($this->getTemplatePathFromFile($filePath));
         $docPage->setImage(

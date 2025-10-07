@@ -17,6 +17,9 @@
                                                   text-gray-600 hover:text-gray-900 hover:bg-gray-50
                                               {%- endif -%}">
                                 <span class="flex-1">{{ page.title|capitalize }}</span>
+                                {%- if page.isPreview -%}
+                                    <twig:ui:Badge variant="primary">Preview</twig:ui:Badge>
+                                {%- endif -%}
                                 {%- if section == page.sectionSlug and page == page.pageSlug -%}
                                     <twig:ux:icon name="lucide:chevron-right" class="size-4 text-primary" />
                                 {%- endif -%}

@@ -29,6 +29,8 @@ class DocPage
 
     private bool $isPublished = false;
 
+    private bool $isPreview = false;
+
     private ?DocSection $docSection = null;
 
     private ?string $template = null;
@@ -131,6 +133,18 @@ class DocPage
     public function setIsPublished(bool $isPublished): static
     {
         $this->isPublished = $isPublished;
+
+        return $this;
+    }
+
+    public function isPreview(): bool
+    {
+        return $this->isPreview;
+    }
+
+    public function setIsPreview(bool $isPreview): static
+    {
+        $this->isPreview = $isPreview;
 
         return $this;
     }
