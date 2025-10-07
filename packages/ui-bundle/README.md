@@ -1,5 +1,10 @@
 # HarmonyUI Bundle
 
+> **Note:** This is a read-only subtree split. No issues or pull requests will be accepted here. Please submit all contributions, bug reports, and feature requests at https://github.com/nicolaslps/HarmonyUI
+
+> [!WARNING]
+> **NOT PRODUCTION READY** - This project is currently in active development and is **NOT** ready for production use. APIs are unstable, breaking changes will occur, and features may be incomplete. Use at your own risk. Do not use in production environments.
+
 Symfony bundle providing UI components with seamless JavaScript integration and modern styling.
 
 ## Installation

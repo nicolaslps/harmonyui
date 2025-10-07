@@ -1,5 +1,8 @@
 # HarmonyUI
 
+> [!WARNING]
+> **NOT PRODUCTION READY** - This project is currently in active development and is **NOT** ready for production use. APIs are unstable, breaking changes will occur, and features may be incomplete. Use at your own risk. Do not use in production environments.
+
 A comprehensive, Symfony-native component library that integrates seamlessly with your existing workflow.
 
 ## Why HarmonyUI?
@@ -60,11 +63,7 @@ Add this configuration to your CSS file:
 }
 ```
 
-See the [installation guide](apps/docs/templates/documentation/overview/installation.html.twig) for complete CSS configuration.
-
-## Development Status
-
-⚠️ **Development Version** - This library is currently in development and not stable. APIs, component names, and functionality may change.
+See the [installation guide](https://www.harmonyui.org/docs/overview/installation) for complete CSS configuration.
 
 ## Requirements
 
