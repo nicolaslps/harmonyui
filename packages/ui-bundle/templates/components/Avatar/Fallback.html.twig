@@ -1,0 +1,11 @@
+{%- set styleProps = getStyleProps(
+    'avatar.fallback',
+    attributes
+) -%}
+
+<span class="{{ style('avatar.fallback', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="avatar-fallback"
+>
+    {%- block content %}{% endblock -%}
+</span>

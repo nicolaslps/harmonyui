@@ -1,0 +1,14 @@
+avatar:
+  base:
+    - "relative flex size-8 shrink-0 overflow-hidden rounded-full"
+  defaultVariants: {}
+
+avatar.image:
+  base:
+    - "aspect-square size-full"
+  defaultVariants: {}
+
+avatar.fallback:
+  base:
+    - "bg-muted flex size-full items-center justify-center rounded-full"
+  defaultVariants: {}

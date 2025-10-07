@@ -1,0 +1,13 @@
+{%- props src, alt = '' -%}
+
+{%- set styleProps = getStyleProps(
+    'avatar.image',
+    attributes
+) -%}
+
+<img src="{{ src }}"
+    alt="{{ alt }}"
+    class="{{ style('avatar.image', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="avatar-image"
+/>
