@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'tooltip.content',
+    attributes
+) -%}
+
+<div
+    class="{{ style('tooltip.content', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="content"
+>
+    {%- block content %}{% endblock -%}
+</div>

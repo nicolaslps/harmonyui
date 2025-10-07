@@ -1,0 +1,46 @@
+tooltip:
+  base:
+  defaultVariants: {}
+
+tooltip.root:
+  base:
+    - "fixed overflow-visible bg-transparent"
+    - "focus:outline-none"
+  defaultVariants: {}
+
+tooltip.content:
+  base:
+    - "isolate relative bg-gray-900 text-white text-sm rounded-md shadow-lg px-3 py-1.5"
+    - "focus:outline-none"
+    - "data-[closed]:opacity-0 data-[closed]:scale-95"
+    - "data-[enter]:animate-in data-[enter]:fade-in-0 data-[enter]:zoom-in-95"
+    - "data-[leave]:animate-out data-[leave]:fade-out-0 data-[leave]:zoom-out-95"
+    - "data-[transition]:transition-gpu data-[transition]:duration-180"
+    - "data-[side=top]:origin-bottom data-[side=top]:slide-in-from-bottom-2"
+    - "data-[side=top-start]:origin-bottom data-[side=top-start]:slide-in-from-bottom-2"
+    - "data-[side=top-end]:origin-bottom data-[side=top-end]:slide-in-from-bottom-2"
+    - "data-[side=bottom]:origin-top data-[side=bottom]:slide-in-from-top-2"
+    - "data-[side=bottom-start]:origin-top data-[side=bottom-start]:slide-in-from-top-2"
+    - "data-[side=bottom-end]:origin-top data-[side=bottom-end]:slide-in-from-top-2"
+    - "data-[side=left]:origin-right data-[side=left]:slide-in-from-right-2"
+    - "data-[side=left-start]:origin-right data-[side=left-start]:slide-in-from-right-2"
+    - "data-[side=left-end]:origin-right data-[side=left-end]:slide-in-from-right-2"
+    - "data-[side=right]:origin-left data-[side=right]:slide-in-from-left-2"
+    - "data-[side=right-start]:origin-left data-[side=right-start]:slide-in-from-left-2"
+    - "data-[side=right-end]:origin-left data-[side=right-end]:slide-in-from-left-2"
+  defaultVariants: {}
+
+tooltip.arrow:
+  base:
+    - "absolute block"
+    - "[&_[data-slot='arrow-background']]:fill-gray-900"
+    - "[&_[data-slot='arrow-border']]:stroke-gray-900 [&_[data-slot='arrow-border']]:stroke-2"
+    - "data-[side=top]:-bottom-[0.3rem]"
+    - "data-[side=top-start]:-bottom-[0.3rem]"
+    - "data-[side=top-end]:-bottom-[0.3rem]"
+    - "data-[side=bottom]:-top-[0.3rem] data-[side=bottom]:rotate-180"
+    - "data-[side=bottom-start]:-top-[0.3rem] data-[side=bottom-start]:rotate-180"
+    - "data-[side=bottom-end]:-top-[0.3rem] data-[side=bottom-end]:rotate-180"
+    - "data-[side=left]:-right-[0.47rem] data-[side=left]:-rotate-90"
+    - "data-[side=right]:-left-[0.47rem] data-[side=right]:rotate-90"
+  defaultVariants: {}

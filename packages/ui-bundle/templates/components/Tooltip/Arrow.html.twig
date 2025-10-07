@@ -1,0 +1,21 @@
+{%- set styleProps = getStyleProps(
+    'tooltip.arrow',
+    attributes
+) -%}
+
+<span
+    class="{{ style('tooltip.arrow', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="arrow"
+>
+    <svg
+        width="10"
+        height="5"
+        viewBox="0 0 30 10"
+        preserveAspectRatio="none"
+    >
+        <polygon points="0,0 30,0 15,10" data-slot="arrow-background" />
+        <line x1="0" y1="0" x2="15" y2="10" stroke-width="1" data-slot="arrow-border"/>
+        <line x1="30" y1="0" x2="15" y2="10" stroke-width="1" data-slot="arrow-border"/>
+    </svg>
+</span>

@@ -1,0 +1,32 @@
+<div class="flex items-center justify-center gap-4 p-8">
+    <twig:ui:Button data-tooltip="no-delay-tooltip">
+        No delay
+    </twig:ui:Button>
+    <twig:ui:Button data-tooltip="short-delay-tooltip">
+        500ms delay
+    </twig:ui:Button>
+    <twig:ui:Button data-tooltip="long-delay-tooltip">
+        1000ms delay
+    </twig:ui:Button>
+</div>
+
+<twig:ui:Tooltip id="no-delay-tooltip" delay="0">
+    <twig:ui:Tooltip:Content class="max-w-sm">
+        <p class="text-sm">No delay</p>
+        <twig:ui:Tooltip:Arrow/>
+    </twig:ui:Tooltip:Content>
+</twig:ui:Tooltip>
+
+<twig:ui:Tooltip id="short-delay-tooltip" delay="500">
+    <twig:ui:Tooltip:Content class="max-w-sm">
+        <p class="text-sm">500ms delay</p>
+        <twig:ui:Tooltip:Arrow/>
+    </twig:ui:Tooltip:Content>
+</twig:ui:Tooltip>
+
+<twig:ui:Tooltip id="long-delay-tooltip" delay="1000">
+    <twig:ui:Tooltip:Content class="max-w-sm">
+        <p class="text-sm">1000ms delay</p>
+        <twig:ui:Tooltip:Arrow/>
+    </twig:ui:Tooltip:Content>
+</twig:ui:Tooltip>

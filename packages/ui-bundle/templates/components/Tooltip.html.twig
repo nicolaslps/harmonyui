@@ -1,0 +1,27 @@
+{% props
+    position = 'top',
+    sideOffset = null,
+    avoidCollisions = null,
+    sticky = null,
+    hideWhenDetached = null,
+    delay = null
+%}
+
+{%- set styleProps = getStyleProps(
+    'tooltip.root',
+    attributes
+) -%}
+
+<hui-tooltip
+    class="{{ style('tooltip.root', styleProps) }}"
+    {{ attributes.without('class') }}
+    {% if position %}position="{{ position }}"{% endif %}
+    {% if sideOffset %}sideOffset="{{ sideOffset }}"{% endif %}
+    {% if avoidCollisions %}avoidCollisions{% endif %}
+    {% if sticky %}sticky{% endif %}
+    {% if hideWhenDetached %}hideWhenDetached{% endif %}
+    {% if delay %}delay="{{ delay }}"{% endif %}
+    style="visibility: hidden"
+>
+    {%- block content %}{% endblock -%}
+</hui-tooltip>

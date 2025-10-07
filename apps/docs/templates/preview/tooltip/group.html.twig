@@ -1,0 +1,32 @@
+<div class="flex gap-2">
+    <twig:ui:Button data-tooltip="group-tooltip-1">
+        Button 1
+    </twig:ui:Button>
+    <twig:ui:Button data-tooltip="group-tooltip-2">
+        Button 2
+    </twig:ui:Button>
+    <twig:ui:Button data-tooltip="group-tooltip-3">
+        Button 3
+    </twig:ui:Button>
+</div>
+
+<twig:ui:Tooltip:Group>
+    <twig:ui:Tooltip id="group-tooltip-1">
+        <twig:ui:Tooltip:Content>
+            <p class="text-sm">Tooltip for Button 1</p>
+            <twig:ui:Tooltip:Arrow/>
+        </twig:ui:Tooltip:Content>
+    </twig:ui:Tooltip>
+    <twig:ui:Tooltip id="group-tooltip-2">
+        <twig:ui:Tooltip:Content>
+            <p class="text-sm">Tooltip for Button 2</p>
+            <twig:ui:Tooltip:Arrow/>
+        </twig:ui:Tooltip:Content>
+    </twig:ui:Tooltip>
+    <twig:ui:Tooltip id="group-tooltip-3">
+        <twig:ui:Tooltip:Content>
+            <p class="text-sm">Tooltip for Button 3</p>
+            <twig:ui:Tooltip:Arrow/>
+        </twig:ui:Tooltip:Content>
+    </twig:ui:Tooltip>
+</twig:ui:Tooltip:Group>
