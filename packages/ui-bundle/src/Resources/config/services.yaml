@@ -8,10 +8,15 @@ services:
             - '%ui.map%'
             - '%ui.tailwind_merge_enabled%'
 
+    ui.component_props_parser:
+        class: HarmonyUi\Bundle\Twig\ComponentPropsParser
+        arguments:
+            - '%kernel.project_dir%/vendor/harmonyui/ui-bundle/templates/components'
+
     ui.twig_extension:
         class: HarmonyUi\Bundle\Twig\StyleExtension
         arguments:
             - '@ui.style_registry'
-            - '@twig'
+            - '@ui.component_props_parser'
         tags:
             - twig.extension

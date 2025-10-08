@@ -27,10 +27,12 @@ use Twig\TwigFunction;
 final class StyleExtension extends AbstractExtension
 {
     /**
-     * @param StyleRegistry $styleRegistry Registry containing component style definitions
+     * @param StyleRegistry        $styleRegistry Registry containing component style definitions
+     * @param ComponentPropsParser $propsParser   Parser for extracting component props
      */
     public function __construct(
         private readonly StyleRegistry $styleRegistry,
+        private readonly ComponentPropsParser $propsParser,
     ) {
     }
 
@@ -41,6 +43,8 @@ final class StyleExtension extends AbstractExtension
             new TwigFunction('style', $this->style(...), ['needs_context' => true]),
             new TwigFunction('getStyleProps', $this->getStyleProps(...), ['needs_context' => true]),
             new TwigFunction('getComponentConfig', $this->getComponentConfig(...)),
+            new TwigFunction('getComponentProps', $this->getComponentProps(...)),
+            new TwigFunction('getComponentPropsWithChildren', $this->getComponentPropsWithChildren(...)),
         ];
     }
 
@@ -122,12 +126,40 @@ final class StyleExtension extends AbstractExtension
      */
     public function getComponentConfig(string $component): array
     {
-        $config = $this->styleRegistry->get($component);
+        try {
+            $config = $this->styleRegistry->get($component);
 
-        if (\is_string($config)) {
+            if (\is_string($config)) {
+                return [];
+            }
+
+            return $config;
+        } catch (\InvalidArgumentException) {
             return [];
         }
+    }
 
-        return $config;
+    /**
+     * Get component props from the Twig template file.
+     *
+     * @param string $component Component identifier
+     *
+     * @return array<int, array{name: string, type: string, default: mixed}> Array of props
+     */
+    public function getComponentProps(string $component): array
+    {
+        return $this->propsParser->getProps($component);
+    }
+
+    /**
+     * Get component props including child components.
+     *
+     * @param string $component Component identifier
+     *
+     * @return array<string, array<int, array{name: string, type: string, default: mixed}>> Props grouped by component
+     */
+    public function getComponentPropsWithChildren(string $component): array
+    {
+        return $this->propsParser->getPropsWithChildren($component);
     }
 }

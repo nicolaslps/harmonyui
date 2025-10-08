@@ -3,44 +3,125 @@
 {% set config = getComponentConfig(component) %}
 {% set variants = config.variants ?? {} %}
 {% set defaults = config.defaultVariants ?? {} %}
+{% set allComponentProps = getComponentPropsWithChildren(component) %}
+
+{% set allStyleConfigs = {} %}
+{% if variants is not empty %}
+    {% set allStyleConfigs = allStyleConfigs|merge({(component): {variants: variants, defaults: defaults}}) %}
+{% endif %}
+
+{% for componentName in allComponentProps|keys %}
+    {% if componentName != component %}
+        {% set childStyleKey = componentName|replace({':': '.'}) %}
+        {% set childConfig = getComponentConfig(childStyleKey) %}
+        {% if childConfig.variants is defined and childConfig.variants is not empty %}
+            {% set allStyleConfigs = allStyleConfigs|merge({(componentName): {variants: childConfig.variants, defaults: childConfig.defaultVariants ?? {}}}) %}
+            {{ dump(allStyleConfigs) }}
+        {% endif %}
+    {% endif %}
+{% endfor %}
 
 <div class="my-8">
     <h2 class="text-lg font-semibold text-gray-900 mb-4">Props</h2>
-    <twig:ui:Table>
-        <twig:ui:Table:Header>
-            <twig:ui:Table:Row>
-                <twig:ui:Table:Head>Prop</twig:ui:Table:Head>
-                <twig:ui:Table:Head>Default</twig:ui:Table:Head>
-                <twig:ui:Table:Head>Options</twig:ui:Table:Head>
-            </twig:ui:Table:Row>
-        </twig:ui:Table:Header>
-        <twig:ui:Table:Body>
-            {% for propName, options in variants %}
-                <twig:ui:Table:Row>
-                    <twig:ui:Table:Cell>
-                        <code class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ propName }}</code>
-                    </twig:ui:Table:Cell>
-                    <twig:ui:Table:Cell>
-                        {% if defaults[propName] is defined %}
-                            <code class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ defaults[propName] }}</code>
-                        {% else %}
-                            <span class="text-sm text-muted-foreground">—</span>
-                        {% endif %}
-                    </twig:ui:Table:Cell>
-                    <twig:ui:Table:Cell class="text-sm">
-                        {% if options is iterable %}
-                            <div class="flex flex-wrap gap-1">
-                                {% for optionName in options|keys %}
-                                    <code class="text-xs font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ optionName }}</code>
-                                    {% if not loop.last %}
-                                        |
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </twig:ui:Table:Cell>
-                </twig:ui:Table:Row>
+    <div class="space-y-6">
+        {% if allStyleConfigs is not empty %}
+            {% for styleComponentName, styleConfig in allStyleConfigs %}
+        <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                {{ styleComponentName }}
+            </h3>
+            <twig:ui:Table>
+                <twig:ui:Table:Header>
+                    <twig:ui:Table:Row>
+                        <twig:ui:Table:Head>Prop</twig:ui:Table:Head>
+                        <twig:ui:Table:Head>Default</twig:ui:Table:Head>
+                        <twig:ui:Table:Head>Options</twig:ui:Table:Head>
+                        <twig:ui:Table:Head>Description</twig:ui:Table:Head>
+                    </twig:ui:Table:Row>
+                </twig:ui:Table:Header>
+                <twig:ui:Table:Body>
+                    {% for propName, options in styleConfig.variants %}
+                        <twig:ui:Table:Row>
+                            <twig:ui:Table:Cell>
+                                <code
+                                    class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ propName }}</code>
+                            </twig:ui:Table:Cell>
+                            <twig:ui:Table:Cell>
+                                {% if styleConfig.defaults[propName] is defined %}
+                                    <code
+                                        class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ styleConfig.defaults[propName] }}</code>
+                                {% else %}
+                                    <span class="text-sm text-muted-foreground">—</span>
+                                {% endif %}
+                            </twig:ui:Table:Cell>
+                            <twig:ui:Table:Cell class="text-sm">
+                                {% if options is iterable %}
+                                    <div class="flex flex-wrap gap-1">
+                                        {% for optionName in options|keys %}
+                                            <code
+                                                class="text-xs font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ optionName }}</code>
+                                            {% if not loop.last %}
+                                                |
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </twig:ui:Table:Cell>
+                            <twig:ui:Table:Cell class="text-sm">{{ ('component.' ~ styleComponentName ~ '.style.' ~ propName)|trans }}</twig:ui:Table:Cell>
+                        </twig:ui:Table:Row>
+                    {% endfor %}
+                </twig:ui:Table:Body>
+            </twig:ui:Table>
+        </div>
             {% endfor %}
-        </twig:ui:Table:Body>
-    </twig:ui:Table>
+        {% endif %}
+        {% if allComponentProps is not empty %}
+            {% for componentName, componentPropsGroup in allComponentProps %}
+        <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+                {{ componentName }}
+            </h3>
+            <twig:ui:Table>
+                <twig:ui:Table:Header>
+                    <twig:ui:Table:Row>
+                        <twig:ui:Table:Head>Prop</twig:ui:Table:Head>
+                        <twig:ui:Table:Head>Type</twig:ui:Table:Head>
+                        <twig:ui:Table:Head>Default</twig:ui:Table:Head>
+                        <twig:ui:Table:Head>Description</twig:ui:Table:Head>
+                    </twig:ui:Table:Row>
+                </twig:ui:Table:Header>
+                <twig:ui:Table:Body>
+                    {% for prop in componentPropsGroup %}
+                        <twig:ui:Table:Row>
+                            <twig:ui:Table:Cell>
+                                <code
+                                    class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ prop.name }}</code>
+                            </twig:ui:Table:Cell>
+                            <twig:ui:Table:Cell>
+                                <span class="text-sm text-muted-foreground">{{ prop.type }}</span>
+                            </twig:ui:Table:Cell>
+                            <twig:ui:Table:Cell>
+                                {% if prop.default is not same as(null) %}
+                                    <code class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">
+                                        {% if prop.default is same as(true) %}
+                                            true
+                                        {% elseif prop.default is same as(false) %}
+                                            false
+                                        {% else %}
+                                            {{ prop.default }}
+                                        {% endif %}
+                                    </code>
+                                {% else %}
+                                    <span class="text-sm text-muted-foreground">—</span>
+                                {% endif %}
+                            </twig:ui:Table:Cell>
+                            <twig:ui:Table:Cell class="text-sm">{{ ('component.' ~ componentName ~ '.prop.' ~ prop.name)|trans }}</twig:ui:Table:Cell>
+                        </twig:ui:Table:Row>
+                    {% endfor %}
+                </twig:ui:Table:Body>
+            </twig:ui:Table>
+        </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 </div>
