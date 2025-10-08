@@ -1,3 +1,9 @@
+{# @var string component - The component name (e.g., "button") #}
+
+{% set config = getComponentConfig(component) %}
+{% set variants = config.variants ?? {} %}
+{% set defaults = config.defaultVariants ?? {} %}
+
 <div class="my-8">
     <h2 class="text-lg font-semibold text-gray-900 mb-4">Props</h2>
     <twig:ui:Table>
@@ -5,23 +11,34 @@
             <twig:ui:Table:Row>
                 <twig:ui:Table:Head>Prop</twig:ui:Table:Head>
                 <twig:ui:Table:Head>Default</twig:ui:Table:Head>
-                <twig:ui:Table:Head>Description</twig:ui:Table:Head>
+                <twig:ui:Table:Head>Options</twig:ui:Table:Head>
             </twig:ui:Table:Row>
         </twig:ui:Table:Header>
         <twig:ui:Table:Body>
-            {% for prop in props %}
+            {% for propName, options in variants %}
                 <twig:ui:Table:Row>
                     <twig:ui:Table:Cell>
-                        <code class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ prop.name }}</code>
+                        <code class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ propName }}</code>
                     </twig:ui:Table:Cell>
                     <twig:ui:Table:Cell>
-                        {% if prop.default is defined and prop.default is not null %}
-                            <code class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ prop.default }}</code>
+                        {% if defaults[propName] is defined %}
+                            <code class="text-sm font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ defaults[propName] }}</code>
                         {% else %}
                             <span class="text-sm text-muted-foreground">—</span>
                         {% endif %}
                     </twig:ui:Table:Cell>
-                    <twig:ui:Table:Cell class="text-sm">{{ prop.description }}</twig:ui:Table:Cell>
+                    <twig:ui:Table:Cell class="text-sm">
+                        {% if options is iterable %}
+                            <div class="flex flex-wrap gap-1">
+                                {% for optionName in options|keys %}
+                                    <code class="text-xs font-mono bg-muted text-foreground px-1.5 py-0.5 rounded">{{ optionName }}</code>
+                                    {% if not loop.last %}
+                                        |
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </twig:ui:Table:Cell>
                 </twig:ui:Table:Row>
             {% endfor %}
         </twig:ui:Table:Body>

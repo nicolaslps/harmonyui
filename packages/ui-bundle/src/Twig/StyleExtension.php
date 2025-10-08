@@ -40,6 +40,7 @@ final class StyleExtension extends AbstractExtension
         return [
             new TwigFunction('style', $this->style(...), ['needs_context' => true]),
             new TwigFunction('getStyleProps', $this->getStyleProps(...), ['needs_context' => true]),
+            new TwigFunction('getComponentConfig', $this->getComponentConfig(...)),
         ];
     }
 
@@ -110,5 +111,23 @@ final class StyleExtension extends AbstractExtension
         }
 
         return $finalProps;
+    }
+
+    /**
+     * Get component configuration including variants and defaults.
+     *
+     * @param string $component Component identifier
+     *
+     * @return array<string, mixed> Component configuration
+     */
+    public function getComponentConfig(string $component): array
+    {
+        $config = $this->styleRegistry->get($component);
+
+        if (\is_string($config)) {
+            return [];
+        }
+
+        return $config;
     }
 }
