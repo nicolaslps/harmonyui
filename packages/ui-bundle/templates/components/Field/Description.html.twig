@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'field-description',
+    attributes
+) -%}
+
+<p
+    class="{{ style('field-description', styleProps) }}"
+    data-slot="field-description"
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</p>

@@ -1,0 +1,22 @@
+<div class="w-full max-w-sm">
+    <twig:ui:Field:Set>
+        <twig:ui:Field:Legend>Profile</twig:ui:Field:Legend>
+        <twig:ui:Field:Description>This appears on invoices and emails.</twig:ui:Field:Description>
+        <twig:ui:Field:Group>
+            <twig:ui:Field>
+                <twig:ui:Field:Label for="name">Full name</twig:ui:Field:Label>
+                <div>INPUT</div>
+                <twig:ui:Field:Description>This appears on invoices and emails.</twig:ui:Field:Description>
+            </twig:ui:Field>
+            <twig:ui:Field>
+                <twig:ui:Field:Label for="username">Username</twig:ui:Field:Label>
+                <div>INPUT</div>
+                <twig:ui:Field:Error>Choose another username.</twig:ui:Field:Error>
+            </twig:ui:Field>
+            <twig:ui:Field orientation="horizontal">
+                <div>SWITCH</div>
+                <twig:ui:Field:Label for="newsletter">Subscribe to the newsletter</twig:ui:Field:Label>
+            </twig:ui:Field>
+        </twig:ui:Field:Group>
+    </twig:ui:Field:Set>
+</div>

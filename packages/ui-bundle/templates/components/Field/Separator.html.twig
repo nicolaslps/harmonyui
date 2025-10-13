@@ -1,0 +1,23 @@
+{%- set styleProps = getStyleProps(
+    'field-separator',
+    attributes
+) -%}
+
+{%- set hasContent = block('content') is defined and block('content')|trim|length > 0 -%}
+
+<div
+    class="{{ style('field-separator', styleProps) }}"
+    data-slot="field-separator"
+    data-content="{{ hasContent ? 'true' : 'false' }}"
+    {{ attributes.without('class') }}
+>
+    <twig:Separator class="absolute inset-0 top-1/2" />
+    {%- if hasContent -%}
+        <span
+            class="bg-background text-muted-foreground relative mx-auto block w-fit px-2"
+            data-slot="field-separator-content"
+        >
+            {%- block content -%}{%- endblock -%}
+        </span>
+    {%- endif -%}
+</div>

@@ -1,0 +1,17 @@
+{%- props for = null, required = false -%}
+
+{%- set styleProps = getStyleProps(
+    'field-label',
+    attributes
+) -%}
+
+<label
+    class="{{ style('field-label', styleProps) }}"
+    data-slot="field-label"
+    {{ attributes.defaults({
+        for: for,
+        'data-required': required ? 'true' : null
+    }).without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</label>
