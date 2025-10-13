@@ -1,0 +1,36 @@
+{% set meta = {
+    slug: '/components/input',
+    title: 'input',
+    description: 'Text input field with validation states and focus styling.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 22,
+    section: 'components',
+    image: 'images/components/input.png',
+} %}
+
+<div class="space-y-16">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+    </div>
+    <div class="space-y-8">
+        <twig:Layout:Doc:Preview title="Basic">
+            {{ include('preview/input/basic.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/input/basic.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+        <twig:Layout:Doc:Preview title="Disabled">
+            {{ include('preview/input/disabled.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/input/disabled.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+        <twig:Layout:Doc:Preview title="With Label">
+            {{ include('preview/input/with-label.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/input/with-label.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>
