@@ -1,0 +1,13 @@
+{%- props type = 'text' -%}
+
+{%- set styleProps = getStyleProps(
+    'input',
+    attributes
+) -%}
+
+<input
+    type="{{ type }}"
+    class="{{ style('input', styleProps) }}"
+    data-slot="input"
+    {{ attributes.without('class') }}
+/>
