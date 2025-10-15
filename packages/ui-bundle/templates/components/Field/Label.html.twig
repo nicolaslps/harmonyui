@@ -5,13 +5,20 @@
     attributes
 ) -%}
 
-<label
-    class="{{ style('field-label', styleProps) }}"
-    data-slot="field-label"
-    {{ attributes.defaults({
-        for: for,
-        'data-required': required ? 'true' : null
-    }).without('class') }}
->
+{%- set mergedAttributes = attributes.defaults({
+    for: for,
+    'data-required': required ? 'true' : null
+}).without('class') -%}
+
+{%- set labelContent -%}
     {%- block content -%}{%- endblock -%}
-</label>
+{%- endset -%}
+
+<twig:ui:Label
+    class="{{ style('field-label', styleProps) }}"
+    :for="for"
+    data-slot="field-label"
+    {{ ...mergedAttributes }}
+>
+    {{ labelContent|raw }}
+</twig:ui:Label>
