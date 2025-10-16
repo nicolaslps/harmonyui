@@ -1,0 +1,48 @@
+{% set meta = {
+    slug: '/components/textarea',
+    title: 'textarea',
+    description: 'Multi-line text input field with validation states and focus styling.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 23,
+    section: 'components',
+    image: 'images/components/textarea.png',
+} %}
+
+<div class="space-y-16">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+    </div>
+    <div class="space-y-8">
+        <twig:Layout:Doc:Preview title="Basic">
+            {{ include('preview/textarea/basic.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/textarea/basic.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+        <twig:Layout:Doc:Preview title="Disabled">
+            {{ include('preview/textarea/disabled.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/textarea/disabled.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+        <twig:Layout:Doc:Preview title="With Label">
+            {{ include('preview/textarea/with-label.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/textarea/with-label.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+        <twig:Layout:Doc:Preview title="With Text">
+            {{ include('preview/textarea/with-text.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/textarea/with-text.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+        <twig:Layout:Doc:Preview title="With Button">
+            {{ include('preview/textarea/with-button.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/textarea/with-button.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>

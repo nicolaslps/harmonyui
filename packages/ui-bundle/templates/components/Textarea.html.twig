@@ -1,0 +1,18 @@
+{%- props placeholder = null, disabled = false, rows = null -%}
+
+{%- set styleProps = getStyleProps(
+    'textarea',
+    attributes
+) -%}
+
+<textarea
+    class="{{ style('textarea', styleProps) }}"
+    data-slot="textarea"
+    {{ attributes.defaults({
+        placeholder: placeholder,
+        disabled: disabled,
+        rows: rows
+    }).without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</textarea>
