@@ -1,9 +1,9 @@
-{%- props type = 'text' -%}
+{%- props type = 'text', size = 'md' -%}
 
 {%- set styleProps = getStyleProps(
     'input',
     attributes
-) -%}
+)|merge({size: size}) -%}
 
 <input
     type="{{ type }}"

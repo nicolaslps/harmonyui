@@ -1,9 +1,9 @@
-{%- props placeholder = null, disabled = false, rows = null -%}
+{%- props placeholder = null, disabled = false, rows = null, size = 'md' -%}
 
 {%- set styleProps = getStyleProps(
     'textarea',
     attributes
-) -%}
+)|merge({size: size}) -%}
 
 <textarea
     class="{{ style('textarea', styleProps) }}"
