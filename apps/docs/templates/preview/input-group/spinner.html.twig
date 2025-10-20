@@ -1,0 +1,35 @@
+<div class="grid w-full max-w-sm gap-4">
+    <twig:ui:InputGroup data-disabled="true">
+        <twig:ui:InputGroup:Input placeholder="Searching..." disabled/>
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <twig:ui:Spinner/>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup data-disabled="true">
+        <twig:ui:InputGroup:Input placeholder="Processing..." disabled/>
+        <twig:ui:InputGroup:Addon>
+            <twig:ui:Spinner/>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup data-disabled="true">
+        <twig:ui:InputGroup:Input placeholder="Saving changes..." disabled/>
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <twig:ui:InputGroup:Text>Saving...</twig:ui:InputGroup:Text>
+            <twig:ui:Spinner/>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup data-disabled="true">
+        <twig:ui:InputGroup:Input placeholder="Refreshing data..." disabled/>
+        <twig:ui:InputGroup:Addon>
+            <twig:ui:Spinner icon="lucide:loader"/>
+        </twig:ui:InputGroup:Addon>
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <twig:ui:InputGroup:Text class="text-muted-foreground">
+                Please wait...
+            </twig:ui:InputGroup:Text>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+</div>

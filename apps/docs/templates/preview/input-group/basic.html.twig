@@ -1,0 +1,65 @@
+<div class="grid w-full max-w-sm gap-6">
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Addon>
+            <twig:ux:icon name="lucide:search" class="size-4"/>
+        </twig:ui:InputGroup:Addon>
+        <twig:ui:InputGroup:Input placeholder="Search..."/>
+        <twig:ui:InputGroup:Addon align="inline-end">
+            12 results
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input placeholder="example.com" class="!pl-1"/>
+        <twig:ui:InputGroup:Addon>
+            <twig:ui:InputGroup:Text>https://</twig:ui:InputGroup:Text>
+        </twig:ui:InputGroup:Addon>
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <twig:ui:InputGroup:Button class="rounded-full" size="icon-xs" data-tooltip="info-tooltip">
+                <twig:ux:icon name="lucide:info"/>
+            </twig:ui:InputGroup:Button>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Textarea placeholder="Ask, Search or Chat..."/>
+        <twig:ui:InputGroup:Addon align="block-end">
+            <twig:ui:InputGroup:Button variant="outline" class="rounded-full" size="icon-xs">
+                <twig:ux:icon name="lucide:plus"/>
+            </twig:ui:InputGroup:Button>
+            <twig:ui:InputGroup:Button variant="ghost" popovertarget="mode-dropdown">
+                Auto
+            </twig:ui:InputGroup:Button>
+            <twig:ui:InputGroup:Text class="ml-auto">52% used</twig:ui:InputGroup:Text>
+            <twig:ui:Separator orientation="vertical" class="!h-4"/>
+            <twig:ui:InputGroup:Button class="rounded-full" size="icon-xs" variant="primary" disabled>
+                <twig:ux:icon name="lucide:arrow-up"/>
+                <span class="sr-only">Send</span>
+            </twig:ui:InputGroup:Button>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input placeholder="@nicolaslps"/>
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <div class="bg-primary text-primary-foreground flex size-4 items-center justify-center rounded-full">
+                <twig:ux:icon name="lucide:check" class="size-3"/>
+            </div>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+</div>
+
+<twig:ui:Tooltip id="info-tooltip">
+    <twig:ui:Tooltip:Content class="max-w-sm">
+        <p class="text-sm">This is content in a tooltip.</p>
+    </twig:ui:Tooltip:Content>
+    <twig:ui:Tooltip:Arrow/>
+</twig:ui:Tooltip>
+
+<twig:ui:DropdownMenu id="mode-dropdown" position="top">
+    <twig:ui:DropdownMenu:Content class="w-32">
+        <twig:ui:DropdownMenu:Item>Auto</twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>Agent</twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>Manual</twig:ui:DropdownMenu:Item>
+    </twig:ui:DropdownMenu:Content>
+</twig:ui:DropdownMenu>

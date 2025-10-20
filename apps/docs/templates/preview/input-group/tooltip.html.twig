@@ -1,0 +1,49 @@
+<div class="grid w-full max-w-sm gap-4">
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input placeholder="Enter password" type="password" />
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <twig:ui:InputGroup:Button variant="ghost" aria-label="Info" size="icon-xs" data-tooltip="password-tooltip">
+                <twig:ux:icon name="lucide:info" />
+            </twig:ui:InputGroup:Button>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input placeholder="Your email address" />
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <twig:ui:InputGroup:Button variant="ghost" aria-label="Help" size="icon-xs" data-tooltip="email-tooltip">
+                <twig:ux:icon name="lucide:help-circle" />
+            </twig:ui:InputGroup:Button>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input placeholder="Enter API key" />
+        <twig:ui:InputGroup:Addon>
+            <twig:ui:InputGroup:Button variant="ghost" aria-label="Help" size="icon-xs" data-tooltip="api-tooltip">
+                <twig:ux:icon name="lucide:help-circle" />
+            </twig:ui:InputGroup:Button>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+</div>
+
+<twig:ui:Tooltip id="password-tooltip">
+    <twig:ui:Tooltip:Content>
+        <p class="text-sm">Password must be at least 8 characters</p>
+        <twig:ui:Tooltip:Arrow/>
+    </twig:ui:Tooltip:Content>
+</twig:ui:Tooltip>
+
+<twig:ui:Tooltip id="email-tooltip">
+    <twig:ui:Tooltip:Content>
+        <p class="text-sm">We'll use this to send you notifications</p>
+        <twig:ui:Tooltip:Arrow/>
+    </twig:ui:Tooltip:Content>
+</twig:ui:Tooltip>
+
+<twig:ui:Tooltip id="api-tooltip" position="left">
+    <twig:ui:Tooltip:Content>
+        <p class="text-sm">Click for help with API keys</p>
+        <twig:ui:Tooltip:Arrow/>
+    </twig:ui:Tooltip:Content>
+</twig:ui:Tooltip>

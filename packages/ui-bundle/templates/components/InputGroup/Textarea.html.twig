@@ -1,0 +1,22 @@
+{%- props placeholder = null, disabled = false, rows = null -%}
+
+{%- set styleProps = getStyleProps(
+    'input.group.textarea',
+    attributes
+) -%}
+
+{%- set textareaContent -%}
+    {%- block content -%}{%- endblock -%}
+{%- endset -%}
+
+<twig:ui:Textarea
+    class="{{ style('input.group.textarea', styleProps) }}"
+    data-slot="input-group-control"
+    {{ ...attributes.defaults({
+        placeholder: placeholder,
+        disabled: disabled,
+        rows: rows
+    }).without('class') }}
+>
+    {{ textareaContent }}
+</twig:ui:Textarea>

@@ -1,0 +1,14 @@
+{%- props type = 'text' -%}
+
+{%- set styleProps = getStyleProps(
+    'input.group.input',
+    attributes
+) -%}
+
+<twig:ui:Input
+    class="{{ style('input.group.input', styleProps) }}"
+    data-slot="input-group-control"
+    {{ ...attributes.defaults({
+        type: type,
+    }).without('class') }}
+/>

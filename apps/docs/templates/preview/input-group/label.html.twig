@@ -1,0 +1,27 @@
+<div class="grid w-full max-w-sm gap-4">
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input id="username" placeholder="nicolaslps" />
+        <twig:ui:InputGroup:Addon>
+            <twig:ui:Label for="username">@</twig:ui:Label>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input id="email-2" placeholder="nicolaslps@gmail.com" />
+        <twig:ui:InputGroup:Addon align="block-start">
+            <twig:ui:Label for="email-2" class="text-foreground">
+                Email
+            </twig:ui:Label>
+            <twig:ui:InputGroup:Button variant="ghost" aria-label="Help" class="ml-auto rounded-full" size="icon-xs" data-tooltip="email-help-tooltip">
+                <twig:ux:icon name="lucide:info" />
+            </twig:ui:InputGroup:Button>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+</div>
+
+<twig:ui:Tooltip id="email-help-tooltip">
+    <twig:ui:Tooltip:Content>
+        <p class="text-sm">We'll use this to send you notifications</p>
+        <twig:ui:Tooltip:Arrow/>
+    </twig:ui:Tooltip:Content>
+</twig:ui:Tooltip>

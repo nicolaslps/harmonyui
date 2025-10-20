@@ -1,0 +1,11 @@
+{%- set styleProps = getStyleProps(
+    'input.group.text',
+    attributes
+) -%}
+
+<span
+    class="{{ style('input.group.text', styleProps) }}"
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</span>
