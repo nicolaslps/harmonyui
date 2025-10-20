@@ -7,7 +7,7 @@
 
 <textarea
     class="{{ style('textarea', styleProps) }}"
-    data-slot="textarea"
+    data-slot="{{ attributes.render('data-slot')|default('textarea') }}"
     {{ attributes.defaults({
         placeholder: placeholder,
         disabled: disabled,

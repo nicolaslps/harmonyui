@@ -8,6 +8,6 @@
 <input
     type="{{ type }}"
     class="{{ style('input', styleProps) }}"
-    data-slot="input"
+    data-slot="{{ attributes.render('data-slot')|default('input') }}"
     {{ attributes.without('class') }}
 />
