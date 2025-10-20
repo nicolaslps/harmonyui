@@ -1,0 +1,14 @@
+{% props icon = "lucide:loader-2" %}
+
+{%- set styleProps = getStyleProps(
+    'spinner',
+    attributes
+) -%}
+
+<twig:ux:icon
+    :name="icon"
+    role="status"
+    aria-label="Loading"
+    class="{{ style('spinner', styleProps) }}"
+    {{ ...attributes.without('class') }}
+/>
