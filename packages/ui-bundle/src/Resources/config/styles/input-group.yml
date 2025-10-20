@@ -15,6 +15,7 @@ input.group.input:
     - "h-full w-full min-w-0 px-3 text-sm outline-none"
     - "placeholder:text-muted-foreground"
     - "disabled:cursor-not-allowed disabled:opacity-60"
+    - "[&[readonly]]:bg-background"
 
 input.group.textarea:
   base:
