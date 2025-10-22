@@ -1,0 +1,24 @@
+{%- props id = null, checked = false, disabled = false, name = null, value = null, size = 'md' -%}
+
+{%- set styleProps = getStyleProps(
+    'switch',
+    attributes
+) -%}
+
+{%- set thumbStyleProps = styleProps|merge({size: size}) -%}
+
+<label class="{{ style('switch', styleProps) }}">
+    <input
+        type="checkbox"
+        class="{{ style('switch-input', styleProps) }}"
+        data-slot="switch-input"
+        {{ attributes.defaults({
+            id: id,
+            name: name,
+            value: value,
+            checked: checked,
+            disabled: disabled
+        }).without('class') }}
+    >
+    <div class="{{ style('switch-thumb', thumbStyleProps) }}" data-slot="switch-thumb"></div>
+</label>

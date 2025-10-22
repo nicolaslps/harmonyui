@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'badge-button',
+    attributes
+) -%}
+
+<span class="{{ style('badge-button', styleProps) }}"
+    {{ attributes.without('class') }}
+    data-slot="badge-button"
+    role="button"
+>
+    {%- block content -%}{%- endblock -%}
+</span>

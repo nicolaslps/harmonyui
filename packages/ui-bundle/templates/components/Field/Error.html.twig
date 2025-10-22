@@ -1,0 +1,32 @@
+{%- props errors = [] -%}
+
+{%- set styleProps = getStyleProps(
+    'field-error',
+    attributes
+) -%}
+
+{%- set hasBlockContent = block('content') is defined and block('content')|trim|length > 0 -%}
+{%- set hasErrors = errors|length > 0 -%}
+
+{%- if hasBlockContent or hasErrors -%}
+<div
+    role="alert"
+    class="{{ style('field-error', styleProps) }}"
+    data-slot="field-error"
+    {{ attributes.without('class') }}
+>
+    {%- if hasBlockContent -%}
+        {%- block content -%}{%- endblock -%}
+    {%- elseif errors|length == 1 -%}
+        {{ errors[0].message|default('') }}
+    {%- elseif errors|length > 1 -%}
+        <ul class="ml-4 flex list-disc flex-col gap-1">
+            {%- for error in errors -%}
+                {%- if error.message is defined -%}
+                    <li>{{ error.message }}</li>
+                {%- endif -%}
+            {%- endfor -%}
+        </ul>
+    {%- endif -%}
+</div>
+{%- endif -%}

@@ -1,0 +1,20 @@
+select:
+  base:
+    - "flex w-full items-center justify-between bg-background border border-input shadow-xs transition-[color,box-shadow] outline-none"
+    - "dark:bg-input/30"
+    - "data-[placeholder]:text-muted-foreground"
+    - "focus-visible:border-ring focus-visible:ring-ring/30 focus-visible:ring-[3px]"
+    - "disabled:cursor-not-allowed disabled:opacity-60"
+    - "[&[readonly]]:bg-muted/80 [&[readonly]]:cursor-not-allowed"
+    - "aria-invalid:border-destructive/60 aria-invalid:ring-destructive/10 dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/20"
+    - "[&>span]:line-clamp-1"
+  variants:
+    size:
+      sm:
+        - "h-8 px-2.5 text-xs rounded-md"
+      md:
+        - "h-9 px-3 text-sm rounded-md"
+      lg:
+        - "h-10 px-4 text-sm rounded-md"
+  defaultVariants:
+    size: md

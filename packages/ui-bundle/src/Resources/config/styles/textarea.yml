@@ -1,0 +1,20 @@
+textarea:
+  base:
+    - "flex w-full field-sizing-content bg-background border border-input shadow-xs transition-[color,box-shadow] outline-none"
+    - "dark:bg-input/30"
+    - "placeholder:text-muted-foreground"
+    - "selection:bg-primary selection:text-primary-foreground"
+    - "focus-visible:border-ring focus-visible:ring-ring/30 focus-visible:ring-[3px]"
+    - "disabled:cursor-not-allowed disabled:opacity-60"
+    - "[&[readonly]]:bg-muted/80 [&[readonly]]:cursor-not-allowed"
+    - "aria-invalid:border-destructive/60 aria-invalid:ring-destructive/10 dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/20"
+  variants:
+    size:
+      sm:
+        - "min-h-16 px-2.5 py-1.5 text-xs rounded-md"
+      md:
+        - "min-h-20 px-3 py-2 text-sm rounded-md"
+      lg:
+        - "min-h-24 px-4 py-2.5 text-sm rounded-md"
+  defaultVariants:
+    size: md

@@ -1,0 +1,16 @@
+{% props align = 'inline-start' %}
+
+{%- set styleProps = getStyleProps(
+    'input.group.addon',
+    attributes
+)|merge({align: align}) -%}
+
+<div
+    class="{{ style('input.group.addon', styleProps) }}"
+    data-slot="input-group-addon"
+    data-align="{{ align }}"
+    role="group"
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</div>

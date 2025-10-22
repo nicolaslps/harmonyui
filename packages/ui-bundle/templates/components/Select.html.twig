@@ -1,0 +1,19 @@
+{%- props id = null, name = null, disabled = false, required = false, size = 'md' -%}
+
+{%- set styleProps = getStyleProps(
+    'select',
+    attributes
+)|merge({size: size}) -%}
+
+<select
+    class="{{ style('select', styleProps) }}"
+    data-slot="select"
+    {{ attributes.defaults({
+        id: id,
+        name: name,
+        disabled: disabled,
+        required: required
+    }).without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</select>

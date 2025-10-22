@@ -1,0 +1,12 @@
+{%- set styleProps = getStyleProps(
+    'field-set',
+    attributes
+) -%}
+
+<fieldset
+    class="{{ style('field-set', styleProps) }}"
+    data-slot="field-set"
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</fieldset>

@@ -1,0 +1,16 @@
+{%- props variant = 'legend' -%}
+
+{%- set styleProps = getStyleProps(
+    'field-legend',
+    attributes,
+    {variant: variant}
+) -%}
+
+<legend
+    class="{{ style('field-legend', styleProps) }}"
+    data-slot="field-legend"
+    data-variant="{{ variant }}"
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</legend>

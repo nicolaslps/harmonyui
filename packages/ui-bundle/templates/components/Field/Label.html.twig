@@ -1,0 +1,24 @@
+{%- props for = null, required = false -%}
+
+{%- set styleProps = getStyleProps(
+    'field-label',
+    attributes
+) -%}
+
+{%- set mergedAttributes = attributes.defaults({
+    for: for,
+    'data-required': required ? 'true' : null
+}).without('class') -%}
+
+{%- set labelContent -%}
+    {%- block content -%}{%- endblock -%}
+{%- endset -%}
+
+<twig:ui:Label
+    class="{{ style('field-label', styleProps) }}"
+    :for="for"
+    data-slot="field-label"
+    {{ ...mergedAttributes }}
+>
+    {{ labelContent|raw }}
+</twig:ui:Label>

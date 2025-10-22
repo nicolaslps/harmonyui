@@ -1,0 +1,14 @@
+{%- set styleProps = getStyleProps(
+    'input.group',
+    attributes
+) -%}
+
+<div
+    class="{{ style('input.group', styleProps) }}"
+    data-slot="input-group"
+    role="group"
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</div>
+

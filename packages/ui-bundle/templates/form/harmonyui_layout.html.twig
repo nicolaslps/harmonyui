@@ -1,0 +1,266 @@
+{% use "form_div_layout.html.twig" %}
+
+{% block form_label -%}
+    {% if label is not same as(false) -%}
+        {% if not compound -%}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {%- endif %}
+        {% if required -%}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {%- endif %}
+        {% if label is empty -%}
+            {%- if label_format is not empty -%}
+                {% set label = label_format|replace({
+                    '%name%': name,
+                    '%id%': id,
+                }) %}
+            {%- else -%}
+                {% set label = name|humanize %}
+            {%- endif -%}
+        {%- endif -%}
+        {% set label_text = translation_domain is same as(false) ? label : label|trans(label_translation_parameters, translation_domain) %}
+        <twig:ui:Label :for="label_attr.for ?? null">
+            {{- label_text -}}
+            {%- if required -%}
+                <span class="text-destructive">*</span>
+            {%- endif -%}
+        </twig:ui:Label>
+    {%- endif %}
+{%- endblock form_label %}
+
+{% block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <twig:ui:Field:Error :errors="errors" />
+    {%- endif %}
+{%- endblock form_errors %}
+
+{% block form_help -%}
+    {%- if help is not empty -%}
+        <twig:ui:Field:Description>
+            {{- translation_domain is same as(false) ? help : help|trans(help_translation_parameters, translation_domain) -}}
+        </twig:ui:Field:Description>
+    {%- endif %}
+{%- endblock form_help %}
+
+{% block form_widget_simple -%}
+    {%- set type = type|default('text') -%}
+    {%- if type == 'range' or type == 'color' or type == 'file' or type == 'hidden' -%}
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {%- else -%}
+        <twig:ui:Input
+            :type="type"
+            :id="id"
+            :name="full_name"
+            :disabled="disabled ?? false"
+            :required="required ?? false"
+            :value="value ?? ''"
+        />
+    {%- endif %}
+{%- endblock form_widget_simple %}
+
+{% block textarea_widget -%}
+    <twig:ui:Textarea
+        :id="id"
+        :name="full_name"
+        :disabled="disabled ?? false"
+        :required="required ?? false"
+    >
+        {{- value ?? '' -}}
+    </twig:ui:Textarea>
+{%- endblock textarea_widget %}
+
+{% block choice_widget_collapsed -%}
+    {%- if required and placeholder is none and not placeholder_in_choices and not multiple -%}
+        {% set required = false %}
+    {%- endif -%}
+    {%- set attr = attr|merge({
+        class: style('select', {size: 'md'}),
+        'data-slot': 'select'
+    }) -%}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+        {%- if placeholder is not none -%}
+            <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans(placeholder_attr, translation_domain)) }}</option>
+        {%- endif -%}
+        {%- if preferred_choices|length > 0 -%}
+            {% set options = preferred_choices %}
+            {% set render_preferred_choices = true %}
+            {{- block('choice_widget_options') -}}
+            {%- if choices|length > 0 and separator is not none -%}
+                <option disabled="disabled">{{ separator }}</option>
+            {%- endif -%}
+        {%- endif -%}
+        {%- set options = choices -%}
+        {%- set render_preferred_choices = false -%}
+        {{- block('choice_widget_options') -}}
+    </select>
+{%- endblock choice_widget_collapsed %}
+
+{%- block choice_widget_options -%}
+    {% for group_label, choice in options %}
+        {%- if choice is iterable -%}
+            <optgroup label="{{ choice_translation_domain is same as(false) ? group_label : group_label|trans({}, choice_translation_domain) }}">
+                {% set options = choice %}
+                {{- block('choice_widget_options') -}}
+            </optgroup>
+        {%- else -%}
+            <option value="{{ choice.value }}"{% if choice.attr %}{% with { attr: choice.attr } %}{{ block('attributes') }}{% endwith %}{% endif %}{% if (not render_preferred_choices|default(false) or not (duplicate_preferred_choices ?? true)) and choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice_translation_domain is same as(false) ? choice.label : choice.label|trans(choice.labelTranslationParameters, choice_translation_domain) }}</option>
+        {%- endif -%}
+    {% endfor %}
+{%- endblock choice_widget_options -%}
+
+{% block checkbox_widget -%}
+    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{%- endblock checkbox_widget %}
+
+{% block radio_widget -%}
+    <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{%- endblock radio_widget %}
+
+{% block form_row -%}
+    {%- set widget_attr = {} -%}
+    {%- if help is not empty -%}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+    {%- endif -%}
+    <twig:ui:Field>
+        {{- form_label(form) -}}
+        {{- form_widget(form, widget_attr) -}}
+        {{- form_help(form) -}}
+        {{- form_errors(form) -}}
+    </twig:ui:Field>
+{%- endblock form_row %}
+
+{% block checkbox_row -%}
+    <twig:ui:Field>
+        <div class="flex items-center gap-2">
+            {{- form_widget(form) -}}
+            {{- form_label(form) -}}
+        </div>
+        {{- form_help(form) -}}
+        {{- form_errors(form) -}}
+    </twig:ui:Field>
+{%- endblock checkbox_row %}
+
+{% block radio_row -%}
+    <twig:ui:Field>
+        <div class="flex items-center gap-2">
+            {{- form_widget(form) -}}
+            {{- form_label(form) -}}
+        </div>
+        {{- form_help(form) -}}
+        {{- form_errors(form) -}}
+    </twig:ui:Field>
+{%- endblock radio_row %}
+
+{% block button_widget -%}
+    {%- if label is empty -%}
+        {%- if label_format is not empty -%}
+            {% set label = label_format|replace({
+                '%name%': name,
+                '%id%': id,
+            }) %}
+        {%- else -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+    {%- endif -%}
+    <twig:ui:Button
+        :type="type ?? 'button'"
+        :name="full_name"
+        :disabled="disabled ?? false"
+    >
+        {{ translation_domain is same as(false) ? label : label|trans(label_translation_parameters, translation_domain) }}
+    </twig:ui:Button>
+{%- endblock button_widget %}
+
+{% block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+    {{ block('button_widget') }}
+{%- endblock submit_widget %}
+
+{% block reset_widget -%}
+    {%- set type = type|default('reset') -%}
+    {{ block('button_widget') }}
+{%- endblock reset_widget %}
+
+{% block date_widget -%}
+    {%- if widget == 'single_text' -%}
+        {{- block('form_widget_simple') -}}
+    {%- else -%}
+        <div {{ block('widget_container_attributes') }}>
+            {{- date_pattern|replace({
+                '{{ year }}':  form_widget(form.year),
+                '{{ month }}': form_widget(form.month),
+                '{{ day }}':   form_widget(form.day),
+            })|raw -}}
+        </div>
+    {%- endif -%}
+{%- endblock date_widget %}
+
+{% block time_widget -%}
+    {%- if widget == 'single_text' -%}
+        {{- block('form_widget_simple') -}}
+    {%- else -%}
+        {%- set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} -%}
+        <div {{ block('widget_container_attributes') }}>
+            {{ form_widget(form.hour, vars) }}{% if with_minutes %}:{{ form_widget(form.minute, vars) }}{% endif %}{% if with_seconds %}:{{ form_widget(form.second, vars) }}{% endif %}
+        </div>
+    {%- endif -%}
+{%- endblock time_widget %}
+
+{% block datetime_widget -%}
+    {%- if widget == 'single_text' -%}
+        {{- block('form_widget_simple') -}}
+    {%- else -%}
+        <div {{ block('widget_container_attributes') }}>
+            {{ form_errors(form.date) }}
+            {{ form_errors(form.time) }}
+            {{ form_widget(form.date) }}
+            {{ form_widget(form.time) }}
+        </div>
+    {%- endif -%}
+{%- endblock datetime_widget %}
+
+{% block dateinterval_widget -%}
+    {%- if widget == 'single_text' -%}
+        {{- block('form_widget_simple') -}}
+    {%- else -%}
+        <div {{ block('widget_container_attributes') }}>
+            {{- form_errors(form) -}}
+            <div class="grid grid-cols-3 gap-4">
+                {%- if with_years -%}<div>{{ form_label(form.years) }} {{ form_widget(form.years) }}</div>{%- endif -%}
+                {%- if with_months -%}<div>{{ form_label(form.months) }} {{ form_widget(form.months) }}</div>{%- endif -%}
+                {%- if with_weeks -%}<div>{{ form_label(form.weeks) }} {{ form_widget(form.weeks) }}</div>{%- endif -%}
+                {%- if with_days -%}<div>{{ form_label(form.days) }} {{ form_widget(form.days) }}</div>{%- endif -%}
+                {%- if with_hours -%}<div>{{ form_label(form.hours) }} {{ form_widget(form.hours) }}</div>{%- endif -%}
+                {%- if with_minutes -%}<div>{{ form_label(form.minutes) }} {{ form_widget(form.minutes) }}</div>{%- endif -%}
+                {%- if with_seconds -%}<div>{{ form_label(form.seconds) }} {{ form_widget(form.seconds) }}</div>{%- endif -%}
+            </div>
+            {%- if with_invert %}{{ form_widget(form.invert) }}{% endif -%}
+        </div>
+    {%- endif -%}
+{%- endblock dateinterval_widget %}
+
+{% block money_widget -%}
+    <twig:ui:InputGroup>
+        {%- set prepend = not (money_pattern starts with '{{') -%}
+        {%- if not prepend -%}
+            <twig:ui:InputGroup:Input :type="'text'" :name="full_name" :id="id" :value="value ?? ''" :disabled="disabled ?? false" :required="required ?? false" />
+        {%- endif -%}
+        <twig:ui:InputGroup:Addon>
+            {{- money_pattern|form_encode_currency -}}
+        </twig:ui:InputGroup:Addon>
+        {%- if prepend -%}
+            <twig:ui:InputGroup:Input :type="'text'" :name="full_name" :id="id" :value="value ?? ''" :disabled="disabled ?? false" :required="required ?? false" />
+        {%- endif -%}
+    </twig:ui:InputGroup>
+{%- endblock money_widget %}
+
+{% block percent_widget -%}
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input :type="'text'" :name="full_name" :id="id" :value="value ?? ''" :disabled="disabled ?? false" :required="required ?? false" />
+        <twig:ui:InputGroup:Addon>%</twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+{%- endblock percent_widget %}
+
+{% block file_widget -%}
+    <input type="file" {{ block('widget_attributes') }} />
+{%- endblock file_widget %}

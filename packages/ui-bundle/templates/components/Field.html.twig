@@ -1,0 +1,14 @@
+{%- set styleProps = getStyleProps(
+    'field',
+    attributes
+) -%}
+
+<div
+    role="group"
+    class="{{ style('field', styleProps) }}"
+    data-slot="field"
+    data-orientation="{{ attributes.render('orientation')|default('vertical') }}"
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</div>

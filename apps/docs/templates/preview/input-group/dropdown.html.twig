@@ -1,0 +1,36 @@
+<div class="grid w-full max-w-sm gap-4">
+    <twig:ui:InputGroup>
+        <twig:ui:InputGroup:Input placeholder="Enter file name" />
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <twig:ui:InputGroup:Button variant="ghost" aria-label="More" size="icon-xs" popovertarget="file-dropdown">
+                <twig:ux:icon name="lucide:more-horizontal" />
+            </twig:ui:InputGroup:Button>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+
+    <twig:ui:InputGroup class="[--radius:1rem]">
+        <twig:ui:InputGroup:Input placeholder="Enter search query" />
+        <twig:ui:InputGroup:Addon align="inline-end">
+            <twig:ui:InputGroup:Button variant="ghost" class="!pr-1.5 text-xs" popovertarget="search-dropdown">
+                Search In...
+                <twig:ux:icon name="lucide:chevron-down" class="size-3" />
+            </twig:ui:InputGroup:Button>
+        </twig:ui:InputGroup:Addon>
+    </twig:ui:InputGroup>
+</div>
+
+<twig:ui:DropdownMenu id="file-dropdown" position="bottom-end">
+    <twig:ui:DropdownMenu:Content align="end">
+        <twig:ui:DropdownMenu:Item>Settings</twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>Copy path</twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>Open location</twig:ui:DropdownMenu:Item>
+    </twig:ui:DropdownMenu:Content>
+</twig:ui:DropdownMenu>
+
+<twig:ui:DropdownMenu id="search-dropdown" position="bottom-end">
+    <twig:ui:DropdownMenu:Content align="end" class="[--radius:0.95rem]">
+        <twig:ui:DropdownMenu:Item>Documentation</twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>Blog Posts</twig:ui:DropdownMenu:Item>
+        <twig:ui:DropdownMenu:Item>Changelog</twig:ui:DropdownMenu:Item>
+    </twig:ui:DropdownMenu:Content>
+</twig:ui:DropdownMenu>

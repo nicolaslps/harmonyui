@@ -1,0 +1,11 @@
+{%- set styleProps = getStyleProps(
+    'button.group.text',
+    attributes
+) -%}
+
+<div
+    class="{{ style('button.group.text', styleProps) }}"
+    {{ attributes.without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</div>

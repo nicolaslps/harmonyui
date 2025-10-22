@@ -1,0 +1,27 @@
+input:
+  base:
+    - "flex w-full min-w-0 bg-background border border-input shadow-xs transition-[color,box-shadow] outline-none"
+    - "dark:bg-input/30"
+    - "placeholder:text-muted-foreground"
+    - "selection:bg-primary selection:text-primary-foreground"
+    - "focus-visible:border-ring focus-visible:ring-ring/30 focus-visible:ring-[3px]"
+    - "disabled:cursor-not-allowed disabled:opacity-60"
+    - "[&[readonly]]:bg-muted/80 [&[readonly]]:cursor-not-allowed"
+    - "aria-invalid:border-destructive/60 aria-invalid:ring-destructive/10 dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/20"
+    - "file:border-0 file:border-solid file:border-e file:border-input file:bg-transparent file:font-medium file:text-foreground file:p-0"
+  variants:
+    size:
+      sm:
+        - "h-8 px-2.5 text-xs rounded-md"
+        - "file:h-full file:pe-2.5 file:me-2.5"
+        - "[&[type=file]]:py-0"
+      md:
+        - "h-9 px-3 text-sm rounded-md"
+        - "file:h-full file:pe-3 file:me-3"
+        - "[&[type=file]]:py-0"
+      lg:
+        - "h-10 px-4 text-sm rounded-md"
+        - "file:h-full file:pe-4 file:me-4"
+        - "[&[type=file]]:py-0"
+  defaultVariants:
+    size: md

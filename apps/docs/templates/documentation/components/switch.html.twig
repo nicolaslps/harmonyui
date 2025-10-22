@@ -1,0 +1,36 @@
+{% set meta = {
+    slug: '/components/switch',
+    title: 'switch',
+    description: 'A toggle switch component for binary on/off states.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 24,
+    section: 'components',
+    image: 'images/components/switch.png',
+} %}
+
+<div class="space-y-16">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+    </div>
+    <div class="space-y-8">
+        <twig:Layout:Doc:Preview title="Basic">
+            {{ include('preview/switch/basic.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/switch/basic.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+        <twig:Layout:Doc:Preview title="Sizes">
+            {{ include('preview/switch/sizes.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/switch/sizes.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+        <twig:Layout:Doc:Preview title="Disabled">
+            {{ include('preview/switch/disabled.html.twig') }}
+            <twig:block name="code">
+                <twig:Code files="preview/switch/disabled.html.twig"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>

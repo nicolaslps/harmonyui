@@ -1,11 +1,4 @@
 {% set docPages = this.getDocPages() %}
-<div class="fixed z-40 bottom-0 left-0 w-screen p-4 pt-6 bg-background rounded-t-xl shadow-[0_-4px_10px_rgba(0,0,0,0.15)] lg:hidden">
-    <twig:ui:Button data-drawer-show="doc-links" class="w-full">
-        <twig:ux:icon name="lucide:menu" class="size-4 mr-2"/>
-        Menu
-    </twig:ui:Button>
-</div>
-
 <twig:ui:Drawer id="doc-links" placement="bottom">
     <div class="p-4">
         <nav class="space-y-6">

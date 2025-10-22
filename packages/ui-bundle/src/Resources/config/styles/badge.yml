@@ -1,28 +1,118 @@
 badge:
   base:
-    - "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors"
-    - "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+    - "inline-flex items-center whitespace-nowrap justify-center border border-transparent font-medium"
+    - "focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2"
+    - "[&_svg]:-ms-px [&_svg]:shrink-0"
   variants:
     variant:
-      default:
-        - "border-transparent bg-primary text-primary-foreground"
-        - "hover:bg-primary/80"
+      primary:
+        - "bg-primary text-primary-foreground"
       secondary:
-        - "border-transparent bg-secondary text-secondary-foreground"
-        - "hover:bg-secondary/80"
-      destructive:
-        - "border-transparent bg-destructive text-destructive-foreground"
-        - "hover:bg-destructive/80"
-      outline:
-        - "text-foreground"
+        - "bg-secondary text-secondary-foreground"
       success:
-        - "border-transparent bg-success text-success-foreground"
-        - "hover:bg-success/80"
+        - "bg-success text-success-foreground"
       warning:
-        - "border-transparent bg-warning text-warning-foreground"
-        - "hover:bg-warning/80"
+        - "bg-warning text-warning-foreground"
       info:
-        - "border-transparent bg-info text-info-foreground"
-        - "hover:bg-info/80"
+        - "bg-info text-info-foreground"
+      outline:
+        - "bg-transparent border border-border text-secondary-foreground"
+      destructive:
+        - "bg-destructive text-destructive-foreground"
+    appearance:
+      default: ""
+      light: ""
+      outline: ""
+      ghost:
+        - "border-transparent bg-transparent"
+    disabled:
+      "true":
+        - "opacity-50 pointer-events-none"
+    size:
+      lg:
+        - "rounded-md px-[0.5rem] h-7 min-w-7 gap-1.5 text-xs [&_svg]:size-3.5"
+      md:
+        - "rounded-md px-[0.45rem] h-6 min-w-6 gap-1.5 text-xs [&_svg]:size-3.5"
+      sm:
+        - "rounded-sm px-[0.325rem] h-5 min-w-5 gap-1 text-[0.6875rem] leading-[0.75rem] [&_svg]:size-3"
+      xs:
+        - "rounded-sm px-[0.25rem] h-4 min-w-4 gap-1 text-[0.625rem] leading-[0.5rem] [&_svg]:size-3"
+    shape:
+      default: ""
+      circle:
+        - "rounded-full"
+  compoundVariants:
+    - variant: ['primary']
+      appearance: ['light']
+      class: '!bg-primary/15 !text-primary dark:!bg-primary/20 dark:!text-primary'
+    - variant: ['secondary']
+      appearance: ['light']
+      class: '!bg-secondary/50 !text-secondary-foreground'
+    - variant: ['success']
+      appearance: ['light']
+      class: '!bg-success/15 !text-success dark:!bg-success/20 dark:!text-success'
+    - variant: ['warning']
+      appearance: ['light']
+      class: '!bg-warning/15 !text-warning dark:!bg-warning/20 dark:!text-warning'
+    - variant: ['info']
+      appearance: ['light']
+      class: '!bg-info/15 !text-info dark:!bg-info/20 dark:!text-info'
+    - variant: ['destructive']
+      appearance: ['light']
+      class: '!bg-destructive/15 !text-destructive dark:!bg-destructive/20 dark:!text-destructive'
+
+    - variant: ['primary']
+      appearance: ['outline']
+      class: '!bg-primary/10 !text-primary !border-primary/30 dark:!bg-primary/15 dark:!border-primary/40'
+    - variant: ['secondary']
+      appearance: ['outline']
+      class: '!bg-secondary/50 !text-secondary-foreground !border-border'
+    - variant: ['success']
+      appearance: ['outline']
+      class: '!bg-success/10 !text-success !border-success/30 dark:!bg-success/15 dark:!border-success/40'
+    - variant: ['warning']
+      appearance: ['outline']
+      class: '!bg-warning/10 !text-warning !border-warning/30 dark:!bg-warning/15 dark:!border-warning/40'
+    - variant: ['info']
+      appearance: ['outline']
+      class: '!bg-info/10 !text-info !border-info/30 dark:!bg-info/15 dark:!border-info/40'
+    - variant: ['destructive']
+      appearance: ['outline']
+      class: '!bg-destructive/10 !text-destructive !border-destructive/30 dark:!bg-destructive/15 dark:!border-destructive/40'
+
+    - variant: ['primary']
+      appearance: ['ghost']
+      class: '!bg-transparent !text-primary dark:!text-primary'
+    - variant: ['secondary']
+      appearance: ['ghost']
+      class: '!bg-transparent !text-secondary-foreground'
+    - variant: ['success']
+      appearance: ['ghost']
+      class: '!bg-transparent !text-success dark:!text-success'
+    - variant: ['warning']
+      appearance: ['ghost']
+      class: '!bg-transparent !text-warning dark:!text-warning'
+    - variant: ['info']
+      appearance: ['ghost']
+      class: '!bg-transparent !text-info dark:!text-info'
+    - variant: ['destructive']
+      appearance: ['ghost']
+      class: '!bg-transparent !text-destructive dark:!text-destructive'
+  defaultVariants:
+    variant: primary
+    appearance: default
+    size: md
+
+badge-button:
+  base:
+    - "cursor-pointer transition-all inline-flex items-center justify-center leading-none size-3.5"
+    - "[&>svg]:opacity-100! [&>svg]:size-3.5! p-0 rounded-md -me-0.5 opacity-60 hover:opacity-100"
+  variants:
+    variant:
+      default: ""
   defaultVariants:
     variant: default
+
+badge-dot:
+  base:
+    - "size-1.5 rounded-full bg-[currentColor] opacity-75"

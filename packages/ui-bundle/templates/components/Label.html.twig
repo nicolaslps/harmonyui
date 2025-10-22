@@ -1,0 +1,16 @@
+{%- props for = null -%}
+
+{%- set styleProps = getStyleProps(
+    'label',
+    attributes
+) -%}
+
+<label
+    class="{{ style('label', styleProps) }}"
+    data-slot="label"
+    {{ attributes.defaults({
+        for: for
+    }).without('class') }}
+>
+    {%- block content -%}{%- endblock -%}
+</label>

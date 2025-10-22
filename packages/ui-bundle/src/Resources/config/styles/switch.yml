@@ -1,0 +1,31 @@
+switch:
+  base:
+    - "inline-flex items-center cursor-pointer"
+
+switch-input:
+  base:
+    - "peer sr-only"
+
+switch-thumb:
+  base:
+    - "relative bg-input rounded-full shadow-xs transition-colors"
+    - "dark:bg-input/80"
+    - "peer-checked:bg-primary"
+    - "peer-focus-visible:outline-none peer-focus-visible:ring-[3px] peer-focus-visible:ring-ring/50"
+    - "peer-disabled:opacity-50 peer-disabled:cursor-not-allowed"
+    - "after:content-[''] after:absolute after:bg-background after:border-transparent after:border after:rounded-full after:transition-all"
+    - "peer-checked:after:translate-x-full peer-checked:after:border-background"
+    - "dark:after:bg-foreground dark:peer-checked:after:bg-primary-foreground"
+  variants:
+    size:
+      sm:
+        - "w-9 h-5"
+        - "after:top-[2px] after:start-[2px] after:h-4 after:w-4"
+      md:
+        - "w-11 h-6"
+        - "after:top-[2px] after:start-[2px] after:h-5 after:w-5"
+      lg:
+        - "w-14 h-7"
+        - "after:top-[2px] after:start-[4px] after:h-6 after:w-6"
+  defaultVariants:
+    size: md
