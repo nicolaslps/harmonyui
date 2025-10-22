@@ -25,6 +25,7 @@ final class FormDemoController extends AbstractController
     public function index(Request $request): Response
     {
         $form = $this->createForm(FormDemoType::class);
+
         return $this->render('form_demo/index.html.twig', [
             'form' => $form,
         ]);
