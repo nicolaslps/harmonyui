@@ -45,6 +45,19 @@ import '@harmonyui/primitives';
 }
 ```
 
+### 5. Configure Form Theme (Optional)
+
+To use HarmonyUI components for rendering Symfony forms, add the form theme to your `twig.yaml`:
+
+```yaml
+# config/packages/twig.yaml
+twig:
+    form_themes:
+        - '@ui/form/harmonyui_layout.html.twig'
+```
+
+This will automatically render all your Symfony forms using HarmonyUI components like Input, Textarea, Select, Button, Field, Label, etc.
+
 ## Requirements
 
 - PHP 8.2+
