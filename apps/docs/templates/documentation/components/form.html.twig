@@ -1,0 +1,32 @@
+{% set meta = {
+    slug: '/components/form',
+    title: 'Form',
+    description: 'Complete Symfony form theme using HarmonyUI components for inputs, selects, buttons, and field layouts.',
+    canonical: 'app_home',
+    isComponent: true,
+    order: 50,
+    section: 'components',
+} %}
+
+<div class="space-y-16">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
+        <p class="text-gray-600">
+            HarmonyUI provides a complete form theme for Symfony forms that automatically uses HarmonyUI components.
+            Simply configure the form theme in your <code>twig.yaml</code> and all your forms will be rendered with beautiful, accessible components.
+        </p>
+    </div>
+
+    <div class="space-y-8">
+        <h2 class="text-2xl font-bold text-gray-900">Usage</h2>
+
+        <twig:Layout:Doc:Preview title="Form with all field types">
+            <div class="w-full max-w-md">
+                {{ render(path('app_demo_form')) }}
+            </div>
+            <twig:block name="code">
+                <twig:Code files="src/Form/FormDemoType.php" language="php"/>
+            </twig:block>
+        </twig:Layout:Doc:Preview>
+    </div>
+</div>

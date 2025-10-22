@@ -1,0 +1,63 @@
+{{ form_start(form) }}
+<twig:ui:Field:Group>
+    <twig:ui:Field:Set>
+        <twig:ui:Field:Legend>Text Inputs</twig:ui:Field:Legend>
+        <twig:ui:Field:Group>
+            {{ form_row(form.text) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.password) }}
+            {{ form_row(form.repeatedPassword) }}
+            {{ form_row(form.search) }}
+            {{ form_row(form.url) }}
+            {{ form_row(form.tel) }}
+            {{ form_row(form.textarea) }}
+            {{ form_row(form.color) }}
+        </twig:ui:Field:Group>
+    </twig:ui:Field:Set>
+    <twig:ui:Field:Separator/>
+    <twig:ui:Field:Set>
+        <twig:ui:Field:Legend>Number Inputs</twig:ui:Field:Legend>
+        <twig:ui:Field:Group>
+            {{ form_row(form.integer) }}
+            {{ form_row(form.number) }}
+            {{ form_row(form.money) }}
+            {{ form_row(form.percent) }}
+            {{ form_row(form.range) }}
+        </twig:ui:Field:Group>
+    </twig:ui:Field:Set>
+    <twig:ui:Field:Separator/>
+    <twig:ui:Field:Set>
+        <twig:ui:Field:Legend>Date and Time Inputs</twig:ui:Field:Legend>
+        <twig:ui:Field:Group>
+            {{ form_row(form.date) }}
+            {{ form_row(form.dateTime) }}
+            {{ form_row(form.time) }}
+            {{ form_row(form.birthday) }}
+            {{ form_row(form.week) }}
+            {{ form_row(form.dateInterval) }}
+        </twig:ui:Field:Group>
+    </twig:ui:Field:Set>
+    <twig:ui:Field:Separator/>
+    <twig:ui:Field:Set>
+        <twig:ui:Field:Legend>Choice Inputs</twig:ui:Field:Legend>
+        <twig:ui:Field:Group>
+            {{ form_row(form.choiceSelect) }}
+            {{ form_row(form.choiceRadio) }}
+            {{ form_row(form.choiceCheckboxes) }}
+            {{ form_row(form.countrySelect) }}
+            {{ form_row(form.languageSelect) }}
+            {{ form_row(form.localeSelect) }}
+            {{ form_row(form.timezoneSelect) }}
+            {{ form_row(form.currencySelect) }}
+        </twig:ui:Field:Group>
+    </twig:ui:Field:Set>
+    <twig:ui:Field:Separator/>
+    <twig:ui:Field:Set>
+        <twig:ui:Field:Legend>Other Inputs</twig:ui:Field:Legend>
+        <twig:ui:Field:Group>
+            {{ form_row(form.checkbox) }}
+            {{ form_row(form.file) }}
+        </twig:ui:Field:Group>
+    </twig:ui:Field:Set>
+</twig:ui:Field:Group>
+{{ form_end(form) }}
