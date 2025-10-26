@@ -3,6 +3,8 @@
 > [!WARNING]
 > **NOT PRODUCTION READY** - This project is currently in active development and is **NOT** ready for production use. APIs are unstable, breaking changes will occur, and features may be incomplete. Use at your own risk. Do not use in production environments.
 
+**About Development Activity**: While public commits may seem infrequent, this project is actively maintained and continuously developed in a production environment. We're working on performance improvements, stability enhancements, visual refinements, and new features to deliver high-quality components to the Symfony community in the next major release.
+
 A comprehensive, Symfony-native component library that integrates seamlessly with your existing workflow.
 
 ## Why HarmonyUI?
